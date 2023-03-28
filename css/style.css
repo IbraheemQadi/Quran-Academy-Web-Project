@@ -75,3 +75,36 @@ p {
     font-size: 5rem;
   }
 }
+/* Nav */
+
+.navbar-collapse {
+  justify-content: end;
+}
+
+.navbar-toggler {
+  font-size: 2.5rem;
+  border: 0;
+}
+
+.navbar-brand {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.nav-link,
+.navbar-brand {
+  color: var(--color-body);
+  transition: color 0.3s;
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: var(--color-primary);
+}
+
+@media (min-width: 992px) {
+  .nav-link {
+    font-size: 2rem;
+    margin-left: 2rem;
+  }
+}
