@@ -35,6 +35,7 @@ h3,
 h4 {
   color: var(--color-headings);
   margin-bottom: 1rem;
+  font-family: "Almarai", sans-serif;
 }
 
 h1 {
@@ -59,8 +60,8 @@ p {
 }
 
 @media (min-width: 1024px) {
-  html {
-    --body-font-size: 2.4rem;
+  body {
+    font-size: 2.4rem;
   }
 
   h1 {
@@ -73,6 +74,9 @@ p {
 
   h3 {
     font-size: 5rem;
+  }
+  p {
+    font-size: 2.4rem;
   }
 }
 /* Nav */
@@ -107,4 +111,51 @@ p {
     font-size: 2rem;
     margin-left: 2rem;
   }
+}
+
+/* Hero */
+
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 90vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/img/people-reading-holy-quran.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero h1,
+p {
+  color: white;
+}
+
+.hero h1 {
+  font-weight: bold;
+}
+
+.hero p {
+  margin: 2rem 0;
+}
+
+/* btn */
+.btn {
+  background: white;
+  border: 0;
+  color: var(--color-body);
+  font-size: 2rem;
+  font-size: var(--body-size);
+  margin: 1rem 0;
+  padding: 1rem 6rem;
+  transition: transform 0.3s;
+}
+
+.btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+  transform: scale(1.05);
 }
