@@ -1,0 +1,77 @@
+:root {
+  --color-primary: #ba992e;
+  --color-headings: #ba992e;
+  --color-body: #918ca4;
+  --body-font-size: 2rem;
+  /* anthor colors we can ues */
+  /* #006368 primary color */
+  /* #a17900 secondary color */
+}
+
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+/* Typography */
+
+body {
+  color: var(--color-body);
+  /* font-family: "Almarai", sans-serif; */
+  font-family: "Cairo", sans-serif;
+  font-size: var(--body-font-size);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--color-headings);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 5rem;
+}
+
+h3 {
+  font-size: 4rem;
+}
+
+h4 {
+  font-size: 3rem;
+}
+
+p {
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+@media (min-width: 1024px) {
+  html {
+    --body-font-size: 2.4rem;
+  }
+
+  h1 {
+    font-size: 7.5rem;
+  }
+
+  h2 {
+    font-size: 6rem;
+  }
+
+  h3 {
+    font-size: 5rem;
+  }
+}
