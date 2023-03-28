@@ -12,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&family=Cairo:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&family=Cairo:wght@400;600;700&family=Tajawal:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/normalize.css" />
@@ -51,11 +51,48 @@
       </div>
     </nav>
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero block">
       <div class="container">
         <h1>أكاديمية تربوية تعليمية</h1>
         <p>تهدف إلى تعليم القرآن الكريم و مهارات اللغة العربية</p>
-        <button class="btn btn-outline-primary">للتسجيل اضغط هنا</button>
+        <button class="btn">للتسجيل اضغط هنا</button>
+      </div>
+    </section>
+    <!-- contact us -->
+    <section class="contact block">
+      <div class="container">
+        <div class="row">
+          <h2 class="section-heading">تواصل معنا</h2>
+          <div class="contact__form col-sm">
+            <form action="">
+              <div class="input-group-lg mb-3">
+                <label for="name" class="form-label">الاسم</label>
+                <input type="text" class="form-control" id="name" />
+              </div>
+              <div class="input-group-lg mb-3">
+                <label for="email" class="form-label">البريد الالكتروني</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  aria-describedby="emailHelp"
+                />
+              </div>
+              <div class="input-group-lg">
+                <label for="textarea" class="form-label">الرسالة</label>
+                <textarea
+                  class="form-control"
+                  placeholder="اكتب رسالتك هنا"
+                  id="textarea"
+                ></textarea>
+              </div>
+              <button type="submit" class="btn">أرسل</button>
+            </form>
+          </div>
+          <div class="contact__content col-md">
+            <img src="img/quran2.jpg" alt="" />
+          </div>
+        </div>
       </div>
     </section>
   </body>

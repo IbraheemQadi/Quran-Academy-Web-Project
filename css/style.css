@@ -12,6 +12,7 @@ html {
   /* 1rem = 10px */
   font-size: 62.5%;
   scroll-behavior: smooth;
+  height: 1000rem;
 }
 
 *,
@@ -25,7 +26,8 @@ html {
 body {
   color: var(--color-body);
   /* font-family: "Almarai", sans-serif; */
-  font-family: "Cairo", sans-serif;
+  /* font-family: "Cairo", sans-serif; */
+  font-family: "Tajawal", sans-serif;
   font-size: var(--body-font-size);
 }
 
@@ -79,6 +81,7 @@ p {
     font-size: 2.4rem;
   }
 }
+
 /* Nav */
 
 .navbar-collapse {
@@ -154,8 +157,65 @@ p {
   transition: transform 0.3s;
 }
 
-.btn:hover {
+.btn:hover,
+.btn:active {
   background-color: var(--color-primary);
   color: white;
   transform: scale(1.05);
+}
+
+/* block */
+.block {
+  margin-bottom: 6rem;
+}
+
+/* Contact */
+
+.contact .form-control {
+  font-size: var(--body-font-size);
+  color: var(--color-body);
+}
+
+.no-outline:focus {
+  outline: none;
+}
+
+#textarea {
+  max-height: 12rem;
+}
+
+.contact .btn {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.contact__content {
+  display: flex;
+  justify-content: center;
+}
+.contact__content img {
+  width: 70%;
+  height: auto;
+}
+
+.contact .contact__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact .input-group-lg {
+  margin-bottom: 4rem !important;
+}
+
+.contact .form-label {
+  margin-bottom: 1rem;
+}
+
+/* section */
+
+section .section-heading {
+  padding-bottom: 1rem;
+  border-bottom: 3px solid var(--color-primary);
+  margin-bottom: 7rem;
 }
