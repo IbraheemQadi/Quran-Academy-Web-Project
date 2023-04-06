@@ -219,3 +219,38 @@ section .section-heading {
   border-bottom: 3px solid var(--color-primary);
   margin-bottom: 7rem;
 }
+
+/* Numbers */
+.circle {
+  width: 15rem;
+  height: 15rem;
+  background-color: white;
+  border-radius: 50%;
+  border: 3px var(--color-body) solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 6rem;
+  /* color: white; */
+}
+
+.circles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.circles::after {
+  content: "";
+  width: 3px;
+  height: 100%;
+  background-color: var(--color-primary);
+  display: flex;
+  position: absolute;
+  top: -3rem;
+  border-radius: 1rem;
+  z-index: -1;
+  opacity: 30%;
+}
