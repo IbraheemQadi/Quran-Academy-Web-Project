@@ -28,7 +28,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 
+<script type="text/javascript">
 
+
+  function changea( a, b){
+
+
+    a.className = "btn btn-primary btn-block btn-outline center w-100 ";
+    b.className= "btn btn-primary btn-block btn-outline center w-100 active" ;
+  }
+  function changeb( a, b){
+
+
+    a.className = "btn btn-primary btn-block btn-outline center w-100 active ";
+    b.className= "btn btn-primary btn-block btn-outline center w-100 " ;
+  }
+</script>
 
 
 <!-- Font Google
@@ -50,12 +65,9 @@
     <div class="col-12 col-md-4 bg-color position-md-sticky d-flex align-items-center vh-md-100" style="top: 0;">
       <div class="card-body px-md-0 px-lg-5">
         <div class="justify-content-center align-items-center h-100 py-3">
-          <a href="index.html" class="standard-logo"><img src="images/logo-etqan.png" alt=""></a>
           <h1 class="display-2 fw-bolder color01 mt-6">يا مرحبًا بأهل القرآن</h1>
-          <h3 class="fw-normal color01">أعد البرنامج نخبة من المتخصصين في مجال تحفيظ القرآن الكريم
-            وطبق هذا البرنامج على كثير من حلقات التحفيظ وساهم هذا البرنامج في تحفيظ أكثر من 100
-            حافظ</h3>
-          <a class="btn btn-white btn-block center w-100 btn-outline h3" href="#">العودة للموقع التعريفي</a>
+          <h3 class="fw-normal color01">أعد البرنامج نخبة من المتخصصين في مجال تحفيظ القرآن الكريم </h3>
+          <a class="btn btn-white btn-block center w-100 btn-outline h3" href="home.html">العودة للموقع التعريفي</a>
         </div>
       </div>
     </div>
@@ -63,7 +75,7 @@
     <div class="col-lg-8 col-md-8">
       <div class="container-fluid">
 
-        <form action="" id="plan_form" method="POST" novalidate="novalidate">
+        <form  id="plan_form" method="POST" novalidate="novalidate">
           <!-- action ^          (data base)----------------------------- -->
           <input type="hidden" name="_token" value="rvXXMShw7BFknZIuF2i1bNOSFjjf3PiyTPWo0GTw">	<!-- البيانات الشخصية -->
           <div class="row clearfix mt-md-12 mt-6 mb-md-8 mb-4">
@@ -75,7 +87,8 @@
 
               <div style="padding: 20px 0 0 0 ">
               <label class="my-1">رقم الهاتف</label>
-              <input type="text" name="mobile" id="mobile_number" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="رقم الهاتف">
+              <input type="text" name="mobile" id="mobile_number" pattern="05[0-9]{8}" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="رقم الهاتف">
+
               </div>
 
               <div style="padding: 20px 0 0 0 ">
@@ -153,13 +166,13 @@
             <label class="my-1">طبيعة المسجل </label>
             <div class="row mx-0" data-toggle="buttons">
               <div class="col-md-4 col-6 px-0">
-                <label class="btn btn-primary btn-block btn-outline center w-100 active">
-                  <input  class="form-check-input" id="super" name="super" value="مشرف" type="radio" checked >مشرف
+                <label class="btn btn-primary btn-block btn-outline center w-100 active" id="a">
+                  <input  onclick=" changeb(a,b)" class="form-check-input" id="super" name="super" value="مشرف" type="radio" checked >مشرف
                 </label>
               </div>
               <div class="col-md-4 col-6 px-0">
-                <label class="btn btn-primary btn-block btn-outline center w-100">
-                  <input class="form-check-input" id="student" name="student" value="طالب" type="radio">طالب
+                <label class="btn btn-primary btn-block btn-outline center w-100" id="b">
+                  <input  class="form-check-input" onclick=" changea(a,b)" id="student" name="student" value="طالب" type="radio">طالب
                 </label>
               </div>
             </div>
@@ -169,7 +182,24 @@
           <!-- تحميل الخطة -->
           <div class="row clearfix mb-md-8 mb-4">
             <div class="col-md-12 col-12">
-              <h3 class="heading mb-7">تحميل الخطة</h3>
+              <h3 class="heading mb-7">معلومات التسجيل</h3>
+
+              <div style="padding: 20px 0 0px 0 ">
+                <label class="my-1">البريد الألكتروني</label>
+                <input dir="ltr" type="email" name="email" id="email" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="exp@gmail.com">
+              </div>
+
+              <div style="padding: 20px 0 0px 0 ">
+                <label class="my-1">كلمة السر</label>
+                <input dir="ltr" type="password" name="pass1" id="pass1" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="enter the password">
+              </div>
+
+              <div style="padding: 20px 0 30px 0 ">
+                <label class="my-1">ادخل كلمة السر مرة أٌخرى</label>
+                <input dir="ltr" type="password" name="pass2" id="pass2" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="enter the password again">
+              </div>
+
+
               <div id="formErrorsShowHere"></div>
               <div class="col-md-8 col-12 mx-0">
 
