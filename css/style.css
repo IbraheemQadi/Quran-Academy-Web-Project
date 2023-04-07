@@ -143,7 +143,7 @@ p {
   text-align: center;
   height: 100vh;
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/img/people-reading-holy-quran.jpg);
+  url(/img/people-reading-holy-quran.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -291,7 +291,7 @@ section .section-heading {
   padding: 12rem 0;
   /* background-image: url(/img/quran.jpg); */
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url(/img/masjid-maba.jpg);
+  url(/img/masjid-maba.jpg);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
