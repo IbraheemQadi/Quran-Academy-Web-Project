@@ -12,7 +12,7 @@ html {
   /* 1rem = 10px */
   font-size: 62.5%;
   scroll-behavior: smooth;
-  height: 1000rem;
+  /* height: 1000rem; */
 }
 
 *,
@@ -151,7 +151,7 @@ p {
 }
 
 .hero h1,
-p {
+.hero p {
   color: white;
 }
 
@@ -271,4 +271,89 @@ section .section-heading {
   border-radius: 1rem;
   z-index: -1;
   opacity: 30%;
+}
+
+.numbers .col1 .image {
+}
+
+.numbers .col1 img {
+  max-width: 100%;
+  clip-path: circle();
+  margin-bottom: 1rem;
+}
+
+.numbers .col1 p {
+  margin-bottom: 3rem;
+}
+
+/* Goals */
+.our-goals {
+  padding: 12rem 0;
+  /* background-image: url(/img/quran.jpg); */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(/img/masjid-maba.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.goal {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 4rem;
+}
+
+.goal header {
+  text-align: center;
+}
+
+.goal img {
+  max-width: 5rem;
+  margin: 1rem 0;
+  color: var(--color-primary);
+}
+
+.goal__content {
+  padding: 2rem;
+  text-align: center;
+}
+
+/* footer */
+.footer {
+  background-color: var(--color-body);
+  color: white;
+  padding: 2rem;
+}
+
+.copy-right {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.copy-right .logo {
+  font-weight: bold;
+}
+
+/* Up button */
+.up {
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 10px;
+  right: -55px;
+  font-size: 5rem;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.up.show {
+  right: 10px;
 }
