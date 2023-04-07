@@ -3,12 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+  <!-- jQuery library -->
+  <script src="js/jquery.min.js"></script>
+
+  <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+  <script src="js/bootstrap-datetimepicker.min.js"></script>
+  <!-- Bootstrap library -->
+  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <script src="bootstrap/js/bootstrap.min.js"></script>
   <link rel="shortcut icon" id="favicon" href="https://plan.etqaaan.com/favicon.png">
+  <link rel="icon"  href="/images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <script src="https://plan.etqaaan.com/js/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/moment-hijri@2.1.2/moment-hijri.min.js"></script>
+  <link href="https://plan.etqaaan.com/js/hijri/src/css/bootstrap-datetimepicker.css" rel="stylesheet">
+  <script src="https://plan.etqaaan.com/js/hijri/src/js/bootstrap-hijri-datetimepicker.js"></script>
+
+  <!-- Include jQuery -->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+  <!-- Include Date Range Picker -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
 
 
 
-  <!-- Font Google
-  ============================================= -->
+
+
+<!-- Font Google
+============================================= -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Stylesheets
@@ -20,17 +44,158 @@
 </head>
 <body>
 
-<div class="col-12 col-md-4 bg-color position-md-sticky d-flex align-items-center vh-md-100" style="top: 0;">
-  <div class="card-body px-md-0 px-lg-5">
-    <div class="justify-content-center align-items-center h-100 py-3">
-      <a  class="standard-logo"><img src="images/logo-etqan.png" alt=""></a>
-      <h1 class="display-2 fw-bolder color01 mt-6">يا مرحبًا بأهل القرآن</h1>
-      <h3 class="fw-normal color01">أعد البرنامج نخبة من المتخصصين في مجال تحفيظ القرآن الكريم
-        وطبق هذا البرنامج على كثير من حلقات التحفيظ وساهم هذا البرنامج في تحفيظ أكثر من 100
-        حافظ</h3>
-      <a class="btn btn-white btn-block center w-100 btn-outline h3" href="#">العودة للموقع التعريفي</a>
+<div class="container-fluid">
+  <div class="row align-items-stretch">
+
+    <div class="col-12 col-md-4 bg-color position-md-sticky d-flex align-items-center vh-md-100" style="top: 0;">
+      <div class="card-body px-md-0 px-lg-5">
+        <div class="justify-content-center align-items-center h-100 py-3">
+          <a href="index.html" class="standard-logo"><img src="images/logo-etqan.png" alt=""></a>
+          <h1 class="display-2 fw-bolder color01 mt-6">يا مرحبًا بأهل القرآن</h1>
+          <h3 class="fw-normal color01">أعد البرنامج نخبة من المتخصصين في مجال تحفيظ القرآن الكريم
+            وطبق هذا البرنامج على كثير من حلقات التحفيظ وساهم هذا البرنامج في تحفيظ أكثر من 100
+            حافظ</h3>
+          <a class="btn btn-white btn-block center w-100 btn-outline h3" href="#">العودة للموقع التعريفي</a>
+        </div>
+      </div>
     </div>
+
+    <div class="col-lg-8 col-md-8">
+      <div class="container-fluid">
+
+        <form action="" id="plan_form" method="POST" novalidate="novalidate">
+          <!-- action ^          (data base)----------------------------- -->
+          <input type="hidden" name="_token" value="rvXXMShw7BFknZIuF2i1bNOSFjjf3PiyTPWo0GTw">	<!-- البيانات الشخصية -->
+          <div class="row clearfix mt-md-12 mt-6 mb-md-8 mb-4">
+
+            <div class="col-12 mb-4">
+              <h3 class="heading mb-7">البيانات الشخصية</h3>
+              <label class="my-1">الاسم الثلاثي</label>
+              <input type="text" name="name" id="path-registration-first-name" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="الاسم الثلاثي">
+
+              <div style="padding: 20px 0 0 0 ">
+              <label class="my-1">رقم الهاتف</label>
+              <input type="text" name="mobile" id="mobile_number" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="رقم الهاتف">
+              </div>
+
+              <div style="padding: 20px 0 0 0 ">
+                <label class="my-1">العنوان</label>
+                <input type="text" name="address" id="address" class="sm-form-control border-form-control col-12 col-md-8" value="" placeholder="ادخل العنوان هنا ">
+              </div>
+
+              <div style="padding: 20px 0 0 0 ">
+                <label class="my-1">يوم الميلاد</label>
+
+              <ul id="myTab2" class="nav row col-md-8 col-12 nav-pills boot-tabs mx-0">
+                <li class="nav-item col-md-4 col-12 px-0">
+                  <div id="myTabContent2" class="w-100 tab-content col-md-6 col-12">
+
+                    <div class="w-100 tab-pane fade active show" id="ad">
+
+                      <input type="text" id="datetime" name="georgian_start_date" class="bg-gray-800 hijri-date-input-g sm-form-control text-left form-control valid" placeholder="MM/DD/YYYY" aria-invalid="false" readonly>
+                      <script type="text/javascript">
+                       $(function () {
+                         $("#datetime").datepicker({});});
+
+                      </script>
+
+
+                    </div>
+                  </div>
+                </li>
+
+                <li class="nav-item col-md-4 col-12 px-0">
+                  <a class="btn btn-primary btn-block btn-outline center w-100 active"  data-toggle="tab"> ميلادي</a>
+                </li>
+              </ul>
+
+            </div>
+</div>
+
+            <!--Radio buttons-->
+
+            </div>
+
+
+
+
+
+
+
+
+
+          <!-- المحفوظ السابق-->
+          <div class="row clearfix mb-md-8 mb-4">
+            <div class="col-md-12 col-12">
+
+              <h3 class="heading mb-7">المراكز</h3>
+              <label class="mb-3">رقم الفوج</label>
+
+              <div id="myTabContent22" class="tab-content row col-md-8 col-12 mx-0">
+                <div class="tab-pane fade show active" id="joze">
+                  <div class="row align-items-center" id="pathj_1">
+
+
+
+                    <select    class="col-md-4 col-12 mb-1 h3 sm-form-control border-form-control" name="mrqz" id="mrqz">
+                    </select>
+                  </div>
+                </div>
+
+
+
+              </div>
+
+
+            </div>
+          </div>
+          <div class="col-12 mb-4">
+            <label class="my-1">طبيعة المسجل </label>
+            <div class="row mx-0" data-toggle="buttons">
+              <div class="col-md-4 col-6 px-0">
+                <label class="btn btn-primary btn-block btn-outline center w-100 active">
+                  <input  class="form-check-input" id="super" name="super" value="مشرف" type="radio" checked >مشرف
+                </label>
+              </div>
+              <div class="col-md-4 col-6 px-0">
+                <label class="btn btn-primary btn-block btn-outline center w-100">
+                  <input class="form-check-input" id="student" name="student" value="طالب" type="radio">طالب
+                </label>
+              </div>
+            </div>
+          </div>
+          <!-- تحديد المجال -->
+
+          <!-- تحميل الخطة -->
+          <div class="row clearfix mb-md-8 mb-4">
+            <div class="col-md-12 col-12">
+              <h3 class="heading mb-7">تحميل الخطة</h3>
+              <div id="formErrorsShowHere"></div>
+              <div class="col-md-8 col-12 mx-0">
+
+
+
+                <input type="submit" class="btn btn-secondary btn-block center w-100 btn-outline h3" id="submit_form" value="التسجيل في الدورة">
+
+                <span   class="color3" style="font-size: 16px; alignment: left">
+                صنع بإخلاص <span class="text-danger"> ❤ </span>  </span>
+              </div>
+
+
+            </div>
+          </div>
+
+        </form>
+
+
+
+      </div>
+
+    </div>
+
   </div>
 </div>
+
+
 </body>
 </html>
