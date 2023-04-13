@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Admin Dashboard | Korsat X Parmaga</title>
+    <!-- ======= Styles ====== -->
+    <link rel="stylesheet" href="css/styleTest.css">
+</head>
+
+<body>
+<!-- =============== Navigation ================ -->
+<div class="container">
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"> </span>
+                          
+
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <ion-icon name="home-outline"></ion-icon>
+                        </span>
+                    <span class="title">الإحصائيات</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <ion-icon name="people-outline"></ion-icon>
+                        </span>
+                    <span class="title">الطلاب</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                    <span class="title">الرسائل</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                           <ion-icon name="people-circle-outline"></ion-icon>
+
+                        </span>
+                    <span class="title">المشرفين</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <ion-icon name="settings-outline"></ion-icon>
+                        </span>
+                    <span class="title">Settings</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                        </span>
+                    <span class="title">Password</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="#">
+                        <span class="icon">
+                            <ion-icon name="log-out-outline"></ion-icon>
+                        </span>
+                    <span class="title">تسجيل الخروج</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
+
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="Search here">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
+
+            <div class="user">
+
+            </div>
+        </div>
+
+        <!-- ======================= Cards ================== -->
+        <div class="cardBox">
+            <div class="card">
+                <div>
+                    <div class="numbers">عدد الطلاب</div>
+
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </div>
+            </div>
+
+
+
+            <div class="card">
+                <div>
+                    <div class="numbers">284</div>
+                    <div class="cardName">Comments</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="chatbubbles-outline"></ion-icon>
+                </div>
+            </div>
+
+            <div class="card">
+                <div>
+                    <div class="numbers">$7,842</div>
+                    <div class="cardName">Earning</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="cash-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================ Order Details List ================= -->
+
+    </div>
+</div>
+
+<!-- =========== Scripts =========  -->
+<script src="js/main-admin.js"></script>
+
+<!-- ====== ionicons ======= -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html><script>
+    (function() {
+        var ws = new WebSocket('ws://' + window.location.host +
+            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+            'referrer=' + encodeURIComponent(window.location.pathname));
+        ws.onmessage = function (msg) {
+            if (msg.data === 'reload') {
+                window.location.reload();
+            }
+            if (msg.data.startsWith('update-css ')) {
+                var messageId = msg.data.substring(11);
+                var links = document.getElementsByTagName('link');
+                for (var i = 0; i < links.length; i++) {
+                    var link = links[i];
+                    if (link.rel !== 'stylesheet') continue;
+                    var clonedLink = link.cloneNode(true);
+                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+                    if (newHref !== link.href) {
+                        clonedLink.href = newHref;
+                    }
+                    else {
+                        var indexOfQuest = newHref.indexOf('?');
+                        if (indexOfQuest >= 0) {
+                            // to support ?foo#hash
+                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                newHref.substring(indexOfQuest + 1);
+                        }
+                        else {
+                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                        }
+                    }
+                    link.replaceWith(clonedLink);
+                }
+            }
+        };
+    })();
+</script>

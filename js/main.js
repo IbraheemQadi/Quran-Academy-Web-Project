@@ -12,3 +12,4 @@ window.onscroll = () => {
 span.onclick = () => {
   window.scrollTo(0, 0);
 };
+
