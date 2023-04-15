@@ -169,7 +169,7 @@ p {
   border: 0;
   color: var(--color-body);
   font-size: 2rem;
-  font-size: var(--body-size);
+  font-size: var(--body-font-size);
   margin: 1rem 0;
   padding: 1rem 6rem;
   transition: transform 0.3s;
@@ -356,4 +356,49 @@ section .section-heading {
 
 .up.show {
   right: 10px;
+}
+
+@keyframes sheen {
+  0% {
+    transform: skewY(-45deg) translateX(0);
+  }
+  100% {
+    transform: skewY(-45deg) translateX(12.5em);
+  }
+}
+
+.button {
+
+
+  text-decoration: none;
+  padding: 3px;
+
+
+  border-radius: 0.3em;
+  transition: all 0.2s ease-in-out;
+
+  overflow: hidden;
+
+
+}
+.button:before {
+  content: "";
+  background-color: rgba(255, 255, 255, 0.5);
+  height: 100%;
+  width: 3em;
+
+  position: absolute;
+  top: 0;
+  left: -4.5em;
+  transform: skewX(-45deg) translateX(0);
+  transition: none;
+}
+.button:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-bottom: 4px solid var(--color-primary);
+}
+.button:hover:before {
+  transform: skewX(-45deg) translateX(13.5em);
+  transition: all 0.5s ease-in-out;
 }

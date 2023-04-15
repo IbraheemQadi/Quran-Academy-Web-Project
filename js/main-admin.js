@@ -20,3 +20,18 @@ toggle.onclick = function () {
   main.classList.toggle("active");
 };
 
+function Sudent(){
+document.getElementById("details_student").style.display="block";
+document.getElementById("details_Superv").style.display="none";
+
+}
+
+function superv(){
+  document.getElementById("details_student").style.display="none";
+  document.getElementById("details_Superv").style.display="block";
+}
+function Statistic(){
+  document.getElementById("details_student").style.display="none";
+  document.getElementById("details_Superv").style.display="none";
+
+}
