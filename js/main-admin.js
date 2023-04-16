@@ -23,15 +23,37 @@ toggle.onclick = function () {
 function Sudent(){
 document.getElementById("details_student").style.display="block";
 document.getElementById("details_Superv").style.display="none";
+  document.getElementById("Setting").style.display="none";
+  document.getElementById("passwords").style.display="none";
 
 }
 
 function superv(){
   document.getElementById("details_student").style.display="none";
   document.getElementById("details_Superv").style.display="block";
+  document.getElementById("Setting").style.display="none";
+  document.getElementById("passwords").style.display="none";
+
 }
 function Statistic(){
   document.getElementById("details_student").style.display="none";
   document.getElementById("details_Superv").style.display="none";
+  document.getElementById("Setting").style.display="none";
+  document.getElementById("passwords").style.display="none";
 
+}
+
+function Settings(){
+  document.getElementById("details_student").style.display="none";
+  document.getElementById("details_Superv").style.display="none";
+  document.getElementById("passwords").style.display="none";
+  document.getElementById("Setting").style.display="block";
+}
+
+function Change_pass(){
+
+  document.getElementById("details_student").style.display="none";
+  document.getElementById("details_Superv").style.display="none";
+  document.getElementById("Setting").style.display="none";
+  document.getElementById("passwords").style.display="block";
 }

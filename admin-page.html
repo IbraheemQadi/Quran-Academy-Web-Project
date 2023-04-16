@@ -70,7 +70,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a onclick="Settings()">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
@@ -79,7 +79,7 @@
             </li>
 
             <li>
-                <a href="#">
+                <a onclick="Change_pass()">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
@@ -403,6 +403,94 @@
 
 
         </div>
+
+        <!-- ================ Setting ================= -->
+        <div class="details" id="Setting" style="display: none">
+            <div class="recentOrders">
+                <div class="cardHeader" dir="rtl">
+                    <h2 >المعلومات الشخصية</h2>
+
+
+
+                </div>
+
+                <div class="inputBox " style="" >
+                    <input type="text"  required="required">
+                    <span style="top: -1px ">Name  </span>
+
+
+
+                </div>
+                <div  class="inputBox" style="transform: translateY(-74px) translateX(399px) ; ">
+                    <input type="text" required="required" >
+                    <span style="top: -1px"> BD </span>
+                </div>
+
+                <div  class="inputBox"  >
+                    <input type="text" required="required" >
+                    <span style="top: -1px"> Phone_number </span>
+                </div>
+
+                <div  class="inputBox"  style="transform: translateY(-74px) translateX(399px) ; " >
+                    <input type="text" required="required"   >
+                    <span style="top: -1px"> Address </span>
+                </div>
+
+
+                <div class="wrapper">
+                    <a  class="button">Update!</a>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+        <!-- ================ Password ================= -->
+        <div class="details" id="passwords" style="display: none">
+            <div class="recentOrders">
+                <div class="cardHeader" dir="rtl">
+                    <h2 >كلمة المرور</h2>
+
+
+
+                </div>
+
+                <div class="inputBox " style="" >
+                    <input type="text"  required="required">
+                    <span style="top: -1px ">Old_password  </span>
+
+
+
+                </div>
+                <div  class="inputBox" style="transform: translateY(-113px) translateX(399px) ; ">
+                    <input type="text" required="required" >
+                    <span style="top: -1px"> New_password </span>
+                </div>
+
+
+<form method="post" >
+                <div class="wrapper">
+                    <a  class="button" >Update!</a>
+                </div>
+</form>
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+</div>
+
             <!-- ================= New Customers ================ -->
 
 
