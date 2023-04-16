@@ -68,6 +68,13 @@
                     <span class="title">المشرفين</span>
                 </a>
             </li>
+            <li>
+                <a  id="Center" onclick="mrqzz()" >
+                        <span class="icon">
+<i class='bx bx-plus-circle'></i>                        </span>
+                    <span class="title">المراكز</span>
+                </a>
+            </li>
 
             <li>
                 <a onclick="Settings()">
@@ -158,6 +165,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- ================ Student ================= -->
         <div class="details" id="details_student" style="display: none">
@@ -404,6 +412,115 @@
 
         </div>
 
+        <!-- ================ mrqz ================= -->
+        <div class="details" id="mrqz" style="display: none">
+            <div class="recentOrders">
+                <div class="cardHeader" dir="rtl">
+                    <h2 >جدول المراكز</h2>
+
+
+                </div>
+
+                <table dir="rtl">
+                    <thead>
+                    <tr>
+                        <td>رقم الفوج </td>
+                        <td>أيام الدوام</td>
+                        <td>العنوان</td>
+
+
+
+
+
+
+
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+
+                    </tr>
+
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+                    </tr>
+
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+                    </tr>
+
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+                    </tr>
+
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+                    </tr>
+
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+                    </tr>
+
+                    <tr>
+                        <td ><span class="status delivered">14</span></td>
+                        <td>سبت-اثنين-أربعاء</td>
+                        <td>بلاطة البلد-أبو بكر الصديق</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+            <!--                <div class="inputBox " style="" >-->
+            <!--                    <input type="text"  required="required">-->
+            <!--                    <span style="top: -1px ">first  </span>-->
+
+
+
+            <!--                </div>-->
+            <!--                <div class="inputBox" style="transform: translateY(-90px); ">-->
+            <!--                    <input type="text" required="required" >-->
+            <!--                    <span style="top: -1px"> name </span>-->
+            <!--                </div>-->
+
+
+
+
+        </div>
+
+
+
+
         <!-- ================ Setting ================= -->
         <div class="details" id="Setting" style="display: none">
             <div class="recentOrders">
@@ -420,11 +537,18 @@
 
 
 
+
                 </div>
                 <div  class="inputBox" style="transform: translateY(-74px) translateX(399px) ; ">
-                    <input type="text" required="required" >
+                    <input  id="db" type="text" required="required" class="sm-form-control">
                     <span style="top: -1px"> BD </span>
                 </div>
+                <script type="text/javascript">
+
+                    $("#db").datepicker({
+                    });
+                </script>
+
 
                 <div  class="inputBox"  >
                     <input type="text" required="required" >
