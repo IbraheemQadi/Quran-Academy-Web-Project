@@ -26,6 +26,8 @@ document.getElementById("details_Superv").style.display="none";
   document.getElementById("Setting").style.display="none";
   document.getElementById("passwords").style.display="none";
   document.getElementById("mrqz").style.display="none";
+  document.getElementById("st").style.display="none";
+
 
 }
 
@@ -35,6 +37,8 @@ function superv(){
   document.getElementById("Setting").style.display="none";
   document.getElementById("mrqz").style.display="none";
   document.getElementById("passwords").style.display="none";
+  document.getElementById("st").style.display="none";
+
 
 }
 function Statistic(){
@@ -43,6 +47,9 @@ function Statistic(){
   document.getElementById("Setting").style.display="none";
   document.getElementById("passwords").style.display="none";
   document.getElementById("mrqz").style.display="none";
+  document.getElementById("st").style.display="block";
+
+
 
 }
 
@@ -52,6 +59,8 @@ function Settings(){
   document.getElementById("passwords").style.display="none";
   document.getElementById("Setting").style.display="block";
   document.getElementById("mrqz").style.display="none";
+  document.getElementById("st").style.display="none";
+
 }
 
 function Change_pass(){
@@ -60,6 +69,8 @@ function Change_pass(){
   document.getElementById("details_Superv").style.display="none";
   document.getElementById("Setting").style.display="none";
   document.getElementById("passwords").style.display="block";
+  document.getElementById("st").style.display="none";
+
   document.getElementById("mrqz").style.display="none";
 
 }
@@ -69,9 +80,15 @@ function mrqzz(){
   document.getElementById("Setting").style.display="none";
   document.getElementById("passwords").style.display="none";
   document.getElementById("mrqz").style.display="block";
+  document.getElementById("st").style.display="none";
 
 
 }
+
+
+
+
+
 
 
 //back
