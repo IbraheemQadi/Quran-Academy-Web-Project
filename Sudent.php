@@ -1,3 +1,127 @@
+<?php
+
+session_start();
+$flagPass = 0 ;
+$flagInfo_name = 0 ;
+$flagInfo_DB = 0 ;
+$flagInfo_phone = 0 ;
+$flagInfo_Address = 0 ;
+$flagInfo_error = 0 ;
+if(isset($_SESSION['isStudent'])){
+
+    if($_SESSION['isStudent'] == 1 ){
+
+    } else{             header('Location:login.php');
+    }
+
+} else{        header('Location:login.php');
+
+
+}
+
+//changePassword
+if(isset($_POST['oldPass']) && isset($_POST['newPass'])  ){
+
+    if (!empty($_POST['oldPass']) || !empty($_POST['newPass'])){
+
+        $db= new mysqli('localhost','root','','academy');
+
+
+
+        $max="SELECT   PASS FROM students where ST_ID = '". $_SESSION['ID'] ."' ;";
+        $res = $db->query($max);
+
+        $rw = $res->fetch_assoc();
+
+        $oldPassword = $rw['PASS'];
+
+        if ($oldPassword == $_POST['oldPass']){
+
+            $max="UPDATE students  SET PASS = '".$_POST['newPass']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";
+            $res = $db->query($max);
+            $flagPass  = 3; //update
+
+
+        } else{
+            $flagPass = 2 ; //  error oldPassword
+
+
+
+
+
+        }
+
+
+    } else{$flagPass = 1 ; }
+
+}
+
+if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST['Phone_number']) && isset($_POST['Address_student'])){
+
+    if (!empty($_POST['NameStudent'])){
+        $db= new mysqli('localhost','root','','academy');
+
+
+
+        $max="UPDATE students  SET NAME_STUDENT = '".$_POST['NameStudent']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
+        $res = $db->query($max);
+
+        $db->close();
+        $flagInfo_name = 1 ;
+    }
+
+
+    if (!empty($_POST['DB_student'])){
+        $db= new mysqli('localhost','root','','academy');
+
+
+
+        $max="UPDATE students  SET BIRTHDATE = '".$_POST['DB_student']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
+        $res = $db->query($max);
+
+        $db->close();
+        $flagInfo_DB = 2 ;
+
+    }
+
+    if (!empty($_POST['Phone_number'])){
+        $db= new mysqli('localhost','root','','academy');
+
+
+
+        $max="UPDATE students  SET PHONE_NUMBER = '".$_POST['Phone_number']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
+        $res = $db->query($max);
+
+        $db->close();
+        $flagInfo_phone = 3 ;
+
+    }
+
+    if(!empty($_POST['Address_student'])){
+        $db= new mysqli('localhost','root','','academy');
+
+
+
+        $max="UPDATE students  SET ADDRESS = '".$_POST['Address_student']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
+        $res = $db->query($max);
+
+        $db->close();
+        $flagInfo_Address = 4 ;
+
+    }
+    if($flagInfo_Address == 0 && $flagInfo_phone == 0 && $flagInfo_DB ==0 && $flagInfo_name == 0 ){
+        $flagInfo_error = 5 ;
+
+
+    }
+
+
+
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +199,7 @@
       </li>
 
       <li>
-        <a href="login.html">
+        <a href="login.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -98,7 +222,7 @@
           <i class='bx bx-search' style='color:#222121'  ></i>
         </label>
       </div>
-      <span style="color: white" >ID : </span>
+      <span style="color: white" >ID : <?php echo $_SESSION['ID']?> </span>
       <span style="color: white" >type : Student</span>
 
       <div class="user">
@@ -111,9 +235,36 @@
     <!-- ======================= Cards ================== -->
     <div class="cardBox">
       <div class="card">
+<?php
+          $db= new mysqli('localhost','root','','academy');
 
 
 
+          $max="SELECT  ST_SUP,CENTER_NUMBER  FROM students where ST_ID = '". $_SESSION['ID'] ."' ;";
+          $res = $db->query($max);
+
+          $rw = $res->fetch_assoc();
+         $CN_NUM =  $rw['CENTER_NUMBER'];
+          $ID_SUP = $rw['ST_SUP'];
+
+
+$max="SELECT NAME_SUP FROM supervisor WHERE ID ='".$ID_SUP."' ;";
+$res = $db->query($max);
+
+$rw = $res->fetch_assoc();
+ $nameSuper = $rw['NAME_SUP'];
+
+$max="SELECT ADDREES FROM center WHERE NUMBER_CENTER = '".$CN_NUM."' ;";
+$res = $db->query($max);
+
+$rw = $res->fetch_assoc();
+
+
+$Adds_center = $rw['ADDREES'];
+
+
+
+?>
         <div class="iconBx">
           <img style="width: 60px ;height: 60px" src="img/group.png">
         </div>
@@ -121,7 +272,7 @@
           <div class="numbers"></div>
 
 
-          <div class="numbers" id="NameSuper"> رقم</div>
+          <div class="numbers" id="NameSuper"> <?php  echo$CN_NUM ; ?></div>
 
           <div class="cardName">رقم الفوج</div>
 
@@ -138,7 +289,7 @@
           <img style="width: 60px ;height: 60px" src="img/education.png">
         </div>
         <div>
-          <div class="numbers">نص</div>
+          <div class="numbers"><?php  echo $nameSuper ; ?></div>
           <div class="cardName">اسم المشرف</div>
 
 
@@ -154,7 +305,7 @@
         </div>
         <div>
 
-          <div class="numbers" id=""> نص</div>
+          <div class="numbers" id=""> <?php  echo $Adds_center ; ?></div>
 
           <div class="cardName">اسم المسجد</div>
 
@@ -319,17 +470,17 @@
 
 
         </div>
-
-        <div class="inputBox " style="" >
-          <input type="text"  required="required">
+          <form method="post" action="Sudent.php" >
+        <div class="inputBox "  style="" >
+          <input type="text" name="NameStudent"  >
           <span style="top: -1px ">Name  </span>
 
 
 
 
         </div>
-        <div  class="inputBox" style="transform: translateY(-74px) translateX(399px) ; ">
-          <input  id="db" type="text" required="required" class="sm-form-control">
+        <div  class="inputBox" style="transform: translateY(-43px) translateX(399px) ; ">
+          <input  id="db"  name="DB_student" type="text"  class="sm-form-control">
           <span style="top: -1px"> BD </span>
         </div>
         <script type="text/javascript">
@@ -340,20 +491,75 @@
 
 
         <div  class="inputBox"  >
-          <input type="text" required="required" >
+          <input type="text" name="Phone_number" pattern="05[0-9]{8}"  >
           <span style="top: -1px"> Phone_number </span>
         </div>
 
-        <div  class="inputBox"  style="transform: translateY(-74px) translateX(399px) ; " >
-          <input type="text" required="required"   >
+        <div  class="inputBox"   style="transform: translateY(-43px) translateX(399px) ; " >
+          <input type="text" name="Address_student"    >
           <span style="top: -1px"> Address </span>
         </div>
 
 
-        <div class="wrapper">
-          <a  class="button">Update!</a>
-        </div>
 
+
+
+              <?php
+
+              if($flagInfo_name == 1 ){
+
+                  ?>
+                  <p style="color: green">Name successfully changed
+                  </p>
+
+                  <?php
+              }
+
+              if ($flagInfo_DB == 2 ){
+
+                  ?>
+                  <p style="color: green">DB successfully changed
+                  </p>
+                  <?php
+
+              }
+              if ($flagInfo_phone == 3 ){
+
+                  ?>
+                  <p style="color: green">Phone_number successfully changed
+                  </p>
+                  <?php
+
+              }
+
+              if ($flagInfo_Address == 4 ){
+
+                  ?>
+                  <p style="color: green">Address successfully changed
+                  </p>
+                  <?php
+
+              }
+
+              if($flagInfo_error == 5) {
+
+                  ?>
+                  <p style="color: red">mistake! Make sure to enter all data </p>
+                  <?php
+
+              }
+
+              ?>
+
+
+
+
+
+              <div class="wrapper">
+              <button class="button" type="submit">
+                  Update!</button>
+          </div>
+          </form>
       </div>
 
 
@@ -373,24 +579,57 @@
 
 
         </div>
-
+          <form method="post" action="Sudent.php"
+          >
         <div class="inputBox " style="" >
-          <input type="text"  required="required">
+          <input type="text"  required="required" name="oldPass">
           <span style="top: -1px ">Old_password  </span>
 
 
 
         </div>
-        <div  class="inputBox" style="transform: translateY(-110px) translateX(399px) ; ">
-          <input type="text" required="required" >
+        <div  class="inputBox" style="transform: translateY(-43px) translateX(399px) ; ">
+          <input type="text" required="required" name="newPass">
           <span style="top: -1px"> New_password </span>
         </div>
 
+              <?php
 
-        <form method="post" >
-          <div class="wrapper">
-            <a  class="button" >Update!</a>
-          </div>
+              if($flagPass == 1 ){
+
+                  ?>
+                  <p style="color: red">mistake! Make sure to enter all data </p>
+                  <?php
+              }
+
+              elseif ($flagPass == 2 ){
+
+                  ?>
+                  <p style="color: red"> The old password is wrong!
+                  </p>
+                  <?php
+
+              }
+              elseif ($flagPass == 3 ){
+
+                  ?>
+                  <p style="color: green">Password successfully changed
+                  </p>
+                  <?php
+
+              }
+
+
+
+
+              ?>
+
+              <div class="wrapper">
+                  <button class="button" type="submit">
+                      Update!</button>
+              </div>
+
+
         </form>
       </div>
 

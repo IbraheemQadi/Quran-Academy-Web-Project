@@ -1,4 +1,80 @@
+<?php
+ if( isset($_POST['pass']) && isset($_POST['Register'])) {
+ session_start();
 
+     $pass = $_POST['pass'] ;
+     $Reg = $_POST['Register'];
+     $_SESSION['ID']= $_POST['Register'];
+     $_SESSION['password']= $_POST['pass'];
+
+ $FirstDeg = $Reg[0];
+
+if($pass === '123456' && $Reg ==='1'){ // go to admin
+    $_SESSION['ID']= $_POST['Register'];
+    $_SESSION['isAdmin'] = 1;
+    header('Location:admin-page.php');
+
+
+}
+
+
+
+     try {
+         $db= new mysqli('localhost','root','','academy');
+
+         if($Reg < 3000)  { // Supervis
+
+             $Qar ="SELECT * FROM supervisor WHERE ID ='".$Reg."'and PASS ='".$pass."'";
+             $res = $db->query($Qar);
+             $rw = $res->fetch_assoc();
+             $db ->close();
+             if(isset($rw['PASS']) && !empty($pass)  ){
+
+                 $_SESSION['isSupervis'] = 1;
+                 header('Location:Supervisor.php');
+
+             }
+             else{
+                 $flag = 1 ;
+
+             }
+
+
+
+         }
+
+         elseif ( 3<= $FirstDeg){ // Student
+
+
+
+             $Qay ="SELECT * FROM students WHERE ST_ID ='".$Reg."'and PASS ='".$pass."'";
+   $res = $db->query($Qay);
+    $row = $res->fetch_assoc();
+    $db ->close();
+    if(isset($row['PASS']) && !empty($pass)  ){
+        $_SESSION['isStudent'] = 1;
+        header('Location:Sudent.php');
+
+    }
+    else{
+        $flag = 1 ;
+
+    }
+         }
+
+
+
+     }
+catch (Exception $e){
+
+}
+
+ }
+
+
+
+
+?>
 
 <!DOCTYPE html>
 
@@ -558,11 +634,11 @@ transition-delay: 0s ;
 
     <div class="logreg-box">
         <div class="form-box">
-            <form  action="">
+            <form  action="login.php" method="post">
                 <h2>تسجيل الدخول</h2>
                 <div class="input-box">
                     <span class="icon"> <i class='bx bxs-user'> </i> </span>
-                    <input type="text" required dir="rtl">
+                    <input type="text" required dir="rtl" name="Register">
                     <label>رقم التسجيل</label>
                 </div>
 
@@ -573,13 +649,28 @@ transition-delay: 0s ;
                         <i class='bx bxs-show' style='color:#e9e5e5 ;display: none'   id="show" onclick="toHid() " ></i>
                     </span>
 
-                    <input  type="password" required dir="rtl" id="pass">
+                    <input  type="password" required dir="rtl"  id="pass" name="pass">
 
 
 
                     <label>كلمة السر</label>
 
+
                 </div>
+
+                <?php
+
+                if (isset($flag)  ){
+                    ?>
+                    <p  style="color: red ; transform: translateX(65px);"> Wrong password! Try again </p>
+                    <br>
+                    <?php
+                }
+
+
+                ?>
+
+
 <div class="remember-forgot">
 
     <label>
@@ -590,7 +681,7 @@ transition-delay: 0s ;
                  <button class="btn" type="submit"   >تسجيل الدخول </button>
 
 <div class="login-rdgister">
-    <p>ليس لديك حساب؟ <a class="register-link" href="sign_up.html">تسجيل
+    <p>ليس لديك حساب؟ <a class="register-link" href="sign_up.php">تسجيل
     </a> </p>
 </div>
             </form>

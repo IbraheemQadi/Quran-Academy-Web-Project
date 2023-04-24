@@ -117,7 +117,7 @@ body {
   transition: 0.5s;
 }
 
-.inputBox:nth-child(even) input:valid ~span ,
+
 .inputBox:nth-child(even) input:focus ~span {
 
 
@@ -126,7 +126,7 @@ body {
 
 }
 
-.inputBox input:valid ~span , .inputBox input:focus ~span {
+ .inputBox input:focus ~span {
   color: black;
 
   transform: translateX(10px) translateY(-6px);
@@ -140,7 +140,7 @@ body {
   letter-spacing: 0.2em;
 
 }
-.inputBox input:valid,
+
 .inputBox input:focus {
   border: 1px solid #0030df;
 }
@@ -826,3 +826,7 @@ table td .add {
   border-radius: 5px;
   background: #f2f2f2;
 }
+
+
+
+

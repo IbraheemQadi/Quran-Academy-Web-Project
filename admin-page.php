@@ -1,7 +1,26 @@
+<?php
+session_start();
+if(isset($_SESSION['isAdmin'])){
+
+    if($_SESSION['isAdmin'] == 1 ){
+
+    } else{             header('Location:login.php');
+    }
+
+} else{        header('Location:login.php');
+
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+
+
+
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <meta charset="UTF-8">
@@ -99,7 +118,7 @@
             </li>
 
             <li>
-                <a href="login.html">
+                <a href="login.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
@@ -136,14 +155,49 @@
         <div class="cardBox">
             <div class="card">
 
+                <?php
+                $db= new mysqli('localhost','root','','academy');
+
+
+
+                $max="SELECT COUNT(ST_ID) FROM students ;";
+
+                $res = $db->query($max);
+
+                $rw = $res->fetch_assoc();
+                $numAllStudent =  $rw['COUNT(ST_ID)'];
+
+
+
+
+
+                $max="SELECT COUNT(ID) FROM supervisor;";
+
+                $res = $db->query($max);
+
+                $rw = $res->fetch_assoc();
+
+
+                $numAllSuper = $rw['COUNT(ID)'];
+
+                $max="SELECT COUNT(NUMBER_CENTER) FROM center ;";
+                $res = $db->query($max);
+
+                $rw = $res->fetch_assoc();
+                $NumberAllCenter = $rw['COUNT(NUMBER_CENTER)'];
+
+
+
+
+                ?>
 
 
                 <div class="iconBx">
                     <img style="width: 60px ;height: 60px" src="img/group.png">
                 </div>
                 <div>
-                    <div class="numbers">عدد الطلاب</div>
-
+                    <div class="numbers"> <?php echo $numAllStudent ; ?></div>
+                    <div class="cardName">عدد الطلاب</div>
 
                 </div>
 
@@ -158,8 +212,8 @@
                     <img style="width: 60px ;height: 60px" src="img/education.png">
                 </div>
                 <div>
-                    <div class="numbers">عدد المشرفين</div>
-
+                    <div class="numbers"><?php echo $numAllSuper ; ?></div>
+                    <div class="cardName">عدد المشرفين</div>
 
                 </div>
             </div>
@@ -169,7 +223,9 @@
                     <img style="width: 60px ;height: 60px" src="img/mosque.png">
                 </div>
                 <div>
-                    <div class="numbers">عدد الأفواج</div>
+
+                    <div class="numbers"> <?php echo $NumberAllCenter ; ?></div>
+                    <div class="cardName">عدد الأفواج</div>
 
 
                 </div>
@@ -344,8 +400,13 @@
             </div>
 
 
+
+
         <!-- ================ super ================= -->
         <div class="details" id="details_Superv" style="display: none">
+
+
+
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
                     <h2 style="font-size: xx-large" >جدول المشرفين</h2> <br>
@@ -364,7 +425,10 @@
 
 
 
+
+
                 </div>
+
 
                 <table dir="rtl">
                     <thead>
@@ -458,6 +522,7 @@
 
                     </tbody>
                 </table>
+
 
             </div>
 
