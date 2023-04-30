@@ -82,6 +82,10 @@ $flagSamePass = 2;
 
   <style type="text/css">
 
+    ::selection{
+      background-color: #ba992e !important;
+    }
+    
     .btnn {
       display: inline-block;
       font-weight: 400;
@@ -107,6 +111,10 @@ $flagSamePass = 2;
 
     .bgg-color {
       background-color: #ba992e !important;
+    }
+
+    .bgg-color *::selection{
+      background-color: #fffcfc5c !important;
     }
 
     .btn-secondaryy {
