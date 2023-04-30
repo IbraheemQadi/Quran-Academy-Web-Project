@@ -334,6 +334,7 @@ width: calc(100% - 58%);
     color: #e4e4e4;
     font-weight: 500;
     padding-right: 28px;
+    margin-top: 15px;
 }
 
 .input-box label{
