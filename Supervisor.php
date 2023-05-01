@@ -148,7 +148,7 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
 <body>
 <!-- =============== Navigation ================ -->
 <div class="container">
-    <div class="navigation">
+    <div class="navigation active" >
         <ul>
             <li>
                 <a>
@@ -235,7 +235,7 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
     </div>
 
     <!-- ========================= Main ==================== -->
-    <div class="main">
+    <div class="main active">
         <div class="topbar" style="color: white">
             <div class="toggle">
                 <ion-icon name="menu-outline"></ion-icon>
