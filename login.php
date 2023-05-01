@@ -639,7 +639,7 @@ transition-delay: 0s ;
                 <h2>تسجيل الدخول</h2>
                 <div class="input-box">
                     <span class="icon"> <i class='bx bxs-user'> </i> </span>
-                    <input type="text" required dir="rtl" name="Register">
+                    <input autocomplete="off" type="text" required dir="rtl" name="Register">
                     <label>رقم التسجيل</label>
                 </div>
 
@@ -650,7 +650,7 @@ transition-delay: 0s ;
                         <i class='bx bxs-show' style='color:#e9e5e5 ;display: none'   id="show" onclick="toHid() " ></i>
                     </span>
 
-                    <input  type="password" required dir="rtl"  id="pass" name="pass">
+                    <input autocomplete="off" type="password" required dir="rtl"  id="pass" name="pass">
 
 
 

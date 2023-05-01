@@ -343,17 +343,11 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
 
 
         <!-- ================ Student ================= -->
-        <div class="details" id="StudnetForsuper" style="display: none">
+        <div class="details" id="StudnetForsuper">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
-                    <h2  style="font-size: xxx-large">الطلاب </h2>
-
-
-
-
-
+                    <h2  style="font-size: xxx-large;">الطلاب </h2>
                 </div>
-
                 <table dir="rtl">
                     <thead>
                     <tr>
@@ -361,78 +355,32 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
                         <td>تاريخ الميلاد</td>
                         <td>العنوان</td>
                         <td>رقم الهاتف</td>
-
-
-
-
-
                     </tr>
                     </thead>
-
                     <tbody>
-                    <tr>
+            <?php
+                $supervisorID=$_SESSION['ID'];
 
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
+                if($db->connect_error){
+                    die("Connection failed " . $db->connect_error);
+                }
 
-                    </tr>
+                $querystr="SELECT * FROM `students` where ST_SUP=$supervisorID";
 
-                    <tr>
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
-                    </tr>
+                $res=$db->query($querystr);
+                while($row = $res->fetch_assoc()){
+                echo "
+                <tr>
+                    <td>$row[NAME_STUDENT]</td>
+                    <td ><span class='status delivered'>$row[BIRTHDATE]</span></td>
+                    <td>$row[ADDRESS]</td>
+                    <td>$row[PHONE_NUMBER]</td>
+                </tr>";
 
-                    <tr>
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
-                    </tr>
-
-                    <tr>
-
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
-                    </tr>
-
-                    <tr>
-
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس دويكات</td>
-                        <td ><span class="status delivered">2002/10/3</span></td>
-                        <td>بلاطة</td>
-                        <td>0594504708 </td>
-                    </tr>
-
+                }
+                ?>
                     </tbody>
                 </table>
-
             </div>
 
 
@@ -448,16 +396,7 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
             <!--                    <span style="top: -1px"> name </span>-->
             <!--                </div>-->
 
-
-
-
         </div>
-
-
-
-
-
-
         <div class="details" id="ReportAllStudent" style="display: none">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
