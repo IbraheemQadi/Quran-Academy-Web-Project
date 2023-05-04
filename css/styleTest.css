@@ -22,9 +22,9 @@ body {
   overflow-x: hidden;
 }
 
-.container {
+.containerr {
   position: relative;
-  width: 100%;
+  width: 100;
 }
 
 /* =============== Navigation ================ */
@@ -73,6 +73,8 @@ body {
   display: flex;
   text-decoration: none;
   color: var(--white);
+  transition: 0.4s;
+  transition-timing-function: ease;
 }
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
@@ -91,25 +93,22 @@ body {
   font-size: 1.75rem;
 }
 
-.inputBox{
+.inputBox {
   width: 100px;
   position: relative;
 }
-.inputBox input{
-
+.inputBox input {
   width: 287px;
   padding: 10px;
-  border: 3px solid var(--blue) ;
+  border: 3px solid var(--blue);
   outline: none;
   border-radius: 5px;
   font-size: 1em;
   transition: 0.5s;
-
-
 }
 .inputBox span {
   position: absolute;
-  left : 0;
+  left: 0;
   padding: 10px;
   pointer-events: none;
   font-size: 1em;
@@ -117,28 +116,22 @@ body {
   transition: 0.5s;
 }
 
-
-.inputBox:nth-child(even) input:focus ~span {
-
-
+.inputBox:nth-child(even) input:focus ~ span {
   border-radius: 2px;
   background: #21b1ff;
-
 }
 
- .inputBox input:focus ~span {
+.inputBox input:focus ~ span {
   color: black;
 
   transform: translateX(10px) translateY(-6px);
-  font-size: 0.80em;
+  font-size: 0.8em;
   padding: 0 10px;
   border-left: 1px solid #0030df;
-  border-right:1px solid #0030df ;
+  border-right: 1px solid #0030df;
   background: white;
 
-
   letter-spacing: 0.2em;
-
 }
 
 .inputBox input:focus {
@@ -319,11 +312,13 @@ body {
 
 .cardBox .card:hover {
   background: var(--blue);
+  transition: 0.2s;
 }
 .cardBox .card:hover .numbers,
 .cardBox .card:hover .cardName,
 .cardBox .card:hover .iconBx {
   color: var(--white);
+  transition: 0.2s;
 }
 
 /* ================== Order Details List ============== */
@@ -383,9 +378,11 @@ body {
 .details .recentOrders table tbody tr:hover {
   background: var(--blue);
   color: var(--white);
+  transition: 0.2s;
 }
 .details .recentOrders table tr td {
   padding: 10px;
+  overflow-wrap: anywhere;
 }
 .details .recentOrders table tr td:last-child {
   text-align: end;
@@ -534,11 +531,6 @@ body {
     right: 0;
     left: initial;
   }
-
-
-
-
-
 }
 
 @keyframes sheen {
@@ -552,8 +544,6 @@ body {
 .wrapper {
   display: block;
   position: relative;
-
-
 }
 .button {
   left: 300px;
@@ -591,13 +581,12 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-
 .table-wrapper {
   width: 700px;
   margin: 30px auto;
   background: #fff;
   padding: 20px;
-  box-shadow: 0 1px 1px rgba(0,0,0,.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
 .table-title {
   padding-bottom: 10px;
@@ -617,13 +606,14 @@ body {
   border-radius: 50px;
   line-height: 13px;
 }
- .add-new i {
+.add-new i {
   margin-right: 4px;
 }
 table {
   table-layout: fixed;
 }
-table tr th, table.table tr td {
+table tr th,
+table.table tr td {
   border-color: #e9e9e9;
 }
 table th i {
@@ -641,13 +631,13 @@ table td a {
   min-width: 24px;
 }
 table td a.add {
-  color: #27C46B;
+  color: #27c46b;
 }
 table td a.edit {
-  color: #FFC107;
+  color: #ffc107;
 }
 table td a.delete {
-  color: #E34724;
+  color: #e34724;
 }
 table td i {
   font-size: 19px;
@@ -670,7 +660,6 @@ table .form-control.error {
 table td .add {
   display: none;
 }
-
 
 .buttonn {
   display: flex;
@@ -695,13 +684,12 @@ table td .add {
   background: #006e58;
 }
 .buttonnn:hover {
-  background: #3310B2FF;
+  background: #3310b2ff;
 }
 
 .buttonnn:active {
-  background: #3310B2FF;
+  background: #3310b2ff;
 }
-
 
 .button__text,
 .button__icon {
@@ -717,62 +705,60 @@ table td .add {
   background: rgba(0, 0, 0, 0.08);
 }
 
-
-
 /* Import Google Font - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
-*{
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-::selection{
+::selection {
   color: #fff;
   background: #4285f4;
 }
-.wrapperr{
+.wrapperr {
   width: 180px;
   direction: rtl;
-
 }
-.select-btn, li{
+.select-btn,
+li {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-.select-btn{
+.select-btn {
   height: 65px;
   padding: 0 20px;
   font-size: 22px;
   background: #fff;
   border-radius: 7px;
   justify-content: space-between;
-  box-shadow: 0 10px 25px var(--blue) ;
+  box-shadow: 0 10px 25px var(--blue);
 }
-.select-btn i{
+.select-btn i {
   font-size: 31px;
   transition: transform 0.3s linear;
 }
-.wrapperr.active .select-btn i{
+.wrapperr.active .select-btn i {
   transform: rotate(-180deg);
 }
-.content{
+.content {
   display: none;
   padding: 20px;
   margin-top: 15px;
   background: #fff;
   border-radius: 7px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
-.wrapperr.active .content{
+.wrapperr.active .content {
   display: block;
 }
-.content .search{
+.content .search {
   position: relative;
 }
-.search i{
+.search i {
   top: 50%;
   left: 15px;
   color: #999;
@@ -781,52 +767,70 @@ table td .add {
   transform: translateY(-50%);
   position: absolute;
 }
-.search input{
+.search input {
   height: 50px;
   width: 100%;
   outline: none;
   font-size: 17px;
   border-radius: 5px;
   padding: 0 20px 0 43px;
-  border: 1px solid #B3B3B3;
+  border: 1px solid #b3b3b3;
 }
-.search input:focus{
+.search input:focus {
   padding-left: 42px;
   border: 2px solid #4285f4;
 }
-.search input::placeholder{
+.search input::placeholder {
   color: #bfbfbf;
 }
-.content .options{
+.content .options {
   margin-top: 10px;
   max-height: 250px;
   overflow-y: auto;
   padding-right: 7px;
 }
-.options::-webkit-scrollbar{
+.options::-webkit-scrollbar {
   width: 7px;
 }
-.options::-webkit-scrollbar-track{
+.options::-webkit-scrollbar-track {
   background: #f1f1f1;
   border-radius: 25px;
 }
-.options::-webkit-scrollbar-thumb{
+.options::-webkit-scrollbar-thumb {
   background: #ccc;
   border-radius: 25px;
 }
-.options::-webkit-scrollbar-thumb:hover{
+.options::-webkit-scrollbar-thumb:hover {
   background: #b3b3b3;
 }
-.options li{
+.options li {
   height: 50px;
   padding: 0 13px;
   font-size: 21px;
 }
-.options li:hover, li.selected{
+.options li:hover,
+li.selected {
   border-radius: 5px;
   background: #f2f2f2;
 }
 
+/* modal */
+/* #authentication-modal {
+  background-color: red;
+  opacity: 0;
+  transform: translateY(-50px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
 
+#authentication-modal.active {
+  opacity: 1;
+  transform: translateY(0);
+} */
 
+/* .fade-in {
+  opacity: 0;
+}
 
+.fade-in {
+  opacity: 1;
+} */
