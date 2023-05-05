@@ -41,19 +41,23 @@ $flagSamePass = 2;
 
         } else { //// ReigsterStudent
 
-            $db= new mysqli('localhost','root','','academy');
+            if (isset($_POST['comboSuper'])) {
+                $db = new mysqli('localhost', 'root', '', 'academy');
 
 
+                $max = "SELECT MAX(ST_ID)  FROM students;";
+                $res = $db->query($max);
 
-            $max="SELECT MAX(ST_ID)  FROM students;";
-            $res = $db->query($max);
+                $rw = $res->fetch_assoc();
+                $yourID = $rw['MAX(ST_ID)'] + 1;
 
-            $rw = $res->fetch_assoc();
-            $yourID = $rw['MAX(ST_ID)'] + 1 ;
+                $Qar = "INSERT INTO students (CENTER_NUMBER, ST_ID, BIRTHDATE, ADDRESS, PHONE_NUMBER, PASS, NAME_STUDENT, Email,ST_SUP) VALUES ('" . $_POST['mrqz'] . "','" . ++$rw['MAX(ST_ID)'] . "', '" . $_POST['georgian_start_date'] . "', '" . $_POST['address'] . "', '" . $_POST['mobile'] . "', '" . $_POST['pass1'] . "', '" . $_POST['name'] . "', '" . $_POST['email'] . "', '" . $_POST['comboSuper'] . "');";
+                $res = $db->query($Qar);
+                $db->close();
 
 
-
-
+                $flagSamePass = 2;
+            } else{$_SESSION['$flagSign'] = 1; }
         }
 
     } else{$flagSamePass = 1 ;}}
@@ -68,6 +72,10 @@ $flagSamePass = 2;
     <meta charset="UTF-8">
     <title>Sign Up</title>
 
+    <script
+            src="https://code.jquery.com/jquery-3.6.4.min.js"
+            integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+            crossorigin="anonymous"></script>
 
   <!--  Design date text -->
 
@@ -151,8 +159,7 @@ $flagSamePass = 2;
 
 let jstTophp = 2 ;
 document.cookie = "selectItim="+jstTophp;
-let numberOfCenter = 1 ;
-document.cookie = "SelectMr="+numberOfCenter;
+
 
 
 
@@ -186,12 +193,29 @@ document.cookie = "SelectMr="+numberOfCenter;
 
   }
 
-function  SelectCenter(){
+function  SelectCenter( str){
 
-      let numberOfCenter = document.getElementById("mrqz").value;
+    if (str == "") {
+        document.getElementById("comboSuper").innerHTML = "";
+        return;
+    }
+    const xhttp = new XMLHttpRequest();
+    xhttp.onload = function() {
 
-    document.cookie = "SelectMr="+numberOfCenter;
+
+
+         document.getElementById("comboSuper").innerHTML = xhttp.responseText ;
+
+
+     }
+    xhttp.open("GET", "Select_Super.php?SelectMr="+str ,true);
+    xhttp.send();
+
+
+
 }
+
+
 
 </script>
 
@@ -303,8 +327,11 @@ function  SelectCenter(){
 
 
 
-                    <select   onchange="SelectCenter()"  class="col-md-4 col-12 mb-1 h3 sm-form-control border-form-control" name="mrqz" id="mrqz">
-<?php
+
+                    <select   onchange="SelectCenter(this.value)"  class="col-md-4 col-12 mb-1 h3 sm-form-control border-form-control" name="mrqz" id="mrqz">
+
+                        <option value="" disabled selected hidden >اختر رقم الفوج</option>
+                        <?php
 $db= new mysqli('localhost','root','','academy');
 
 
@@ -322,29 +349,14 @@ $db->close();
 ?>
 
                     </select>
-                      <select style="transform: translateX(-71px) ; visibility: hidden ; width: 280px" class="col-md-4 col-12 mb-1 h3 sm-form-control border-form-control" name="comboSuper" id="comboSuper" >
 
-                          <?php
-
-                          $db= new mysqli('localhost','root','','academy');
+                      <select  style="transform: translateX(-71px) ; visibility: hidden ; width: 280px" class="col-md-4 col-12 mb-1 h3 sm-form-control border-form-control" name="comboSuper" id="comboSuper" >
 
 
-
-                          $combo = "SELECT ID , NAME_SUP  FROM supervisor WHERE CENTER_NUMBER '".$_COOKIE['SelectMr']."'; ";
-                          $res = $db->query($combo);
-
-
-                          for ($i = 0 ; $i< $res->num_rows;$i++){
-                              $rw = $res->fetch_assoc();
-                              echo "<option value='".$rw['ID']."'>".$rw['NAME_SUP']."</option>";
-
-                          }
-
-                          $db->close();
-                          ?>
 
 
                       </select>
+
 
                   </div>
                 </div>
@@ -429,7 +441,7 @@ elseif ($flagSamePass == 2){
               <div class="col-md-8 col-12 mx-0">
 
 
-                <input type="submit" style="border: 1px solid black;" class="btnn btn-secondaryy btn-block center w-100 btn-outline h3" id="submit_form" value="التسجيل في الدورة">
+                <input  type="submit" style="border: 1px solid black;" class="btnn btn-secondaryy btn-block center w-100 btn-outline h3" id="submit_form" value="التسجيل في الدورة">
 
                 <span   class="color3" style="font-size: 16px; alignment: left">
                 صنع بإخلاص <span class="text-danger"> ❤ </span>  </span>
