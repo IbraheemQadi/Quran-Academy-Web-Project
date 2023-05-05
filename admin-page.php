@@ -19,6 +19,21 @@ if(isset($_SESSION['isAdmin'])){
 
 <head>
 
+    <script type="text/javascript">
+
+        function Logout_Admin(){
+            const xhttp = new XMLHttpRequest();
+            xhttp.onload = function() {
+
+
+
+            }
+            xhttp.open("GET", "utils/LogOut_Stuent.php" ,true);
+            xhttp.send();
+
+        }
+
+    </script>
 
 
     <link rel="stylesheet"
@@ -118,7 +133,7 @@ if(isset($_SESSION['isAdmin'])){
             </li>
 
             <li>
-                <a href="login.php">
+                <a onclick="Logout_Admin()" href="login.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>

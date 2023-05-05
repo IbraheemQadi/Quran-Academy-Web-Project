@@ -2,10 +2,7 @@
 
 session_start();
 $flagPass = 0 ;
-$flagInfo_name = 0 ;
-$flagInfo_DB = 0 ;
-$flagInfo_phone = 0 ;
-$flagInfo_Address = 0 ;
+
 $flagInfo_error = 0 ;
 if(isset($_SESSION['isStudent'])){
 
@@ -20,105 +17,9 @@ if(isset($_SESSION['isStudent'])){
 }
 
 //changePassword
-if(isset($_POST['oldPass']) && isset($_POST['newPass'])  ){
-
-    if (!empty($_POST['oldPass']) || !empty($_POST['newPass'])){
-
-        $db= new mysqli('localhost','root','','academy');
 
 
 
-        $max="SELECT   PASS FROM students where ST_ID = '". $_SESSION['ID'] ."' ;";
-        $res = $db->query($max);
-
-        $rw = $res->fetch_assoc();
-
-        $oldPassword = $rw['PASS'];
-
-        if ($oldPassword == $_POST['oldPass']){
-
-            $max="UPDATE students  SET PASS = '".$_POST['newPass']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";
-            $res = $db->query($max);
-            $flagPass  = 3; //update
-
-
-        } else{
-            $flagPass = 2 ; //  error oldPassword
-
-
-
-
-
-        }
-
-
-    } else{$flagPass = 1 ; }
-
-}
-
-if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST['Phone_number']) && isset($_POST['Address_student'])){
-
-    if (!empty($_POST['NameStudent'])){
-        $db= new mysqli('localhost','root','','academy');
-
-
-
-        $max="UPDATE students  SET NAME_STUDENT = '".$_POST['NameStudent']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
-        $res = $db->query($max);
-
-        $db->close();
-        $flagInfo_name = 1 ;
-    }
-
-
-    if (!empty($_POST['DB_student'])){
-        $db= new mysqli('localhost','root','','academy');
-
-
-
-        $max="UPDATE students  SET BIRTHDATE = '".$_POST['DB_student']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
-        $res = $db->query($max);
-
-        $db->close();
-        $flagInfo_DB = 2 ;
-
-    }
-
-    if (!empty($_POST['Phone_number'])){
-        $db= new mysqli('localhost','root','','academy');
-
-
-
-        $max="UPDATE students  SET PHONE_NUMBER = '".$_POST['Phone_number']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
-        $res = $db->query($max);
-
-        $db->close();
-        $flagInfo_phone = 3 ;
-
-    }
-
-    if(!empty($_POST['Address_student'])){
-        $db= new mysqli('localhost','root','','academy');
-
-
-
-        $max="UPDATE students  SET ADDRESS = '".$_POST['Address_student']."'  WHERE ST_ID = '". $_SESSION['ID'] ."' ;";;
-        $res = $db->query($max);
-
-        $db->close();
-        $flagInfo_Address = 4 ;
-
-    }
-    if($flagInfo_Address == 0 && $flagInfo_phone == 0 && $flagInfo_DB ==0 && $flagInfo_name == 0 ){
-        $flagInfo_error = 5 ;
-
-
-    }
-
-
-
-
-}
 
 ?>
 
@@ -136,6 +37,71 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
   <link rel="stylesheet" href="css/styleTest.css">
   <script type="text/javascript">
 
+     function Logout_stuent(){
+         const xhttp = new XMLHttpRequest();
+         xhttp.onload = function() {
+
+
+
+         }
+         xhttp.open("GET", "utils/LogOut_Stuent.php" ,true);
+         xhttp.send();
+
+      }
+
+
+
+
+     function UpdatePass(){
+
+         const xhttpss = new XMLHttpRequest();
+         let old = document.getElementById("oldPass").value ;
+         let New = document.getElementById("newPass").value ;
+
+         let creds = "oldPass="+old+"&newPass="+New;
+
+         xhttpss.onload = function() {
+
+
+document.getElementById("MSG").innerText = xhttpss.responseText;
+
+
+         }
+         xhttpss.open("POST", "utils/Update_pass.php" ,true);
+         xhttpss.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+         xhttpss.send(creds);
+
+     }
+
+
+    function UpdateInfo(){
+        const xh = new XMLHttpRequest();
+
+        let NameST = document.getElementById("NameStudent").value ;
+        let db = document.getElementById("db").value ;
+        let Phone = document.getElementById("Phone_number").value ;
+        let Address = document.getElementById("Address_student").value ;
+
+        let ST = "NameStudent="+NameST+"&DB_student="+db+"&Phone_number="+Phone+"&Address_student="+Address;
+
+
+        xh.onload = function() {
+
+
+            document.getElementById("MSG_inf").innerText = xh.responseText;
+
+
+        }
+        xh.open("POST", "utils/Update_info_STD.php" ,true);
+        xh.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        xh.send(ST);
+
+
+
+
+    }
 
   </script>
 </head>
@@ -199,12 +165,15 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
       </li>
 
       <li>
-        <a href="login.php">
+
+
+        <a  onclick="Logout_stuent()" id="Sign_out" href="login.php">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
           <span class="title">تسجيل الخروج</span>
         </a>
+
       </li>
     </ul>
   </div>
@@ -470,9 +439,9 @@ $Adds_center = $rw['ADDREES'];
 
 
         </div>
-          <form method="post" action="Sudent.php" >
+          <form method="post" action="" >
         <div class="inputBox "  style="" >
-          <input type="text" name="NameStudent"  >
+          <input type="text" name="NameStudent" id="NameStudent" >
           <span style="top: -1px ">Name  </span>
 
 
@@ -491,12 +460,12 @@ $Adds_center = $rw['ADDREES'];
 
 
         <div  class="inputBox"  >
-          <input type="text" name="Phone_number" pattern="05[0-9]{8}"  >
+          <input type="text" id="Phone_number" name="Phone_number" pattern="05[0-9]{8}"  >
           <span style="top: -1px"> Phone_number </span>
         </div>
 
         <div  class="inputBox"   style="transform: translateY(-43px) translateX(399px) ; " >
-          <input type="text" name="Address_student"    >
+          <input type="text" id="Address_student" name="Address_student"    >
           <span style="top: -1px"> Address </span>
         </div>
 
@@ -504,59 +473,15 @@ $Adds_center = $rw['ADDREES'];
 
 
 
-              <?php
-
-              if($flagInfo_name == 1 ){
-
-                  ?>
-                  <p style="color: green">Name successfully changed
-                  </p>
-
-                  <?php
-              }
-
-              if ($flagInfo_DB == 2 ){
-
-                  ?>
-                  <p style="color: green">DB successfully changed
-                  </p>
-                  <?php
-
-              }
-              if ($flagInfo_phone == 3 ){
-
-                  ?>
-                  <p style="color: green">Phone_number successfully changed
-                  </p>
-                  <?php
-
-              }
-
-              if ($flagInfo_Address == 4 ){
-
-                  ?>
-                  <p style="color: green">Address successfully changed
-                  </p>
-                  <?php
-
-              }
-
-              if($flagInfo_error == 5) {
-
-                  ?>
-                  <p style="color: red">mistake! Make sure to enter all data </p>
-                  <?php
-
-              }
-
-              ?>
 
 
+           <div style="color: green" id="MSG_inf">
 
+           </div>
 
 
               <div class="wrapper">
-              <button class="button" type="submit">
+              <button  onclick="UpdateInfo()"  class="button" type="button">
                   Update!</button>
           </div>
           </form>
@@ -579,53 +504,35 @@ $Adds_center = $rw['ADDREES'];
 
 
         </div>
-          <form method="post" action="Sudent.php"
-          >
+          <form method="post" action="">
         <div class="inputBox " style="" >
-          <input type="text"  required="required" name="oldPass">
+          <input type="text"  required="required" name="oldPass" id="oldPass">
           <span style="top: -1px ">Old_password  </span>
 
 
 
         </div>
         <div  class="inputBox" style="transform: translateY(-43px) translateX(399px) ; ">
-          <input type="text" required="required" name="newPass">
+          <input type="text" required="required" name="newPass" id="newPass">
           <span style="top: -1px"> New_password </span>
         </div>
 
-              <?php
 
-              if($flagPass == 1 ){
 
-                  ?>
-                  <p style="color: red">mistake! Make sure to enter all data </p>
-                  <?php
-              }
 
-              elseif ($flagPass == 2 ){
-
-                  ?>
-                  <p style="color: red"> The old password is wrong!
-                  </p>
-                  <?php
-
-              }
-              elseif ($flagPass == 3 ){
-
-                  ?>
-                  <p style="color: green">Password successfully changed
-                  </p>
-                  <?php
-
-              }
+              <p id="MSG" style="color: red" > </p>
 
 
 
 
-              ?>
+
+
+
+
+
 
               <div class="wrapper">
-                  <button class="button" type="submit">
+                  <button onclick="UpdatePass()"  class="button" type="button">
                       Update!</button>
               </div>
 
