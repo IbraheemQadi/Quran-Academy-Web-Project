@@ -247,9 +247,26 @@ function handleSubmit(form) {
       let request2 = new XMLHttpRequest();
       request2.open("post", url);
       request2.send();
-      alert("Delted susccfully");
+
+      Toastify({
+        text: "✅ تم حذف الطالب بنجاح",
+        duration: 3000,
+        position: "center",
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+          padding: "20px 50px",
+        },
+      }).showToast();
     } else {
-      alert("Your Data is not correct");
+      Toastify({
+        text: "❌ اعد ادخال بياناتك",
+        duration: 3000,
+        position: "center",
+        style: {
+          background: "linear-gradient(to bottom, #e60000, #ff3300)",
+          padding: "20px 50px",
+        },
+      }).showToast();
     }
   };
   request.send();
