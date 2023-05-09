@@ -279,11 +279,6 @@ function handleSubmit(form) {
 
 function addToStorage(id) {
   window.localStorage.setItem("stid", id);
-
-  // let modelcontent = document.getElementById("model-content");
-  // setInterval(() => {
-  //   modelcontent.style.opacity = 1;
-  // }, 0.5);
 }
 
 // function handleModal() {
