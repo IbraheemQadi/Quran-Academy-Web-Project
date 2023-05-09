@@ -222,7 +222,7 @@ function RecordGruade() {
 function handleSubmit(form) {
   event.preventDefault();
 
-  let id = form.elements.email.value;
+  let id = form.elements.id.value;
   let password = form.elements.password.value;
   let stid = window.localStorage.getItem("stid");
 
@@ -251,14 +251,13 @@ function handleSubmit(form) {
       Toastify({
         text: "✅ تم حذف الطالب بنجاح",
         duration: 3000,
-        position: "center",
         style: {
           background: "linear-gradient(to right, #00b09b, #96c93d)",
           padding: "20px 50px",
         },
       }).showToast();
       // reset the form
-      form.elements.email.value = "";
+      form.elements.id.value = "";
       form.elements.password.value = "";
       window.localStorage.removeItem("stid");
       document.getElementById("closebtn").click();
@@ -266,7 +265,6 @@ function handleSubmit(form) {
       Toastify({
         text: "❌ اعد ادخال بياناتك",
         duration: 3000,
-        position: "center",
         style: {
           background: "linear-gradient(to bottom, #e60000, #ff3300)",
           padding: "20px 50px",
