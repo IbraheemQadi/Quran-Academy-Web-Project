@@ -257,6 +257,11 @@ function handleSubmit(form) {
           padding: "20px 50px",
         },
       }).showToast();
+      // reset the form
+      form.elements.email.value = "";
+      form.elements.password.value = "";
+      window.localStorage.removeItem("stid");
+      document.getElementById("closebtn").click();
     } else {
       Toastify({
         text: "❌ اعد ادخال بياناتك",
@@ -270,10 +275,6 @@ function handleSubmit(form) {
     }
   };
   request.send();
-  // reset the form
-  form.elements.email.value = "";
-  form.elements.password.value = "";
-  window.localStorage.removeItem("stid");
 }
 
 function addToStorage(id) {
