@@ -231,35 +231,32 @@ function handleSubmit(form) {
   // send requset to validate supervior data
   let request = new XMLHttpRequest();
   request.open("POST", url, true);
-  request.send();
+  request.onload = function () {
+    if (
+      this.readyState === 4 &&
+      this.status === 200 &&
+      this.responseText == "true"
+    ) {
+      // alert(this.responseText);
+      // 1- Delete the student form the page
+      let tableRow = document.getElementById(stid);
+      tableRow.remove();
 
-  request.onreadystatechange = function () {
-    if (this.readyState === 4 && this.status === 200) {
-      if (this.responseText == "true") {
-        // alert(this.responseText);
-        // Delete the student form the page
-        let tableRow = document.getElementById(stid);
-        tableRow.style.transition = "0.3s";
-        tableRow.classList.add("fade-out");
-
-        setInterval(() => {
-          tableRow.remove();
-        }, 2000);
-
-        //send the requset to delete the student in the database
-        url = `utils/delelteStudent.php?stid=${stid}`;
-        request.open("post", url);
-        request.send();
-        // alert("delted susccfully");
-      } else {
-        alert("Your Data is not correct");
-      }
+      // 2- send the requset to delete the student in the database
+      url = `utils/delelteStudent.php?stid=${stid}`;
+      let request2 = new XMLHttpRequest();
+      request2.open("post", url);
+      request2.send();
+      alert("Delted susccfully");
+    } else {
+      alert("Your Data is not correct");
     }
   };
-
+  request.send();
   // reset the form
   form.elements.email.value = "";
   form.elements.password.value = "";
+  window.localStorage.removeItem("stid");
 }
 
 function addToStorage(id) {

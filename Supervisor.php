@@ -45,17 +45,10 @@ if(isset($_SESSION['isSupervis'])){
         function Logout_Super(){
             const xhttp = new XMLHttpRequest();
             xhttp.onload = function() {
-
-
-
             }
             xhttp.open("GET", "utils/LogOut_Stuent.php" ,true);
             xhttp.send();
-
         }
-
-
-
         function UpdatePass(){
 
             const xhttpss = new XMLHttpRequest();
@@ -102,9 +95,6 @@ if(isset($_SESSION['isSupervis'])){
 
             xh.send(ST);
 
-
-
-
         }
 
 
@@ -141,7 +131,7 @@ if(isset($_SESSION['isSupervis'])){
     </div>
 </div> 
 
-<!-- =============== Modal ================ -->
+<!-- =============== navigation ================ -->
 <div class="container">
     <div class="navigation active" >
         <ul>
@@ -378,98 +368,6 @@ if(isset($_SESSION['isSupervis'])){
                         <td>1-20</td>
                         <td>10</td>
                     </tr>
-
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-
-                        <td ><span class="status delivered">2023/4/17</span></td>
-
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-
-                        <td ><span class="status delivered">2023/4/17</span></td>
-
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-
-                        <td ><span class="status delivered">2023/4/17</span></td>
-
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-
-                        <td ><span class="status delivered">2023/4/17</span></td>
-
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-
-                        <td ><span class="status delivered">2023/4/17</span></td>
-
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-
-                        <td ><span class="status delivered">2023/4/17</span></td>
-
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
-
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-
-                        <td ><span class="status delivered">2023/4/17</span></td>
-
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
-
                     </tbody>
                 </table>
 
@@ -518,10 +416,6 @@ if(isset($_SESSION['isSupervis'])){
                     <div class="inputBox "  style="" >
                         <input type="text" name="NameStudent" id="NameStudent" >
                         <span style="top: -1px ">Name  </span>
-
-
-
-
                     </div>
                     <div  class="inputBox" style="transform: translateY(-43px) translateX(399px) ; ">
                         <input  id="db"  name="DB_student" type="text"  class="sm-form-control">
@@ -543,17 +437,8 @@ if(isset($_SESSION['isSupervis'])){
                         <input type="text" id="Address_student" name="Address_student"    >
                         <span style="top: -1px"> Address </span>
                     </div>
-
-
-
-
-
-
-
                     <div style="color: green" id="MSG_inf">
-
                     </div>
-
 
                     <div class="wrapper">
                         <button  onclick="UpdateInfo()"  class="button" type="button">
