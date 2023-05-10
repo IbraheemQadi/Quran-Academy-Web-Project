@@ -50,7 +50,7 @@ session_start();
               if($flagPass == 1 ){
 
 
-                 echo "<p style='color: red'>mistake! Make sure to enter all data </p>";
+                 echo "<h6 >mistake! Make sure to enter all data </h6>";
 
               }
 
