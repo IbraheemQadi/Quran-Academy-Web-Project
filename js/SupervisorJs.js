@@ -219,7 +219,7 @@ function RecordGruade() {
   document.getElementById("Record").style.display = "block";
 }
 
-function handleSubmit(form) {
+function handleDelete(form) {
   event.preventDefault();
 
   let id = form.elements.id.value;
@@ -260,7 +260,7 @@ function handleSubmit(form) {
       form.elements.id.value = "";
       form.elements.password.value = "";
       window.localStorage.removeItem("stid");
-      document.getElementById("closebtn").click();
+      document.getElementById("deleteCloseBtn").click();
     } else {
       Toastify({
         text: "❌ اعد ادخال بياناتك",
@@ -279,7 +279,82 @@ function addToStorage(id) {
   window.localStorage.setItem("stid", id);
 }
 
-// function handleModal() {
-//   let modelcontent = document.getElementById("model-content");
-//   modelcontent.style.opacity = 0;
-// }
+function getStudent(id, callback) {
+  let url = `utils/getStudent.php?stid=${id}`;
+
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      callback(JSON.parse(this.responseText));
+    }
+  };
+  request.send();
+}
+
+function setModalData(id) {
+  getStudent(id, (student) => {
+    let form = document.getElementById("updateStudentForm");
+
+    form.elements.name.value = student.NAME_STUDENT;
+    form.elements.BD.value = student.BIRTHDATE;
+    form.elements.address.value = student.ADDRESS;
+    form.elements.phoneNumber.value = student.PHONE_NUMBER;
+    form.elements.email.value = student.Email;
+  });
+}
+
+function handleUpdate(form) {
+  event.preventDefault();
+
+  let id = localStorage.getItem("stid");
+  let name = form.elements.name.value;
+  let BD = form.elements.BD.value;
+  let address = form.elements.address.value;
+  let phoneNumber = form.elements.phoneNumber.value;
+  let email = form.elements.email.value;
+
+  let url = `utils/updateStudent.php?stid=${id}&name=${name}&BD=${BD}&address=${address}&phoneNumber=${phoneNumber}&email=${email}`;
+
+  // 1- update the student in the database
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (
+      this.readyState === 4 &&
+      this.status === 200 &&
+      this.responseText === "true"
+    ) {
+      // 2- update the student in the DOM
+      let tableRow = document.getElementById(id);
+      tableRow.children[1].innerText = name;
+      tableRow.children[2].innerHTML = `<span class="status delivered">${BD}</span>`;
+      tableRow.children[3].innerText = address;
+      tableRow.children[4].innerText = phoneNumber;
+      tableRow.children[5].innerText = email;
+
+      Toastify({
+        text: "✅ تم تعديل الطالب بنجاح",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+
+      window.localStorage.removeItem("stid");
+      document.getElementById("updateCloseBtn").click();
+    } else {
+      Toastify({
+        text: "❌ حدث خطأ",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to bottom, #e60000, #ff3300)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+    }
+  };
+
+  request.send();
+}
