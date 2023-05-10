@@ -8,6 +8,7 @@ if(isset($_SESSION['isStudent'])){
 
     if($_SESSION['isStudent'] == 1 ){
 
+
     } else{             header('Location:login.php');
     }
 
@@ -27,13 +28,35 @@ if(isset($_SESSION['isStudent'])){
 <html lang="en">
 
 <head>
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <script
+            type="text/javascript"
+            charset="utf8"
+            src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+    ></script>
+    <script
+            type="text/javascript"
+            charset="utf8"
+            src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+    <script>
+
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"  href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Student</title>
-  <!-- ======= Styles ====== -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" media="all"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <!-- ======= Styles ====== -->
   <link rel="stylesheet" href="css/styleTest.css">
   <script type="text/javascript">
 
@@ -186,11 +209,19 @@ document.getElementById("MSG").innerText = xhttpss.responseText;
       </div>
 
       <div class="search">
+          <form action="" method="POST">
         <label>
-          <input type="text" placeholder="Search here">
+
+          <input type="text" placeholder="Search here" value="" id="Search_Filter"    >
+
           <i class='bx bx-search' style='color:#222121'  ></i>
+
         </label>
+
+          </form>
       </div>
+
+
       <span style="color: white" >ID : <?php echo $_SESSION['ID']?> </span>
       <span style="color: white" >type : Student</span>
 
@@ -232,7 +263,7 @@ $rw = $res->fetch_assoc();
 $Adds_center = $rw['ADDREES'];
 
 
-
+$db->close();
 ?>
         <div class="iconBx">
           <img style="width: 60px ;height: 60px" src="img/group.png">
@@ -285,152 +316,87 @@ $Adds_center = $rw['ADDREES'];
 
 
     <!-- ================ Student ================= -->
-    <div class="details" id="Studnet_grads" style="display: none">
-      <div class="recentOrders">
-        <div class="cardHeader" dir="rtl">
-          <h2  style="font-size: xxx-large">سجل العلامات </h2>
+      <div class="details" id="Studnet_grads" style="display: none">
+          <div class="recentOrders">
+              <div class="cardHeader" dir="rtl">
+                  <h2 style="font-size: xxx-large">سجل العلامات </h2>
+              </div>
+
+              <table dir="rtl" id="TableReport">
+                  <thead>
+                  <tr>
+                      <td>التاريخ </td>
+                      <td>الحفظ</td>
+                      <td>الموضع</td>
+                      <td>العلامة</td>
+                      <td>المراجعة</td>
+                      <td>الموضع</td>
+                      <td>العلامة</td>
+                  </tr>
+                  </thead>
+                  <tbody>
+
+                  <?php
+
+                  $db= new mysqli('localhost','root','','academy');
+
+                  $sql = "SELECT DateFor,MOMRIZE_Gread,Rev_grad,Rev_for,MOM_for,NameSoraMEMO,NameSoraREV FROM report WHERE ST_ID = '" . $_SESSION['ID'] . "' ;";
+
+                  $es = $db->query($sql);
+
+                  for ($i=0 ; $i < $es->num_rows;$i++) {
+                      $rw = $es->fetch_assoc();
+
+                      echo "
+        <tr>
+        <td><span class='status delivered'>$rw[DateFor] </span></td>
+        <td> $rw[NameSoraMEMO]  </td>
+          <td>  $rw[MOM_for] </td>
+         <td> $rw[MOMRIZE_Gread]  </td>
+         <td>  $rw[NameSoraREV] </td>
+         <td> $rw[Rev_for] </td>
+         <td>  $rw[Rev_grad] </td>
+         </tr>";
+
+                  }
 
 
+                  ?>
 
-
-
-        </div>
-
-        <table dir="rtl">
-          <thead>
-          <tr>
-            <td>التاريخ </td>
-            <td>الحفظ</td>
-            <td>الموضع</td>
-            <td>العلامة</td>
-            <td>المراجعة</td>
-            <td>الموضع</td>
-            <td>العلامة</td>
-
-
-
-
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          <tr>
-            <td ><span class="status delivered">2023/4/17</span></td>
-
-            <td>البقرة</td>
-            <td>1-15</td>
-            <td>9.5</td>
-            <td>ال عمران</td>
-            <td>1-20</td>
-            <td>10</td>
-          </tr>
-
-          </tbody>
-        </table>
-
+                  </tbody>
+              </table>
+          </div>
       </div>
 
+      <script type="text/javascript">
+          $(document).ready(function() {
+              $("#Search_Filter").on('keyup', function() {
+                  let input = $(this).val();
+                  if (true) {
+                      $.ajax({
+                          url: "utils/TableFilterStudnetPage.php",
+                          method: "POST",
 
-      <!--                <div class="inputBox " style="" >-->
-      <!--                    <input type="text"  required="required">-->
-      <!--                    <span style="top: -1px ">first  </span>-->
+                          data: {
+                              input: input
+                          },
+                          success: function(data) {
+
+                              $("#TableReport tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                          }
+                      });
+                  }
+              });
+          });
 
 
-
-      <!--                </div>-->
-      <!--                <div class="inputBox" style="transform: translateY(-90px); ">-->
-      <!--                    <input type="text" required="required" >-->
-      <!--                    <span style="top: -1px"> name </span>-->
-      <!--                </div>-->
-
-
-
-
-    </div>
+      </script>
 
 
 
 
 
-
-    <!-- ================ Setting ================= -->
+      <!-- ================ Setting ================= -->
     <div class="details" id="Setting" style="display: none">
       <div class="recentOrders">
         <div class="cardHeader" dir="rtl">
@@ -564,6 +530,7 @@ $Adds_center = $rw['ADDREES'];
 <!-- ====== ionicons ======= -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<
 </body>
 
 </html><script>
@@ -602,4 +569,8 @@ $Adds_center = $rw['ADDREES'];
       }
     };
   })();
+
+
 </script>
+
+

@@ -568,6 +568,7 @@ if(isset($_SESSION['isSupervis'])){
                     </thead>
                     <tbody>
             <?php
+
                 $supervisorID=$_SESSION['ID'];
 
                 if($db->connect_error){
@@ -579,6 +580,7 @@ if(isset($_SESSION['isSupervis'])){
                 $res=$db->query($querystr);
                 while($row = $res->fetch_assoc()){
                 echo "
+
                 <tr id=$row[ST_ID]>
                     <td>$row[ST_ID]</td>
                     <td>$row[NAME_STUDENT]</td>
