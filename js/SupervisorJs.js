@@ -185,7 +185,7 @@ function Settings() {
   document.getElementById("ReportAllStudent").style.display = "none";
   document.getElementById("Record").style.display = "none";
 }
-
+var testFlag= 2 ;
 function Change_pass() {
   document.getElementById("Setting").style.display = "none";
   document.getElementById("passwords").style.display = "block";
@@ -200,7 +200,9 @@ function Studnetforvis() {
   document.getElementById("StudnetForsuper").style.display = "block";
   document.getElementById("ReportAllStudent").style.display = "none";
   document.getElementById("Record").style.display = "none";
+   testFlag= 2 ;
 }
+
 
 function StudentReport() {
   document.getElementById("Setting").style.display = "none";
@@ -209,6 +211,8 @@ function StudentReport() {
   document.getElementById("ReportAllStudent").style.display = "block";
 
   document.getElementById("Record").style.display = "none";
+  testFlag =1;
+
 }
 
 function RecordGruade() {

@@ -373,6 +373,7 @@ $db->close();
               $("#Search_Filter").on('keyup', function() {
                   let input = $(this).val();
                   if (true) {
+
                       $.ajax({
                           url: "utils/TableFilterStudnetPage.php",
                           method: "POST",
@@ -415,7 +416,7 @@ $db->close();
 
         </div>
         <div  class="inputBox" style="transform: translateY(-43px) translateX(399px) ; ">
-          <input  id="db"  name="DB_student" type="text"  class="sm-form-control">
+          <input  id="db"  readonly name="DB_student" type="text"  class="sm-form-control">
           <span style="top: -1px"> BD </span>
         </div>
         <script type="text/javascript">

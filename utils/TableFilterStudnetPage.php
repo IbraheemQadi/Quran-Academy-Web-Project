@@ -5,8 +5,9 @@
 
 session_start();
 
-$db= new mysqli('localhost','root','','academy');
 
+$db= new mysqli('localhost','root','','academy');
+$supervisorID=$_SESSION['ID'];
 
 if(isset($_POST['input'])) {
 
@@ -25,14 +26,6 @@ else{
 } else{ $sql = "SELECT DateFor,MOMRIZE_Gread,Rev_grad,Rev_for,MOM_for,NameSoraMEMO,NameSoraREV FROM report WHERE ST_ID = '" . $_SESSION['ID'] . "' ;";}
 
 $res = $db->query($sql);
-
-
-
-//while ($row = mysqli_fetch_row($res)){
-//
-//    $row[]=$row;
-//}
-//echo json_encode($row);
 
 
 for ($i=0 ; $i < $res->num_rows;$i++) {

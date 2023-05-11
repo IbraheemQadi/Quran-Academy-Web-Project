@@ -133,7 +133,27 @@ if(isset($_SESSION['isSupervis'])){
 
 
     </script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css"  href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"
+    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+    <script
+            type="text/javascript"
+            charset="utf8"
+            src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
+    ></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" media="all"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+
 </head>
+
 
 
 <body>
@@ -479,7 +499,7 @@ if(isset($_SESSION['isSupervis'])){
             </div>
             <div class="search">
                 <label>
-                    <input type="text" placeholder="Search here">
+                    <input type="text" style="color: black" placeholder="Search here" id="Search_Filter" >
                     <i class='bx bx-search' style='color:#222121'  ></i>
                 </label>
             </div>
@@ -553,7 +573,7 @@ if(isset($_SESSION['isSupervis'])){
                 <div class="cardHeader" dir="rtl">
                     <h2  style="font-size: xxx-large;">الطلاب </h2>
                 </div>
-                <table dir="rtl">
+                <table dir="rtl" id="Sutednt_info">
                     <thead>
                     <tr>
                         <td>رقم الطالب</td>
@@ -614,7 +634,7 @@ if(isset($_SESSION['isSupervis'])){
                 <div class="cardHeader" dir="rtl">
                     <h2  style="font-size: xxx-large">سجل العلامات </h2>
                 </div>
-                <table dir="rtl">
+                <table dir="rtl" id="TableReport">
                     <thead>
                     <tr>
                         <td>اسم الطالب </td>
@@ -629,19 +649,90 @@ if(isset($_SESSION['isSupervis'])){
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td>عباس نضال دويكات </td>
-                        <td ><span class="status delivered">2023/4/17</span></td>
 
-                        <td>البقرة</td>
-                        <td>1-15</td>
-                        <td>9.5</td>
-                        <td>ال عمران</td>
-                        <td>1-20</td>
-                        <td>10</td>
-                    </tr>
+                    <?php
+
+
+                    $db= new mysqli('localhost','root','','academy');
+
+
+                    $sql = "SELECT s.NAME_STUDENT, r.DateFor, r.INDIX, r.MOMRIZE_Gread, r.Rev_grad, r.Rev_for, r.MOM_for, r.NameSoraMEMO, r.NameSoraREV
+                    FROM students s JOIN report r ON s.ST_ID = r.ST_ID WHERE s.ST_SUP = {$_SESSION['ID']}  AND r.ST_ID IS NOT NULL;";
+
+                    $es = $db->query($sql);
+
+                    for ($i=0 ; $i < $es->num_rows;$i++) {
+                        $rw = $es->fetch_assoc();
+
+                        echo "
+        <tr>
+         <td> $rw[NAME_STUDENT]  </td>
+        <td><span class='status delivered'>$rw[DateFor] </span></td>
+        <td> $rw[NameSoraMEMO]  </td>
+          <td>  $rw[MOM_for] </td>
+         <td> $rw[MOMRIZE_Gread]  </td>
+         <td>  $rw[NameSoraREV] </td>
+         <td> $rw[Rev_for] </td>
+         <td>  $rw[Rev_grad] </td>
+         </tr>";
+
+                    }
+
+$db->close();
+
+
+                    ?>
+
                     </tbody>
                 </table>
+
+                <script type="text/javascript">
+
+
+
+
+                    $(document).ready(function() {
+
+                        $("#Search_Filter").on('keyup', function() {
+
+                            let input = $(this).val();
+                            if (testFlag == 1) {
+
+                                $.ajax({
+                                    url: "utils/SupervisPhp/ReportSuper_ForAllStudent.php",
+                                    method: "POST",
+
+                                    data: {
+                                        input: input
+                                    },
+                                    success: function(data) {
+
+                                        $("#TableReport tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                    }
+                                });
+                            } else if ( testFlag == 2){
+
+
+                                $.ajax({
+                                    url: "utils/SupervisPhp/StudetFromSupervisFilter.php",
+                                    method: "POST",
+
+                                    data: {
+                                        input: input
+                                    },
+                                    success: function(data) {
+
+                                        $("#Sutednt_info tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                    }
+                                });
+
+
+                            }
+                        });
+                    });
+
+
+                </script>
 
             </div>
             <!--                <div class="inputBox " style="" >-->
@@ -675,6 +766,8 @@ if(isset($_SESSION['isSupervis'])){
                         <ul class="options"></ul>
                     </div>
                 </div>
+
+
             </div>
         </div>
 
@@ -690,7 +783,7 @@ if(isset($_SESSION['isSupervis'])){
                         <span style="top: -1px ">Name  </span>
                     </div>
                     <div  class="inputBox" style="transform: translateY(-43px) translateX(399px) ; ">
-                        <input  id="db"  name="DB_student" type="text"  class="sm-form-control">
+                        <input  id="db"  readonly name="DB_student" type="text"  class="sm-form-control">
                         <span style="top: -1px"> BD </span>
                     </div>
                     <script type="text/javascript">
