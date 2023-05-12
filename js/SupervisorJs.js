@@ -185,7 +185,7 @@ function Settings() {
   document.getElementById("ReportAllStudent").style.display = "none";
   document.getElementById("Record").style.display = "none";
 }
-var testFlag= 2 ;
+var testFlag = 2;
 function Change_pass() {
   document.getElementById("Setting").style.display = "none";
   document.getElementById("passwords").style.display = "block";
@@ -200,9 +200,8 @@ function Studnetforvis() {
   document.getElementById("StudnetForsuper").style.display = "block";
   document.getElementById("ReportAllStudent").style.display = "none";
   document.getElementById("Record").style.display = "none";
-   testFlag= 2 ;
+  testFlag = 2;
 }
-
 
 function StudentReport() {
   document.getElementById("Setting").style.display = "none";
@@ -211,8 +210,7 @@ function StudentReport() {
   document.getElementById("ReportAllStudent").style.display = "block";
 
   document.getElementById("Record").style.display = "none";
-  testFlag =1;
-
+  testFlag = 1;
 }
 
 function RecordGruade() {
@@ -245,6 +243,10 @@ function handleDelete(form) {
       // 1- Delete the student form the page
       let tableRow = document.getElementById(stid);
       tableRow.remove();
+
+      let studentCount = document.getElementById("GroupStudent");
+      let stc = parseInt(studentCount.innerText);
+      studentCount.innerText = stc - 1;
 
       // 2- send the requset to delete the student in the database
       url = `utils/delelteStudent.php?stid=${stid}`;

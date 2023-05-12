@@ -813,24 +813,6 @@ li.selected {
   border-radius: 5px;
   background: #f2f2f2;
 }
-
-/* modal */
-/* #authentication-modal {
-  background-color: red;
-  opacity: 0;
-  transform: translateY(-50px);
-  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+.card__data {
+  text-align: end;
 }
-
-#authentication-modal.active {
-  opacity: 1;
-  transform: translateY(0);
-} */
-
-/* .fade-in {
-  opacity: 0;
-}
-
-.fade-in {
-  opacity: 1;
-} */

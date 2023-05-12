@@ -138,20 +138,16 @@ document.getElementById("MSG").innerText = xhttpss.responseText;
     <ul>
       <li>
         <a>
-                    <span class="icon">
-<img src="img/quranWhite.png">
+            <span class="icon">
+                      <img src="img/quranWhite.png">
                     </span>
           <span style="font-size: xxx-large" class="title"> ﷺ</span>
-
-
         </a>
       </li>
-
-
-      <li>
+      <li class="hovered">
         <a id="a_student" onclick="RportGradsSudent()">
                         <span class="icon">
-<ion-icon name="receipt-outline"></ion-icon>
+                          <ion-icon name="receipt-outline"></ion-icon>
                         </span>
           <span class="title">سجل العلامات</span>
         </a>
@@ -268,7 +264,7 @@ $db->close();
         <div class="iconBx">
           <img style="width: 60px ;height: 60px" src="img/group.png">
         </div>
-        <div>
+        <div class="card__data">
           <div class="numbers"></div>
 
 
@@ -288,7 +284,7 @@ $db->close();
         <div class="iconBx">
           <img style="width: 60px ;height: 60px" src="img/education.png">
         </div>
-        <div>
+        <div class="card__data">
           <div class="numbers"><?php  echo $nameSuper ; ?></div>
           <div class="cardName">اسم المشرف</div>
 
@@ -303,7 +299,7 @@ $db->close();
         <div class="iconBx">
           <img style="width: 60px ;height: 60px" src="img/mosque.png">
         </div>
-        <div>
+        <div class="card__data">
 
           <div class="numbers" id=""> <?php  echo $Adds_center ; ?></div>
 

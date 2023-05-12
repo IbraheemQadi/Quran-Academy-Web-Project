@@ -540,7 +540,7 @@ if(isset($_SESSION['isSupervis'])){
                 <div class="iconBx">
                     <img style="width: 60px ;height: 60px" src="img/group.png">
                 </div>
-                <div>
+                <div class="card__data">
                     <div class="numbers" id="GroupStudent"> <?php  echo$NumberOfStudents ; ?></div>
                     <div class="cardName">عدد الطلاب المجموعة</div>
                 </div>
@@ -549,7 +549,7 @@ if(isset($_SESSION['isSupervis'])){
                 <div class="iconBx">
                     <img style="width: 60px ;height: 60px" src="img/education.png">
                 </div>
-                <div>
+                <div class="card__data">
                     <div class="numbers" id="NameSuper"> <?php  echo$CN_NUM ; ?></div>
                     <div class="cardName">رقم الفوج</div>
                 </div>
@@ -559,7 +559,7 @@ if(isset($_SESSION['isSupervis'])){
                 <div class="iconBx">
                     <img style="width: 60px ;height: 60px" src="img/mosque.png">
                 </div>
-                <div>
+                <div class="card__data">
                     <div class="numbers" id=""><?php  echo $Adds_center ; ?></div>
                     <div class="cardName">اسم المسجد</div>
                 </div>
