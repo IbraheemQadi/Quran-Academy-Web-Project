@@ -326,16 +326,16 @@ body {
   position: relative;
   width: 100%;
   padding: 20px;
-  display: grid;
-
-  grid-gap: 30px;
-  /* margin-top: 10px; */
+  /* display: grid; */
+  /* grid-gap: 30px;  */
+  margin-top: 10px;
 }
 
 .details .recentOrders {
   position: relative;
-  display: grid;
-  min-height: 500px;
+  text-align: center;
+  /* display: grid; */
+  /* min-height: 500px; */
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
@@ -345,6 +345,7 @@ body {
 .details .cardHeader {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 }
 .cardHeader h2 {
   font-weight: 600;
@@ -360,7 +361,8 @@ body {
 }
 
 .details table {
-  width: 100%;
+  /* width: 100%; */
+  min-width: 1300px;
   border-collapse: collapse;
   margin-top: 10px;
 }
@@ -384,6 +386,7 @@ body {
   overflow-wrap: anywhere;
   text-align: start;
 }
+
 /* .details .recentOrders table tr td:last-child {
   text-align: end;
 }
@@ -491,12 +494,16 @@ body {
   }
 }
 
+@media (max-width: 1300px) {
+  .recentOrders {
+    overflow-x: auto;
+    direction: rtl;
+  }
+}
+
 @media (max-width: 768px) {
   .details {
     grid-template-columns: 1fr;
-  }
-  .recentOrders {
-    overflow-x: auto;
   }
   .status.inProgress {
     white-space: nowrap;
