@@ -221,6 +221,12 @@ function RecordGruade() {
   document.getElementById("Record").style.display = "block";
 }
 
+function addToStorage(id) {
+  window.localStorage.setItem("stid", id);
+}
+
+// ------ Start working on Students Modals ------
+
 function handleDelete(form) {
   event.preventDefault();
 
@@ -279,10 +285,6 @@ function handleDelete(form) {
     }
   };
   request.send();
-}
-
-function addToStorage(id) {
-  window.localStorage.setItem("stid", id);
 }
 
 function getStudent(id, callback) {
@@ -362,5 +364,56 @@ function handleUpdate(form) {
     }
   };
 
+  request.send();
+}
+
+// ------ Start working on Report Modals ------
+
+function addIndixToStorage(indix) {
+  window.localStorage.setItem("indix", indix);
+}
+
+function handleReportDelete() {
+  let indix = window.localStorage.getItem("indix");
+  let stid = window.localStorage.getItem("stid");
+
+  let url = `utils/deleteReport.php?INDIX=${indix}&stid=${stid}`;
+
+  // send requset
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (
+      this.readyState === 4 &&
+      this.status === 200 &&
+      this.responseText == "true"
+    ) {
+      // Delete the student form the page
+      let tableRow = document.getElementById(indix);
+      tableRow.remove();
+
+      Toastify({
+        text: "✅ تم حذف التقرير بنجاح",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+
+      window.localStorage.removeItem("stid");
+      window.localStorage.removeItem("indix");
+      document.getElementById("deleteReportClosebtn").click();
+    } else {
+      Toastify({
+        text: "❌ اعد المحاولة",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to bottom, #e60000, #ff3300)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+    }
+  };
   request.send();
 }

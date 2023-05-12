@@ -263,7 +263,6 @@ if(isset($_SESSION['isSupervis'])){
         </div>
       </div>
     </div>
-
 <!-- =============== update student modal ================ -->
 <div
       data-te-modal-init
@@ -417,10 +416,82 @@ if(isset($_SESSION['isSupervis'])){
         </div>
       </div>
     </div>
+<!-- =============== Delete report modal ================ -->
+<div
+      data-te-modal-init
+      class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+      id="deleteReportModal"
+      tabindex="-1"
+      aria-labelledby="deleteReportModalTitle"
+      aria-modal="true"
+      role="dialog"
+    >
+      <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative flex min-h-[calc(100%-1rem)] w-auto translate-y-[-50px] items-center opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:min-h-[calc(100%-3.5rem)] min-[576px]:max-w-[500px]"
+      >
+        <div
+          class="pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+          <div
+            class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50"
+          >
+            <!--Close button-->
+            <button
+              type="button"
+              id="deleteReportClosebtn"
+              class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+              data-te-modal-dismiss
+              aria-label="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
 
+          <!--Modal body-->
+          <div class="relative p-4 flex justify-center text-lg font-extrabold">
+            <p>هل انت متاكد من حذف التقرير ؟</p>
+          </div>
 
-
-
+          <!--Modal footer-->
+          <div
+            class="flex flex-shrink-0 flex-wrap items-center justify-center rounded-b-md border-t-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50"
+          >
+            <button
+              type="button"
+              class="inline-block rounded bg-primary-100 px-6 pb-2 pt-2.5  font-medium uppercase leading-normal text-primary-700 transition duration-150 ease-in-out hover:bg-primary-accent-100 focus:bg-primary-accent-100 focus:outline-none focus:ring-0 active:bg-primary-accent-200"
+              data-te-modal-dismiss
+              data-te-ripple-init
+              data-te-ripple-color="light"
+            >
+              اخرج
+            </button>
+            <button
+              type="button"
+              onclick="handleReportDelete()"
+              class="ml-1 inline-block rounded bg-primary px-6 pb-2 pt-2.5  font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+              data-te-ripple-init
+              data-te-ripple-color="light"
+            >
+              نعم ، احذف
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 <!-- =============== navigation ================ -->
 <div class="container">
     <div class="navigation active" >
@@ -490,7 +561,6 @@ if(isset($_SESSION['isSupervis'])){
             </li>
         </ul>
     </div>
-
     <!-- ========================= Main ==================== -->
     <div class="main active">
         <div class="topbar" style="color: white">
@@ -509,7 +579,6 @@ if(isset($_SESSION['isSupervis'])){
                 <i class='bx bx-user-circle' style='color:#d7d7d7 ; font-size: 40px'></i>
             </div>
         </div>
-
         <!-- ======================= Cards ================== -->
         <div class="cardBox">
             <div class="card">
@@ -565,8 +634,6 @@ if(isset($_SESSION['isSupervis'])){
                 </div>
             </div>
         </div>
-
-
         <!-- ================ Student ================= -->
         <div class="details" id="StudnetForsuper">
             <div class="recentOrders">
@@ -582,7 +649,6 @@ if(isset($_SESSION['isSupervis'])){
                         <td>العنوان</td>
                         <td>رقم الهاتف</td>
                         <td>البريد الالكتروني</td>
-                        <td> </td>
                         <td> </td>
                     </tr>
                     </thead>
@@ -608,8 +674,8 @@ if(isset($_SESSION['isSupervis'])){
                     <td>$row[ADDRESS]</td>
                     <td>$row[PHONE_NUMBER]</td>
                     <td >$row[Email]</td>
-                    <td ><a onclick='addToStorage($row[ST_ID])' type='button' data-te-toggle='modal' data-te-target='#DeleteStudentModal' data-te-ripple-init ><ion-icon name='trash' size='large' ></ion-icon></a></td>
-                    <td ><a onclick='addToStorage($row[ST_ID]); setModalData($row[ST_ID]);' type='button' data-te-toggle='modal' data-te-target='#updateStudentModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>
+                    <td ><a onclick='addToStorage($row[ST_ID])' type='button' data-te-toggle='modal' data-te-target='#DeleteStudentModal' data-te-ripple-init ><ion-icon name='trash' size='large' ></ion-icon></a>
+                    <a onclick='addToStorage($row[ST_ID]); setModalData($row[ST_ID]);' type='button' data-te-toggle='modal' data-te-target='#updateStudentModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>
                 </tr>";
 
                 }
@@ -617,18 +683,8 @@ if(isset($_SESSION['isSupervis'])){
                     </tbody>
                 </table>
             </div>
-            <!--                <div class="inputBox " style="" >-->
-            <!--                    <input type="text"  required="required">-->
-            <!--                    <span style="top: -1px ">first  </span>-->
-
-
-
-            <!--                </div>-->
-            <!--                <div class="inputBox" style="transform: translateY(-90px); ">-->
-            <!--                    <input type="text" required="required" >-->
-            <!--                    <span style="top: -1px"> name </span>-->
-            <!--                </div>-->
         </div>
+        <!-- ================ Reports ================= -->
         <div class="details" id="ReportAllStudent" style="display: none">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
@@ -647,105 +703,41 @@ if(isset($_SESSION['isSupervis'])){
                         <td>العلامة</td>
                     </tr>
                     </thead>
-
                     <tbody>
-
                     <?php
 
+$db = new mysqli( 'localhost', 'root', '', 'academy' );
 
-                    $db= new mysqli('localhost','root','','academy');
-
-
-                    $sql = "SELECT s.NAME_STUDENT, r.DateFor, r.INDIX, r.MOMRIZE_Gread, r.Rev_grad, r.Rev_for, r.MOM_for, r.NameSoraMEMO, r.NameSoraREV
+$sql = "SELECT s.ST_ID ,s.NAME_STUDENT, r.DateFor, r.INDIX, r.MOMRIZE_Gread, r.Rev_grad, r.Rev_for, r.MOM_for, r.NameSoraMEMO, r.NameSoraREV
                     FROM students s JOIN report r ON s.ST_ID = r.ST_ID WHERE s.ST_SUP = {$_SESSION['ID']}  AND r.ST_ID IS NOT NULL;";
 
-                    $es = $db->query($sql);
+$es = $db->query( $sql );
 
-                    for ($i=0 ; $i < $es->num_rows;$i++) {
-                        $rw = $es->fetch_assoc();
+for ( $i = 0 ; $i < $es->num_rows; $i++ ) {
+    $rw = $es->fetch_assoc();
 
-                        echo "
-        <tr>
-         <td> $rw[NAME_STUDENT]  </td>
-        <td><span class='status delivered'>$rw[DateFor] </span></td>
-        <td> $rw[NameSoraMEMO]  </td>
-          <td>  $rw[MOM_for] </td>
-         <td> $rw[MOMRIZE_Gread]  </td>
-         <td>  $rw[NameSoraREV] </td>
-         <td> $rw[Rev_for] </td>
-         <td>  $rw[Rev_grad] </td>
-         </tr>";
+    echo "
+    <tr id=$rw[INDIX] >
+         <td>$rw[NAME_STUDENT]</td>
+         <td><span class='status delivered'>$rw[DateFor]</span></td>
+         <td>$rw[NameSoraMEMO]</td>
+         <td>$rw[MOM_for]</td>
+         <td>$rw[MOMRIZE_Gread]</td>
+         <td>$rw[NameSoraREV]</td>
+         <td>$rw[Rev_for]</td>
+         <td>$rw[Rev_grad]</td>
+         <td ><a onclick='addToStorage($rw[ST_ID]); addIndixToStorage($rw[INDIX]);' type='button' data-te-toggle='modal' data-te-target='#deleteReportModal' data-te-ripple-init ><ion-icon name='trash' size='large' ></ion-icon></a>
+         <a onclick='addToStorage($rw[ST_ID]); addIndixToStorage($rw[INDIX]); setModalData($rw[ST_ID]);' type='button' data-te-toggle='modal' data-te-target='#updateStudentModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>
+     </tr>";
 
-                    }
+}
 
 $db->close();
 
-
-                    ?>
-
+?>
                     </tbody>
                 </table>
-
-                <script type="text/javascript">
-
-
-
-
-                    $(document).ready(function() {
-
-                        $("#Search_Filter").on('keyup', function() {
-
-                            let input = $(this).val();
-                            if (testFlag == 1) {
-
-                                $.ajax({
-                                    url: "utils/SupervisPhp/ReportSuper_ForAllStudent.php",
-                                    method: "POST",
-
-                                    data: {
-                                        input: input
-                                    },
-                                    success: function(data) {
-
-                                        $("#TableReport tbody").html( '<tr><td>' + data +    '</td></tr>' )
-                                    }
-                                });
-                            } else if ( testFlag == 2){
-
-
-                                $.ajax({
-                                    url: "utils/SupervisPhp/StudetFromSupervisFilter.php",
-                                    method: "POST",
-
-                                    data: {
-                                        input: input
-                                    },
-                                    success: function(data) {
-
-                                        $("#Sutednt_info tbody").html( '<tr><td>' + data +    '</td></tr>' )
-                                    }
-                                });
-
-
-                            }
-                        });
-                    });
-
-
-                </script>
-
             </div>
-            <!--                <div class="inputBox " style="" >-->
-            <!--                    <input type="text"  required="required">-->
-            <!--                    <span style="top: -1px ">first  </span>-->
-
-
-
-            <!--                </div>-->
-            <!--                <div class="inputBox" style="transform: translateY(-90px); ">-->
-            <!--                    <input type="text" required="required" >-->
-            <!--                    <span style="top: -1px"> name </span>-->
-            <!--                </div>-->
         </div>
         <!-- Record Grad -->
         <div class="details" id="Record" style="display: none">
@@ -766,11 +758,8 @@ $db->close();
                         <ul class="options"></ul>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
         <!-- ================ Setting ================= -->
         <div class="details" id="Setting" style="display: none">
             <div class="recentOrders">
@@ -787,7 +776,6 @@ $db->close();
                         <span style="top: -1px"> BD </span>
                     </div>
                     <script type="text/javascript">
-
                         $("#db").datepicker({
                         });
                     </script>
@@ -812,65 +800,66 @@ $db->close();
                 </form>
             </div>
         </div>
-
         <!-- ================ Password ================= -->
         <div class="details" id="passwords" style="display: none">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
                     <h2 style="font-size: xx-large" >كلمة المرور</h2>
-
-
-
                 </div>
-
-
                 <form method="post" action="">
                     <div class="inputBox " style="" >
                         <input type="text"  required="required" name="oldPass" id="oldPass">
                         <span style="top: -1px ">Old_password  </span>
-
-
-
                     </div>
                     <div  class="inputBox" style="transform: translateY(-43px) translateX(399px) ; ">
                         <input type="text" required="required" name="newPass" id="newPass">
                         <span style="top: -1px"> New_password </span>
                     </div>
-
-
-
-
                     <p id="MSG" style="color: red" > </p>
-
-
-
-
-
-
-
-
-
-
                     <div class="wrapper">
                         <button onclick="UpdatePass()"  class="button" type="button">
                             Update!</button>
                     </div>
-
-
                 </form>
-
             </div>
         </div>
-
     </div>
     <!-- ================= New Customers ================ -->
-
 </div>
 
 </div>
 </div>
-
 <!-- =========== Scripts =========  -->
+<script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#Search_Filter").on('keyup', function() {
+                            let input = $(this).val();
+                            if (testFlag == 1) {
+                                $.ajax({
+                                    url: "utils/SupervisPhp/ReportSuper_ForAllStudent.php",
+                                    method: "POST",
+                                    data: {
+                                        input: input
+                                    },
+                                    success: function(data) {
+                                        $("#TableReport tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                    }
+                                });
+                            } else if ( testFlag == 2){
+                                $.ajax({
+                                    url: "utils/SupervisPhp/StudetFromSupervisFilter.php",
+                                    method: "POST",
+                                    data: {
+                                        input: input
+                                    },
+                                    success: function(data) {
+                                        $("#Sutednt_info tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                    }
+                                });
+                            }
+                        });
+                    });
+                </script>
 <script src="js/SupervisorJs.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 

@@ -344,8 +344,7 @@ body {
 
 .details .cardHeader {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  justify-content: center;
 }
 .cardHeader h2 {
   font-weight: 600;
@@ -381,10 +380,11 @@ body {
   transition: 0.2s;
 }
 .details .recentOrders table tr td {
-  padding: 10px;
+  padding: 10px 0px;
   overflow-wrap: anywhere;
+  text-align: start;
 }
-.details .recentOrders table tr td:last-child {
+/* .details .recentOrders table tr td:last-child {
   text-align: end;
 }
 .details .recentOrders table tr td:nth-child(2) {
@@ -392,7 +392,7 @@ body {
 }
 .details .recentOrders table tr td:nth-child(3) {
   text-align: center;
-}
+} */
 .status.delivered {
   padding: 2px 4px;
   background: #8de02c;
