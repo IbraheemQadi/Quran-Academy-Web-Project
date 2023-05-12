@@ -609,55 +609,55 @@ body {
 .add-new i {
   margin-right: 4px;
 }
-table {
+.details table {
   table-layout: fixed;
 }
-table tr th,
-table.table tr td {
+.details table tr th,
+.details table.table tr td {
   border-color: #e9e9e9;
 }
-table th i {
+.details table th i {
   font-size: 13px;
   margin: 0 5px;
   cursor: pointer;
 }
-table th:last-child {
+.details table th:last-child {
   width: 150px;
 }
-table td a {
+.details table td a {
   cursor: pointer;
   display: inline-block;
   margin: 0 5px;
   min-width: 24px;
 }
-table td a.add {
+.details table td a.add {
   color: #27c46b;
 }
-table td a.edit {
+.details table td a.edit {
   color: #ffc107;
 }
-table td a.delete {
+.details table td a.delete {
   color: #e34724;
 }
-table td i {
+.details table td i {
   font-size: 19px;
 }
-table td a.add i {
+.details table td a.add i {
   font-size: 24px;
   margin-right: -1px;
   position: relative;
   top: 3px;
 }
-table .form-control {
+.details table .form-control {
   height: 32px;
   line-height: 32px;
   box-shadow: none;
   border-radius: 2px;
 }
-table .form-control.error {
+.details table .form-control.error {
   border-color: #f50000;
 }
-table td .add {
+.details table td .add {
   display: none;
 }
 
