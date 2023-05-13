@@ -1,6 +1,6 @@
 let countries = [
   "البقرة",
-  "آلعمران",
+  "آل عمران",
   "النساء",
   "المائدة",
   "الأنعام",
@@ -415,5 +415,131 @@ function handleReportDelete() {
       }).showToast();
     }
   };
+  request.send();
+}
+
+function setSelectSoras() {
+  let selectElements = document.querySelectorAll(".sora");
+
+  selectElements.forEach((selectElement) => {
+    selectElement.innerHTML = " ";
+  });
+
+  selectElements.forEach((selectElement) => {
+    countries.forEach((sora, index) => {
+      const optionElement = document.createElement("option");
+      const optionText = document.createTextNode(sora);
+      optionElement.appendChild(optionText);
+      optionElement.value = index;
+      selectElement.appendChild(optionElement);
+    });
+  });
+}
+
+function getReport(stid, indix, callback) {
+  let url = `utils/getReport.php?stid=${stid}&INDIX=${indix}`;
+
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      callback(JSON.parse(this.responseText));
+    }
+  };
+  request.send();
+}
+
+function setReportModalData(id, indix) {
+  getReport(id, indix, (report) => {
+    setSelectSoras();
+    let form = document.getElementById("updateReportForm");
+
+    let selectIndex1 = countries.findIndex((sora, index) => {
+      if (sora == report.NameSoraMEMO) return index;
+    });
+
+    form.elements.memSora.value = selectIndex1;
+    form.elements.memRange.value = report.MOM_for;
+    form.elements.memGrade.value = report.MOMRIZE_Gread;
+
+    let selectIndex2 = countries.findIndex((sora, index) => {
+      if (sora == report.NameSoraREV) return index;
+    });
+    form.elements.revSora.value = selectIndex2;
+    form.elements.revRange.value = report.Rev_for;
+    form.elements.revGrade.value = report.Rev_grad;
+
+    form.elements.date.value = report.DateFor;
+  });
+}
+
+function handleUpdateReport(form) {
+  event.preventDefault();
+
+  let stid = localStorage.getItem("stid");
+  let indix = localStorage.getItem("indix");
+  let memSoraElement = form.elements.memSora;
+  let revSoraElement = form.elements.revSora;
+
+  let memSora = memSoraElement.options[memSoraElement.value].innerText;
+
+  let memRange = form.elements.memRange.value;
+  let memGrade = form.elements.memGrade.value;
+
+  let revSora = revSoraElement.options[revSoraElement.value].innerText;
+  let revRange = form.elements.revRange.value;
+  let revGrade = form.elements.revGrade.value;
+
+  let date = form.elements.date.value;
+
+  let url = `utils/updateReport.php?stid=${stid}&INDIX=${indix}
+  &memSora=${memSora}&memRange=${memRange}&memGrade=${memGrade}
+  &revSora=${revSora}&revRange=${revRange}&revGrade=${revGrade}&date=${date}`;
+
+  // update the student in the database
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (
+      this.readyState === 4 &&
+      this.status === 200 &&
+      this.responseText === "true"
+    ) {
+      // update the report in the DOM
+      let tableRow = document.getElementById(indix);
+      tableRow.children[1].innerHTML = `<span class="status delivered">${date}</span>`;
+
+      tableRow.children[2].innerText = memSora;
+      tableRow.children[3].innerText = memRange;
+      tableRow.children[4].innerText = memGrade;
+
+      tableRow.children[5].innerText = revSora;
+      tableRow.children[6].innerText = revRange;
+      tableRow.children[7].innerText = revGrade;
+
+      Toastify({
+        text: "✅ تم تعديل التقرير بنجاح",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+
+      window.localStorage.removeItem("stid");
+      window.localStorage.removeItem("indix");
+      document.getElementById("updateReportCloseBtn").click();
+    } else {
+      Toastify({
+        text: "❌ حدث خطأ",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to bottom, #e60000, #ff3300)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+    }
+  };
+
   request.send();
 }
