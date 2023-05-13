@@ -421,10 +421,12 @@ function handleReportDelete() {
 function setSelectSoras() {
   let selectElements = document.querySelectorAll(".sora");
 
+  // clear the select element
   selectElements.forEach((selectElement) => {
     selectElement.innerHTML = " ";
   });
 
+  // now add all soras to the select element
   selectElements.forEach((selectElement) => {
     countries.forEach((sora, index) => {
       const optionElement = document.createElement("option");
@@ -529,6 +531,121 @@ function handleUpdateReport(form) {
       window.localStorage.removeItem("stid");
       window.localStorage.removeItem("indix");
       document.getElementById("updateReportCloseBtn").click();
+    } else {
+      Toastify({
+        text: "❌ حدث خطأ",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to bottom, #e60000, #ff3300)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+    }
+  };
+
+  request.send();
+}
+
+function getSupervisorStudents(spid, callback) {
+  let url = `utils/getSupervisorStudents.php?spid=${spid}`;
+
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      callback(JSON.parse(this.responseText));
+    }
+  };
+  request.send();
+}
+
+function initAddReportModal(spid) {
+  getSupervisorStudents(spid, (students) => {
+    setSelectSoras();
+
+    let selectElement = document.querySelector(".studentname");
+    selectElement.innerHTML = " ";
+
+    students.forEach((student) => {
+      const optionElement = document.createElement("option");
+      const optionText = document.createTextNode(student.NAME_STUDENT);
+      optionElement.appendChild(optionText);
+      optionElement.value = student.ST_ID;
+      selectElement.appendChild(optionElement);
+    });
+  });
+}
+
+function handleAddReport(form) {
+  event.preventDefault();
+
+  let studentnameElement = form.elements.studentname;
+  let memSoraElement = form.elements.memSora;
+  let revSoraElement = form.elements.revSora;
+
+  let studentname =
+    studentnameElement.options[studentnameElement.options.selectedIndex]
+      .innerText;
+
+  let stid = studentnameElement.value;
+  let memSora = memSoraElement.options[memSoraElement.value].innerText;
+  let memRange = form.elements.memRange.value;
+  let memGrade = form.elements.memGrade.value;
+
+  let revSora = revSoraElement.options[revSoraElement.value].innerText;
+  let revRange = form.elements.revRange.value;
+  let revGrade = form.elements.revGrade.value;
+
+  let date = form.elements.date.value;
+
+  let url = `utils/addReport.php?stid=${stid}
+  &memSora=${memSora}&memRange=${memRange}&memGrade=${memGrade}
+  &revSora=${revSora}&revRange=${revRange}&revGrade=${revGrade}&date=${date}`;
+
+  // update the student in the database
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (
+      this.readyState === 4 &&
+      this.status === 200 &&
+      this.responseText !== "true"
+    ) {
+      // add the report in the DOM
+      let reportIndex = this.responseText;
+      let tableBody = document.getElementById("reportsTableBody");
+      let row = document.createElement("tr");
+      let rowText = `
+           <td>${studentname}</td>
+           <td><span class='status delivered'>${date}</span></td>
+           <td>${memSora}</td>
+           <td>${memRange}</td>
+           <td>${memGrade}</td>
+           <td>${revSora}</td>
+           <td>${revRange}</td>
+           <td>${revGrade}</td>
+           <td><a onclick='addToStorage(${stid}); addIndixToStorage(${reportIndex});' type='button' data-te-toggle='modal' data-te-target='#deleteReportModal' data-te-ripple-init ><ion-icon name='trash' size='large' ></ion-icon></a>
+           <a onclick='addToStorage(${stid}); addIndixToStorage(${reportIndex}); setReportModalData(${stid},${reportIndex});' type='button' data-te-toggle='modal' data-te-target='#updateReportModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>`;
+      row.setAttribute("id", reportIndex);
+      row.innerHTML = rowText;
+      tableBody.appendChild(row);
+
+      Toastify({
+        text: "✅ تم اضافة التقرير بنجاح",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+          padding: "20px 50px",
+        },
+      }).showToast();
+
+      // reset the modal form
+      form.elements.memRange.value = " ";
+      form.elements.memGrade.value = " ";
+      form.elements.revRange.value = " ";
+      form.elements.revGrade.value = " ";
+      form.elements.date.value = " ";
+      document.getElementById("addReportCloseBtn").click();
     } else {
       Toastify({
         text: "❌ حدث خطأ",

@@ -21,10 +21,6 @@ if(isset($_SESSION['isSupervis'])){
 }
 
 //changePassword
-
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -592,21 +588,6 @@ if(isset($_SESSION['isSupervis'])){
                   >
                 </div>
                 <!--Memorize sora input-->
-                <!-- <div class="relative" data-te-input-wrapper-init>
-                  <input
-                    type="text"
-                    name="memSora"
-                    required
-                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                    aria-describedby="emailHelp"
-                    autocomplete="off"
-                  />
-                  <label
-                    for="exampleInputEmail1"
-                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                    >السورة</label
-                  >
-                </div> -->
                 <div class="relative">
                   <select
                     name="memSora"
@@ -657,22 +638,6 @@ if(isset($_SESSION['isSupervis'])){
                     >الموضع</label
                   >
                 </div>
-                <!--review sora input-->
-                <!-- <div class="relative" data-te-input-wrapper-init>
-                  <input
-                    type="text"
-                    name="revSora"
-                    required
-                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                    aria-describedby="emailHelp"
-                    autocomplete="off"
-                  />
-                  <label
-                    for="exampleInputEmail1"
-                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
-                    >السورة</label
-                  >
-                </div> -->
                 <div class="relative">
                   <select
                     name="revSora"
@@ -711,6 +676,218 @@ if(isset($_SESSION['isSupervis'])){
               </div>
 
               
+
+              <!--Submit button-->
+              <button
+                type
+                class="block w-full rounded bg-primary px-6 pb-2 pt-2.5 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                data-te-ripple-init
+                data-te-ripple-color="light"
+              >
+                متابعة
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+     <!-- =============== add Report Modal ================ -->
+    <div
+      data-te-modal-init
+      class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+      id="addReportModal"
+      tabindex="-1"
+      aria-labelledby="addReportModalLabel"
+      aria-hidden="true"
+    >
+      <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]"
+      >
+        <div
+          class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-white bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+          <div
+            dir="rtl"
+            class="flex flex-shrink-0 items-center justify-between rounded-t-md border-b-2 border-neutral-100 border-opacity-100 p-4 dark:border-opacity-50"
+          >
+            <!--Modal title-->
+            <h5
+              class="text-xl font-medium leading-normal text-neutral-800 dark:text-neutral-200"
+              id="exampleModalLabel"
+            >
+              أدخل البيانات لو سمحت
+            </h5>
+            <!--Close button-->
+            <button
+              type="button"
+              class="box-content rounded-none border-none hover:no-underline hover:opacity-75 focus:opacity-100 focus:shadow-none focus:outline-none"
+              data-te-modal-dismiss
+              id="addReportCloseBtn"
+              aria-label="Close"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-6 w-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!--Modal body-->
+          <div
+            class="block rounded-lg bg-white p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700"
+          >
+            <form id="addReportForm" onsubmit="handleAddReport(this)">
+              <div
+                class="mb-2 font-bold text-2xl bg-gray-200 text-primary flex justify-center"
+              >
+                <span>اسم الطالب</span>
+              </div>
+              <!--student name input-->
+              <div class="relative mb-8">
+                <select
+                  name="studentname"
+                  class="studentname"
+                  data-te-select-init
+                >
+                </select>
+                <label data-te-select-label-ref>اسم الطالب</label>
+              </div>
+              <div
+                class="mb-2 font-bold text-2xl bg-gray-200 text-primary flex justify-center"
+              >
+                <span>الحفظ</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2 mb-8">
+                <!--Memorize sora grade-->
+                <div class="relative" data-te-input-wrapper-init>
+                  <input
+                    type="number"
+                    name="memGrade"
+                    min="0"
+                    step="0.01"
+                    required
+                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                    aria-describedby="emailHelp"
+                    autocomplete="off"
+                  />
+                  <label
+                    for="exampleInputEmail1"
+                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >العلامة</label
+                  >
+                </div>
+                <!--mem Range input-->
+                <div class="relative" data-te-input-wrapper-init>
+                  <input
+                    type="text"
+                    name="memRange"
+                    required
+                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                    aria-describedby="emailHelp"
+                    autocomplete="off"
+                  />
+                  <label
+                    for="exampleInputEmail1"
+                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >الموضع</label
+                  >
+                </div>
+                <!--Memorize sora input-->
+                <div class="relative">
+                  <select
+                    name="memSora"
+                    class="sora"
+                    data-te-select-init
+                    required
+                  ></select>
+                  <label data-te-select-label-ref>السورة</label>
+                </div>
+              </div>
+              <div
+                class="mb-2 font-bold text-2xl bg-gray-200 flex justify-center text-primary"
+              >
+                <span>المراجعة</span>
+              </div>
+              <div class="grid grid-cols-3 gap-2 mb-8">
+                <!--review sora grade-->
+                <div class="relative" data-te-input-wrapper-init>
+                  <input
+                    type="number"
+                    name="revGrade"
+                    min="0"
+                    step="0.01"
+                    required
+                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                    autocomplete="off"
+                  />
+                  <label
+                    for="exampleInputEmail1"
+                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >العلامة</label
+                  >
+                </div>
+                <!-- review Range input-->
+                <div class="relative" data-te-input-wrapper-init>
+                  <input
+                    type="text"
+                    name="revRange"
+                    required
+                    class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                    aria-describedby="emailHelp"
+                    autocomplete="off"
+                  />
+                  <label
+                    for="exampleInputEmail1"
+                    class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                    >الموضع</label
+                  >
+                </div>
+                <div class="relative">
+                  <select
+                    name="revSora"
+                    class="sora"
+                    data-te-select-init
+                    required
+                  ></select>
+                  <label data-te-select-label-ref>السورة</label>
+                </div>
+              </div>
+              <div
+                class="mb-2 font-bold text-2xl bg-gray-200 flex justify-center text-primary"
+              >
+                <span>التاريخ</span>
+              </div>
+              <!-- date -->
+              <div
+                class="relative mb-8"
+                data-te-datepicker-init
+                data-te-format="yyyy-mm-dd"
+                data-te-input-wrapper-init
+              >
+                <input
+                  type="text"
+                  name="date"
+                  required
+                  class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-primary data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:peer-focus:text-primary [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
+                  placeholder="Select a date"
+                />
+                <label
+                  for="floatingInput"
+                  class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
+                  >Select a date</label
+                >
+              </div>
 
               <!--Submit button-->
               <button
@@ -938,7 +1115,7 @@ if(isset($_SESSION['isSupervis'])){
                         <td>العلامة</td>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="reportsTableBody">
                     <?php
 
 $db = new mysqli( 'localhost', 'root', '', 'academy' );
@@ -972,6 +1149,16 @@ $db->close();
 ?>
                     </tbody>
                 </table>
+                <button
+                  onclick="initAddReportModal(<?php echo $_SESSION['ID'] ?>)"
+                  type="button"
+                  data-te-ripple-init
+                  data-te-ripple-color="light"
+                  data-te-toggle="modal"
+                  data-te-target="#addReportModal"
+                  class="mt-5 inline-block rounded bg-primary px-6 pb-2 pt-2.5 font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                  <ion-icon name="add-circle" size="large"></ion-icon>
+                </button>
             </div>
         </div>
         <!-- Record Grad -->
