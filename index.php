@@ -1,6 +1,14 @@
+
+<?php
+session_start()
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<title>Contact V1</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,7 +52,7 @@
 
 
 				<span class="contact1-form-title">
-					ID : <label id="IDMsg">the Id for user </label>
+					ID : <label id="IDMsg"><?php echo  $_SESSION['ID'];?> </label>
 				</span>
 
 				<span class="contact1-form-title">

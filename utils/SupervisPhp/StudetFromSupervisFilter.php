@@ -37,8 +37,8 @@ for ($i=0 ; $i < $res->num_rows;$i++) {
                     <td>$row[ADDRESS]</td>
                     <td>$row[PHONE_NUMBER]</td>
                     <td >$row[Email]</td>
-                    <td ><a onclick='addToStorage($row[ST_ID])' type='button' data-te-toggle='modal' data-te-target='#DeleteStudentModal' data-te-ripple-init ><ion-icon name='trash' size='large' ></ion-icon></a>
-                    <a onclick='addToStorage($row[ST_ID]); setModalData($row[ST_ID]);' type='button' data-te-toggle='modal' data-te-target='#updateStudentModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>
+                    <td ><a onclick='addToStorage($row[ST_ID])' type='button' data-te-toggle='modal' data-te-target='#DeleteStudentModal' data-te-ripple-init ><ion-icon name='trash' size='large' ></ion-icon></a></td>
+                    <td ><a onclick='addToStorage($row[ST_ID]); setModalData($row[ST_ID]);' type='button' data-te-toggle='modal' data-te-target='#updateStudentModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>
                 </tr>";
 
 }

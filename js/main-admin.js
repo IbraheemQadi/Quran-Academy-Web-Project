@@ -19,6 +19,7 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
+var flagClick = 0 ;
 
 function Sudent(){
 document.getElementById("details_student").style.display="block";
@@ -27,7 +28,7 @@ document.getElementById("details_Superv").style.display="none";
   document.getElementById("passwords").style.display="none";
   document.getElementById("mrqz").style.display="none";
   document.getElementById("st").style.display="none";
-
+  flagClick = 1;
 
 }
 
@@ -38,7 +39,7 @@ function superv(){
   document.getElementById("mrqz").style.display="none";
   document.getElementById("passwords").style.display="none";
   document.getElementById("st").style.display="none";
-
+  flagClick = 2;
 
 }
 function Statistic(){
@@ -82,7 +83,7 @@ function mrqzz(){
   document.getElementById("mrqz").style.display="block";
   document.getElementById("st").style.display="none";
 
-
+  flagClick = 3;
 }
 
 
