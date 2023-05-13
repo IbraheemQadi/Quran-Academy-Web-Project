@@ -903,6 +903,88 @@ if(isset($_SESSION['isSupervis'])){
         </div>
       </div>
     </div>
+     <!-- ===============  Supervisor profile Modal ================ -->
+    <div
+      data-te-modal-init
+      class="fixed left-0 top-0 z-[1055] hidden h-full w-full overflow-y-auto overflow-x-hidden outline-none"
+      id="profileModal"
+      tabindex="-1"
+      aria-labelledby="profileModalLabel"
+      aria-hidden="true"
+    >
+      <div
+        data-te-modal-dialog-ref
+        class="pointer-events-none relative w-auto translate-y-[-50px] opacity-0 transition-all duration-300 ease-in-out min-[576px]:mx-auto min-[576px]:mt-7 min-[576px]:max-w-[500px]"
+      >
+        <div
+          class="min-[576px]:shadow-[0_0.5rem_1rem_rgba(#000, 0.15)] pointer-events-auto relative flex w-full flex-col rounded-md border-none bg-clip-padding text-current shadow-lg outline-none dark:bg-neutral-600"
+        >
+          <!--Modal body-->
+          <!--Third Testimonial-->
+          <div>
+            <div
+              class="block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30"
+            >
+              <div
+                class="h-40 rounded-t-lg overflow-hidden bg-[url('img/quran123.jpg')] bg-cover bg-center bg-no-repeat"
+              ></div>
+              <div
+                class="mx-auto -mt-24 w-44 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800"
+              >
+                <img
+                  src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                />
+              </div>
+              <div class="p-6">
+                <h4
+                  id="supervisorName"
+                  class="text-center text-3xl font-semibold"
+                >
+                   
+                </h4>
+                <div
+                  id="supervisorID"
+                  class="mb-4 text-center text-gray-500 text-xl font-light"
+                >
+                  
+                </div>
+                <hr />
+                <div style="color: gray" class="mt-2 text-xl">
+                  <div class="grid grid-cols-2 gap-4 mb-5 text-right">
+                    <div id="supervisorAddress"></div>
+                    <div class="font-bold">
+                      : العنوان
+                      <ion-icon class="ml-2" name="home-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4 mb-5 text-right">
+                    <div id="supervisorNumber"></div>
+                    <div class="font-bold">
+                      : الجوال
+                      <ion-icon class="ml-2" name="call-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4 mb-5 text-right">
+                    <div id="supervisorDate"></div>
+                    <div class="font-bold">
+                      : تاريخ الميلاد
+                      <ion-icon class="ml-2" name="calendar-outline"></ion-icon>
+                    </div>
+                  </div>
+                  <div class="grid grid-cols-2 gap-4 mb-5 text-right">
+                    <div id="supervisorEmail"></div>
+                    <div class="font-bold">
+                      : البريد الالكتروني
+                      <ion-icon class="ml-2" name="mail-outline"></ion-icon>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 <!-- =============== navigation ================ -->
 <div class="container">
@@ -988,7 +1070,15 @@ if(isset($_SESSION['isSupervis'])){
             <span style="color: white" >ID : <?php echo $_SESSION['ID']?> </span>
             <span style="color: white" >type : Supervisor</span>
             <div class="user">
-                <i class='bx bx-user-circle' style='color:#d7d7d7 ; font-size: 40px'></i>
+            <i 
+              onclick="initProfile(<?php echo $_SESSION['ID']?>)"     
+              data-te-toggle="modal"
+              data-te-target="#profileModal"
+              data-te-ripple-init
+              data-te-ripple-color="light" 
+              class='bx bx-user-circle' 
+              style='color:#d7d7d7 ; font-size: 40px'>
+            </i>
             </div>
         </div>
         <!-- ======================= Cards ================== -->

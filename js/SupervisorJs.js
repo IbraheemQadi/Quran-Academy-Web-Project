@@ -660,3 +660,30 @@ function handleAddReport(form) {
 
   request.send();
 }
+
+// start work on superviosr profile modal
+
+function getSupervisor(id, callback) {
+  let url = `utils/getSupervisor.php?spid=${id}`;
+
+  let request = new XMLHttpRequest();
+  request.open("POST", url, true);
+  request.onload = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      callback(JSON.parse(this.responseText));
+    }
+  };
+  request.send();
+}
+
+function initProfile(id) {
+  getSupervisor(id, (supervior) => {
+    document.getElementById("supervisorName").innerText = supervior.NAME_SUP;
+    document.getElementById("supervisorID").innerText = supervior.ID;
+    document.getElementById("supervisorAddress").innerText = supervior.ADDRESS;
+    document.getElementById("supervisorNumber").innerText =
+      supervior.PHONE_NUMBER;
+    document.getElementById("supervisorDate").innerText = supervior.BIRTHDATE;
+    document.getElementById("supervisorEmail").innerText = supervior.Email;
+  });
+}
