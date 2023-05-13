@@ -1,4 +1,4 @@
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <?php
 session_start();
    $flagPass= 0 ;
@@ -50,7 +50,7 @@ session_start();
               if($flagPass == 1 ){
 
 
-                 echo "<h6 >mistake! Make sure to enter all data </h6>";
+                 echo "<p style='color: red' >mistake! Make sure to enter all data </p>";
 
               }
 

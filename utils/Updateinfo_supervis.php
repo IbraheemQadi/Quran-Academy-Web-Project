@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <?php
 
 session_start();
@@ -8,6 +10,9 @@ $flagInfo_DB = 0 ;
 $flagInfo_phone = 0 ;
 $flagInfo_Address = 0 ;
 $flagInfo_error = 0 ;
+
+
+
 
 if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST['Phone_number']) && isset($_POST['Address_student'])){
 
@@ -61,7 +66,7 @@ if(isset($_POST['NameStudent']) && isset($_POST['DB_student'])  && isset($_POST[
 if($flagInfo_name == 1 ){
 
 
-    echo "Name successfully changed\n";
+    echo "<p style='color: green'>Name successfully changed\n</p>";
 
 
 }
@@ -69,18 +74,18 @@ if($flagInfo_name == 1 ){
 if ($flagInfo_DB == 2 ){
 
 
-    echo "DB successfully changed\n";
+    echo "<p style='color: green'>DB successfully changed\n</p>";
 
 
 
 }
 if ($flagInfo_phone == 3 ){
-    echo "Phone_number successfully changed \n";
+    echo "<p style='color: green'>Phone_number successfully changed \n</p>";
 
 }
 
 if ($flagInfo_Address == 4 ){
-    echo "Address successfully changed\n";
+    echo "<p style='color: green'>Address successfully changed\n</p>";
 
 
 
@@ -89,7 +94,7 @@ if ($flagInfo_Address == 4 ){
 if($flagInfo_error == 5) {
 
 
-    echo "mistake! Make sure to enter all data\n" ;
+    echo "<p style='color: red'>mistake! Make sure to enter all data\n </p>" ;
 
 
 }

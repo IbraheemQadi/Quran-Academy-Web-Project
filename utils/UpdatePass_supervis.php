@@ -1,3 +1,4 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <?php
 session_start();
 $flagPass = 0 ;
@@ -44,7 +45,7 @@ if($flagPass == 1 ){
 elseif ($flagPass == 2 ){
 
 
-    echo "<p style=color: red; > The old password is wrong!</p>";
+    echo "<p style='color: red' > The old password is wrong!</p>";
 
 
 

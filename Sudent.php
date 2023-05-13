@@ -32,20 +32,18 @@ if(isset($_SESSION['isStudent'])){
     <script
             type="text/javascript"
             charset="utf8"
-            src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
-    ></script>
-    <script
-            type="text/javascript"
-            charset="utf8"
-            src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-    <script>
+            src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
 
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" media="all"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 
-    <link rel="stylesheet" type="text/css"  href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"
-    />
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
 
   <meta charset="UTF-8">
@@ -75,56 +73,8 @@ if(isset($_SESSION['isStudent'])){
 
 
 
-     function UpdatePass(){
-
-         const xhttpss = new XMLHttpRequest();
-         let old = document.getElementById("oldPass").value ;
-         let New = document.getElementById("newPass").value ;
-
-         let creds = "oldPass="+old+"&newPass="+New;
-
-         xhttpss.onload = function() {
 
 
-document.getElementById("MSG").innerText = xhttpss.responseText;
-
-
-         }
-         xhttpss.open("POST", "utils/Update_pass.php" ,true);
-         xhttpss.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-         xhttpss.send(creds);
-
-     }
-
-
-    function UpdateInfo(){
-        const xh = new XMLHttpRequest();
-
-        let NameST = document.getElementById("NameStudent").value ;
-        let db = document.getElementById("db").value ;
-        let Phone = document.getElementById("Phone_number").value ;
-        let Address = document.getElementById("Address_student").value ;
-
-        let ST = "NameStudent="+NameST+"&DB_student="+db+"&Phone_number="+Phone+"&Address_student="+Address;
-
-
-        xh.onload = function() {
-
-
-            document.getElementById("MSG_inf").innerText = xh.responseText;
-
-
-        }
-        xh.open("POST", "utils/Update_info_STD.php" ,true);
-        xh.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-        xh.send(ST);
-
-
-
-
-    }
 
   </script>
 </head>
@@ -366,6 +316,73 @@ $db->close();
 
       <script type="text/javascript">
           $(document).ready(function() {
+
+              $("#SuperChangeInfo").on('click', function() {
+
+                  let NameStudent = $("#NameStudent").val() ;
+                  let DB_student = $("#db").val() ;
+                  let Phone_number = $("#Phone_number").val() ;
+                  let Address_student = $("#Address_student").val() ;
+
+
+                  if (true) {
+
+                      $.ajax({
+                          url: "utils/Update_info_STD.php",
+
+                          method: "POST",
+
+                          data: {
+                              NameStudent: NameStudent,
+                              DB_student: DB_student,
+                              Phone_number: Phone_number,
+                              Address_student: Address_student
+                          },
+                          success: function (data) {
+
+                              $("#MSG_inf").html( data)
+                          }
+                      });
+
+                  }
+              });
+
+
+
+
+
+
+
+              $("#changePassSuper").on('click', function() {
+
+                  let oldPass = $("#oldPass").val() ;
+                  let newPass = $("#newPass").val() ;
+
+
+
+                  if (true) {
+
+                      $.ajax({
+                          url: "utils/Update_pass.php",
+
+                          method: "POST",
+
+                          data: {
+                              oldPass: oldPass,
+                              newPass: newPass,
+
+                          },
+                          success: function (data) {
+
+                              $("#MSG").html( data)
+                          }
+                      });
+
+                  }
+              });
+
+
+
               $("#Search_Filter").on('keyup', function() {
                   let input = $(this).val();
                   if (true) {
@@ -438,13 +455,13 @@ $db->close();
 
 
 
-           <div style="color: green" id="MSG_inf">
+           <div  id="MSG_inf">
 
            </div>
 
 
               <div class="wrapper">
-              <button  onclick="UpdateInfo()"  class="button" type="button">
+              <button  id="SuperChangeInfo"   class="button" type="button">
                   Update!</button>
           </div>
           </form>
@@ -483,7 +500,7 @@ $db->close();
 
 
 
-              <p id="MSG" style="color: red" > </p>
+              <div id="MSG"  > </div>
 
 
 
@@ -495,7 +512,7 @@ $db->close();
 
 
               <div class="wrapper">
-                  <button onclick="UpdatePass()"  class="button" type="button">
+                  <button  id="changePassSuper" class="button" type="button">
                       Update!</button>
               </div>
 
@@ -530,44 +547,4 @@ $db->close();
 <
 </body>
 
-</html><script>
-  (function() {
-    var ws = new WebSocket('ws://' + window.location.host +
-            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
-            'referrer=' + encodeURIComponent(window.location.pathname));
-    ws.onmessage = function (msg) {
-      if (msg.data === 'reload') {
-        window.location.reload();
-      }
-      if (msg.data.startsWith('update-css ')) {
-        var messageId = msg.data.substring(11);
-        var links = document.getElementsByTagName('link');
-        for (var i = 0; i < links.length; i++) {
-          var link = links[i];
-          if (link.rel !== 'stylesheet') continue;
-          var clonedLink = link.cloneNode(true);
-          var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
-          if (newHref !== link.href) {
-            clonedLink.href = newHref;
-          }
-          else {
-            var indexOfQuest = newHref.indexOf('?');
-            if (indexOfQuest >= 0) {
-              // to support ?foo#hash
-              clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
-                      newHref.substring(indexOfQuest + 1);
-            }
-            else {
-              clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
-            }
-          }
-          link.replaceWith(clonedLink);
-        }
-      }
-    };
-  })();
-
-
-</script>
-
-
+</html>
