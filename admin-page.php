@@ -19,6 +19,29 @@ if(isset($_SESSION['isAdmin'])){
 
 <head>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
+    <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+            type="text/javascript"
+            src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/micromodal/dist/micromodal.min.js"></script>
+    <!-- include tailwind elements library  -->
+    <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap"
+            rel="stylesheet"
+    />
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com/3.3.0"></script>
+    <script>
     <script type="text/javascript">
 
         function Logout_Admin(){
@@ -89,7 +112,7 @@ if(isset($_SESSION['isAdmin'])){
 
 
             <li>
-                <a href="index.html">
+                <a href="index.php">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>
@@ -152,7 +175,7 @@ if(isset($_SESSION['isAdmin'])){
 
             <div class="search">
                 <label>
-                    <input type="text" placeholder="Search here">
+                    <input type="text" placeholder="Search here" id="Search_Filter" style="color: black">
                     <i class='bx bx-search' style='color:#222121'  ></i>
                 </label>
             </div>
@@ -302,20 +325,13 @@ if(isset($_SESSION['isAdmin'])){
 
 
 
-                    <button type="button" class="buttonn" style=" background: #3310B2FF;  ">
-
-                        <span class="button__icon">
-			<i class='bx bxs-add-to-queue' style='color:#eae6e6'  ></i>
-		</span>
-                        <span class="button__text">insert</span>
-                    </button>
 
 
 
 
                 </div>
 
-                <table dir="rtl">
+                <table dir="rtl" id="TableReport">
                     <thead>
                     <tr>
                         <td>ID </td>
@@ -333,84 +349,113 @@ if(isset($_SESSION['isAdmin'])){
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
+                    <?php
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
+                    $db= new mysqli('localhost','root','','academy');
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
+                    $sql = "SELECT s.NAME_STUDENT, s.BIRTHDATE, s.ADDRESS, s.PHONE_NUMBER, s.PASS, s.ST_ID, s.ST_SUP, s.CENTER_NUMBER, s.Email, sv.NAME_SUP, c.ADDREES FROM students s INNER JOIN supervisor sv ON s.ST_SUP = sv.ID INNER JOIN center c ON s.CENTER_NUMBER = c.NUMBER_CENTER;";
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                        <td>أبو معاذ</td>
-                    </tr>
+
+                    $es = $db->query($sql);
+
+                    for ($i=0 ; $i < $es->num_rows;$i++) {
+                        $rw = $es->fetch_assoc();
+
+                        echo "
+        <tr>
+         <td> <span class='status delivered'> $rw[ST_ID] </span> </td>
+        <td>$rw[NAME_STUDENT]</td>
+        <td>  $rw[BIRTHDATE] </td>
+          <td>  $rw[PHONE_NUMBER] </td>
+         <td> $rw[ADDREES]  </td>
+         <td> $rw[NAME_SUP]  </td>
+         
+         </tr>";
+
+                    }
+
+                    $db->close();
+
+
+
+
+                    ?>
+
 
                     </tbody>
                 </table>
 
             </div>
 
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#Search_Filter").on('keyup', function() {
+                        let input = $(this).val();
+                        if (true) {
 
+                            if (flagClick == 1){
+
+                            $.ajax({
+                                url: "AdminPhpHelper/FiltertStudent_Admin.php",
+
+                                method: "POST",
+
+                                data: {
+                                    input: input
+                                },
+                                success: function(data) {
+
+                                    $("#TableReport tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                }
+                            });                         }
+                            else if (flagClick == 2){
+
+                                $.ajax({
+                                    url: "AdminPhpHelper/FilterSupervis_Admin.php",
+
+                                    method: "POST",
+
+                                    data: {
+                                        input: input
+                                    },
+                                    success: function(data) {
+
+                                        $("#TableSuper tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                    }
+                                });
+
+
+
+
+                            } else if (flagClick == 3){
+
+                                $.ajax({
+                                    url: "AdminPhpHelper/FilterCenter_Admin.php",
+
+                                    method: "POST",
+
+                                    data: {
+                                        input: input
+                                    },
+                                    success: function(data) {
+
+                                        $("#TableCenter tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                    }
+                                });
+
+
+
+                            }
+                        }
+                    });
+                });
+
+
+            </script>
 
             </div>
 
@@ -429,13 +474,7 @@ if(isset($_SESSION['isAdmin'])){
 
 
 
-                    <button type="button" class="buttonn" style=" background: #3310B2FF;  ">
 
-                        <span class="button__icon">
-			<i class='bx bxs-add-to-queue' style='color:#eae6e6'  ></i>
-		</span>
-                        <span class="button__text">insert</span>
-                    </button>
 
 
 
@@ -445,7 +484,7 @@ if(isset($_SESSION['isAdmin'])){
                 </div>
 
 
-                <table dir="rtl">
+                <table dir="rtl" id="TableSuper">
                     <thead>
                     <tr>
                         <td>ID </td>
@@ -455,85 +494,50 @@ if(isset($_SESSION['isAdmin'])){
                         <td>المركز</td>
 
 
-
-
-
-
                     </tr>
                     </thead>
 
                     <tbody>
                     <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
 
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
+                        <?php
 
-                    </tr>
+                        $db= new mysqli('localhost','root','','academy');
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
+                         $sql = "SELECT supervisor.CENTER_NUMBER, supervisor.ID, supervisor.BIRTHDATE,  supervisor.PHONE_NUMBER,  supervisor.NAME_SUP, center.ADDREES
+FROM supervisor
+INNER JOIN center
+ON supervisor.CENTER_NUMBER = center.NUMBER_CENTER";
 
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
+                        $es = $db->query($sql);
 
-                    </tr>
+                        for ($i=0 ; $i < $es->num_rows;$i++) {
+                            $rw = $es->fetch_assoc();
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
+                            echo "
+        <tr>
+         <td> <span class='status delivered'> $rw[ID] </span> </td>
+        <td>$rw[NAME_SUP]</td>
+        <td>  $rw[BIRTHDATE] </td>
+          <td>  $rw[PHONE_NUMBER] </td>
+         <td> $rw[ADDREES]  </td>
+         
+         </tr>";
 
-                    </tr>
+                        }
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
+                        $db->close();
 
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
 
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">12011080</span></td>
-                        <td>عباس نضال دويكات</td>
-                        <td>2002/10/3</td>
-                        <td>0594504708</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
 
-                    </tr>
+                        ?>
+
+
+
 
                     </tbody>
                 </table>
@@ -567,13 +571,6 @@ if(isset($_SESSION['isAdmin'])){
 
 
 
-                    <button type="button" class="buttonn" style=" background: #3310B2FF;  ">
-
-                        <span class="button__icon">
-			<i class='bx bxs-add-to-queue' style='color:#eae6e6'  ></i>
-		</span>
-                        <span class="button__text">insert</span>
-                    </button>
 
 
 
@@ -584,7 +581,7 @@ if(isset($_SESSION['isAdmin'])){
 
                 </div>
 
-                <table dir="rtl">
+                <table dir="rtl" id="TableCenter">
                     <thead>
                     <tr>
                         <td>رقم الفوج </td>
@@ -601,62 +598,37 @@ if(isset($_SESSION['isAdmin'])){
                     </thead>
 
                     <tbody>
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
+
+                    <?php
+
+                    $db= new mysqli('localhost','root','','academy');
+
+                    $sql = "SELECT `ADDREES`, `NUMBER_CENTER`, `WORKING_DAYS` FROM `center`;";
 
 
-                    </tr>
+                    $es = $db->query($sql);
 
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
+                    for ($i=0 ; $i < $es->num_rows;$i++) {
+                        $rw = $es->fetch_assoc();
+
+                        echo "
+        <tr>
+         <td> <span class='status delivered'> $rw[NUMBER_CENTER] </span> </td>
+        <td>$rw[WORKING_DAYS]</td>
+        <td>  $rw[ADDREES] </td>
+      
+         
+         </tr>";
+
+                    }
+
+                    $db->close();
 
 
-                    </tr>
 
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
 
-                    </tr>
+                    ?>
 
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-
-                    </tr>
-
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-
-                    </tr>
-
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-
-                    </tr>
-
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-
-                    </tr>
-
-                    <tr>
-                        <td ><span class="status delivered">14</span></td>
-                        <td>سبت-اثنين-أربعاء</td>
-                        <td>بلاطة البلد-أبو بكر الصديق</td>
-                    </tr>
 
                     </tbody>
                 </table>
@@ -706,11 +678,6 @@ if(isset($_SESSION['isAdmin'])){
                     <input  id="db" type="text" required="required" class="sm-form-control">
                     <span style="top: -1px"> BD </span>
                 </div>
-                <script type="text/javascript">
-
-                    $("#db").datepicker({
-                    });
-                </script>
 
 
                 <div  class="inputBox"  >
@@ -794,40 +761,4 @@ if(isset($_SESSION['isAdmin'])){
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
-</html><script>
-    (function() {
-        var ws = new WebSocket('ws://' + window.location.host +
-            '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
-            'referrer=' + encodeURIComponent(window.location.pathname));
-        ws.onmessage = function (msg) {
-            if (msg.data === 'reload') {
-                window.location.reload();
-            }
-            if (msg.data.startsWith('update-css ')) {
-                var messageId = msg.data.substring(11);
-                var links = document.getElementsByTagName('link');
-                for (var i = 0; i < links.length; i++) {
-                    var link = links[i];
-                    if (link.rel !== 'stylesheet') continue;
-                    var clonedLink = link.cloneNode(true);
-                    var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
-                    if (newHref !== link.href) {
-                        clonedLink.href = newHref;
-                    }
-                    else {
-                        var indexOfQuest = newHref.indexOf('?');
-                        if (indexOfQuest >= 0) {
-                            // to support ?foo#hash
-                            clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
-                                newHref.substring(indexOfQuest + 1);
-                        }
-                        else {
-                            clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
-                        }
-                    }
-                    link.replaceWith(clonedLink);
-                }
-            }
-        };
-    })();
-</script>
+</html>

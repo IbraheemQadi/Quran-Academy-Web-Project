@@ -154,7 +154,7 @@ document.getElementById("MSG").innerText = xhttpss.responseText;
       </li>
 
       <li>
-        <a href="index.html">
+        <a href="index.php">
                         <span class="icon">
                             <ion-icon name="chatbubble-outline"></ion-icon>
                         </span>

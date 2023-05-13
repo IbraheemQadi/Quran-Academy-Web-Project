@@ -361,8 +361,8 @@ body {
 }
 
 .details table {
-  /* width: 100%; */
-  min-width: 1300px;
+   width: 100%;
+
   border-collapse: collapse;
   margin-top: 10px;
 }
@@ -553,7 +553,7 @@ body {
   position: relative;
 }
 .button {
-  left: 300px;
+
   padding: 0.75em 2em;
   text-align: center;
   text-decoration: none;
