@@ -41,7 +41,7 @@ if(isset($_SESSION['isAdmin'])){
             href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/tw-elements.min.css"
     />
     <script src="https://cdn.tailwindcss.com/3.3.0"></script>
-    <script>
+
     <script type="text/javascript">
 
         function Logout_Admin(){
@@ -91,14 +91,7 @@ if(isset($_SESSION['isAdmin'])){
                 </a>
             </li>
 
-            <li>
-                <a  id="Statistics" onclick="Statistic()" >
-                        <span class="icon">
-                            <ion-icon name="home-outline"></ion-icon>
-                        </span>
-                    <span class="title">الإحصائيات</span>
-                </a>
-            </li>
+
 
             <li>
                 <a id="a_student" onclick="Sudent()">
@@ -273,48 +266,7 @@ if(isset($_SESSION['isAdmin'])){
 
 
         <!-- ================ ST ================= -->
-        <div class="details" id="st" style="display: none">
 
-
-
-
-
-
-
-            <div class="recentOrders">
-                <div class="cardHeader" dir="rtl">
-                    <h2  style="font-size: xxx-large">الإحصاء</h2>
-
-
-
-
-
-                </div>
-
-
-
-
-
-
-            </div>
-
-
-            <!--                <div class="inputBox " style="" >-->
-            <!--                    <input type="text"  required="required">-->
-            <!--                    <span style="top: -1px ">first  </span>-->
-
-
-
-            <!--                </div>-->
-            <!--                <div class="inputBox" style="transform: translateY(-90px); ">-->
-            <!--                    <input type="text" required="required" >-->
-            <!--                    <span style="top: -1px"> name </span>-->
-            <!--                </div>-->
-
-
-
-
-        </div>
 
 
         <!-- ================ Student ================= -->
