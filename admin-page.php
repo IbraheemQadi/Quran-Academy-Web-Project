@@ -415,7 +415,7 @@ if(isset($_SESSION['isAdmin'])){
                             else if (flagClick == 2){
 
                                 $.ajax({
-                                    url: "",
+                                    url: "AdminPhpHelper/FilterSupervis_Admin.php",
 
                                     method: "POST",
 
@@ -424,7 +424,7 @@ if(isset($_SESSION['isAdmin'])){
                                     },
                                     success: function(data) {
 
-                                        $("#TableReport tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                        $("#TableSuper tbody").html( '<tr><td>' + data +    '</td></tr>' )
                                     }
                                 });
 
@@ -432,6 +432,21 @@ if(isset($_SESSION['isAdmin'])){
 
 
                             } else if (flagClick == 3){
+
+                                $.ajax({
+                                    url: "AdminPhpHelper/FilterCenter_Admin.php",
+
+                                    method: "POST",
+
+                                    data: {
+                                        input: input
+                                    },
+                                    success: function(data) {
+
+                                        $("#TableCenter tbody").html( '<tr><td>' + data +    '</td></tr>' )
+                                    }
+                                });
+
 
 
                             }
@@ -566,7 +581,7 @@ ON supervisor.CENTER_NUMBER = center.NUMBER_CENTER";
 
                 </div>
 
-                <table dir="rtl">
+                <table dir="rtl" id="TableCenter">
                     <thead>
                     <tr>
                         <td>رقم الفوج </td>
