@@ -79,53 +79,9 @@ if(isset($_SESSION['isSupervis'])){
             xhttp.open("GET", "utils/LogOut_Stuent.php" ,true);
             xhttp.send();
         }
-        function UpdatePass(){
-
-            const xhttpss = new XMLHttpRequest();
-            let old = document.getElementById("oldPass").value ;
-            let New = document.getElementById("newPass").value ;
-
-            let creds = "oldPass="+old+"&newPass="+New;
-
-            xhttpss.onload = function() {
 
 
-                document.getElementById("MSG").innerText = xhttpss.responseText;
 
-
-            }
-            xhttpss.open("POST", "utils/UpdatePass_supervis.php" ,true);
-            xhttpss.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xhttpss.send(creds);
-
-        }
-
-
-        function UpdateInfo(){
-            const xh = new XMLHttpRequest();
-
-            let NameST = document.getElementById("NameStudent").value ;
-            let db = document.getElementById("db").value ;
-            let Phone = document.getElementById("Phone_number").value ;
-            let Address = document.getElementById("Address_student").value ;
-
-            let ST = "NameStudent="+NameST+"&DB_student="+db+"&Phone_number="+Phone+"&Address_student="+Address;
-
-
-            xh.onload = function() {
-
-
-                document.getElementById("MSG_inf").innerText = xh.responseText;
-
-
-            }
-            xh.open("POST", "utils/Updateinfo_supervis.php" ,true);
-            xh.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-            xh.send(ST);
-
-        }
 
 
     </script>
@@ -1302,11 +1258,11 @@ $db->close();
                         <input type="text" id="Address_student" name="Address_student"    >
                         <span style="top: -1px"> Address </span>
                     </div>
-                    <div style="color: green" id="MSG_inf">
+                    <div  id="MSG_inf">
                     </div>
 
                     <div class="wrapper">
-                        <button  onclick="UpdateInfo()"  class="button" type="button">
+                        <button    id="SuperChangeInfo" class="button" type="button">
                             Update!</button>
                     </div>
                 </form>
@@ -1327,9 +1283,9 @@ $db->close();
                         <input type="text" required="required" name="newPass" id="newPass">
                         <span style="top: -1px"> New_password </span>
                     </div>
-                    <p id="MSG" style="color: red" > </p>
+                    <div id="MSG" > </div>
                     <div class="wrapper">
-                        <button onclick="UpdatePass()"  class="button" type="button">
+                        <button  id="changePassSuper"  class="button" type="button">
                             Update!</button>
                     </div>
                 </form>
@@ -1344,6 +1300,74 @@ $db->close();
 <!-- =========== Scripts =========  -->
 <script type="text/javascript">
                     $(document).ready(function() {
+
+                        $("#SuperChangeInfo").on('click', function() {
+
+                            let NameStudent = $("#NameStudent").val() ;
+                            let DB_student = $("#db").val() ;
+                            let Phone_number = $("#Phone_number").val() ;
+                            let Address_student = $("#Address_student").val() ;
+
+
+                            if (true) {
+
+                                $.ajax({
+                                    url: "utils/Updateinfo_supervis.php",
+
+                                    method: "POST",
+
+                                    data: {
+                                        NameStudent: NameStudent,
+                                        DB_student: DB_student,
+                                        Phone_number: Phone_number,
+                                        Address_student: Address_student
+                                    },
+                                    success: function (data) {
+
+                                        $("#MSG_inf").html( data)
+                                    }
+                                });
+
+                            }
+                        });
+
+
+
+
+
+
+
+                        $("#changePassSuper").on('click', function() {
+
+                            let oldPass = $("#oldPass").val() ;
+                            let newPass = $("#newPass").val() ;
+
+
+
+                            if (true) {
+
+                                $.ajax({
+                                    url: "utils/UpdatePass_supervis.php",
+
+                                    method: "POST",
+
+                                    data: {
+                                        oldPass: oldPass,
+                                        newPass: newPass,
+
+                                    },
+                                    success: function (data) {
+
+                                        $("#MSG").html( data)
+                                    }
+                                });
+
+                            }
+                        });
+
+
+
+
                         $("#Search_Filter").on('keyup', function() {
                             let input = $(this).val();
                             if (testFlag == 1) {
