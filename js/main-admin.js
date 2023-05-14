@@ -19,7 +19,7 @@ toggle.onclick = function () {
   navigation.classList.toggle("active");
   main.classList.toggle("active");
 };
-var flagClick = 0 ;
+var flagClick = 1 ;
 
 function Sudent(){
 document.getElementById("details_student").style.display="block";
@@ -27,7 +27,7 @@ document.getElementById("details_Superv").style.display="none";
   document.getElementById("Setting").style.display="none";
   document.getElementById("passwords").style.display="none";
   document.getElementById("mrqz").style.display="none";
-  document.getElementById("st").style.display="none";
+
   flagClick = 1;
 
 }
@@ -38,21 +38,11 @@ function superv(){
   document.getElementById("Setting").style.display="none";
   document.getElementById("mrqz").style.display="none";
   document.getElementById("passwords").style.display="none";
-  document.getElementById("st").style.display="none";
+
   flagClick = 2;
 
 }
-function Statistic(){
-  document.getElementById("details_student").style.display="none";
-  document.getElementById("details_Superv").style.display="none";
-  document.getElementById("Setting").style.display="none";
-  document.getElementById("passwords").style.display="none";
-  document.getElementById("mrqz").style.display="none";
-  document.getElementById("st").style.display="block";
 
-
-
-}
 
 function Settings(){
   document.getElementById("details_student").style.display="none";
@@ -60,7 +50,7 @@ function Settings(){
   document.getElementById("passwords").style.display="none";
   document.getElementById("Setting").style.display="block";
   document.getElementById("mrqz").style.display="none";
-  document.getElementById("st").style.display="none";
+
 
 }
 
@@ -70,7 +60,7 @@ function Change_pass(){
   document.getElementById("details_Superv").style.display="none";
   document.getElementById("Setting").style.display="none";
   document.getElementById("passwords").style.display="block";
-  document.getElementById("st").style.display="none";
+
 
   document.getElementById("mrqz").style.display="none";
 
@@ -81,7 +71,7 @@ function mrqzz(){
   document.getElementById("Setting").style.display="none";
   document.getElementById("passwords").style.display="none";
   document.getElementById("mrqz").style.display="block";
-  document.getElementById("st").style.display="none";
+
 
   flagClick = 3;
 }

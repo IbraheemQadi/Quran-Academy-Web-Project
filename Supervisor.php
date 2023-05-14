@@ -83,10 +83,11 @@ if(isset($_SESSION['isSupervis'])){
         
 
     </script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <link rel="stylesheet" type="text/css"  href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"
-    />
+
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
     <script
             type="text/javascript"
@@ -962,13 +963,7 @@ if(isset($_SESSION['isSupervis'])){
                     <span class="title">الطلاب</span>
                 </a>
             </li>
-            <li>
-               <a  onclick="RecordGruade()">
-                    <span class="icon">
-                        <ion-icon name="pencil-outline"></ion-icon>                        </span>
-                    <span class="title">تسجيل العلامات</span>
-                </a>
-            </li>
+
             <li>
                 <a  onclick="StudentReport()">
                         <span class="icon">
@@ -1206,27 +1201,8 @@ $db->close();
                 </button>
             </div>
         </div>
-        <!-- Record Grad -->
-        <div class="details" id="Record" style="display: none">
-            <div class="recentOrders">
-                <div class="cardHeader" dir="rtl">
-                    <h2  style="font-size: xx-large" >تسجيل العلامات</h2>
-                </div>
-                <div class="wrapperr" dir="rtl " >
-                    <div  class="select-btn">
-                        <span style="text-align: right" >اسم السورة</span>
-                        <i class="uil uil-angle-down"></i>
-                    </div>
-                    <div class="content">
-                        <div class="search" dir="rtl">
-                            <i class="bx bx-search" style="color:#222121"></i>
-                            <input spellcheck="false" type="text" placeholder="بحث">
-                        </div>
-                        <ul class="options"></ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+
+
         <!-- ================ Setting ================= -->
         <div class="details" id="Setting" style="display: none">
             <div class="recentOrders">

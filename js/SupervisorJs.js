@@ -1,3 +1,4 @@
+var testFlag = 2;
 let countries = [
   "البقرة",
   "آل عمران",
@@ -183,15 +184,15 @@ function Settings() {
   document.getElementById("Setting").style.display = "block";
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "none";
-  document.getElementById("Record").style.display = "none";
+
 }
-var testFlag = 2;
+
 function Change_pass() {
   document.getElementById("Setting").style.display = "none";
   document.getElementById("passwords").style.display = "block";
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "none";
-  document.getElementById("Record").style.display = "none";
+
 }
 
 function Studnetforvis() {
@@ -199,7 +200,7 @@ function Studnetforvis() {
   document.getElementById("passwords").style.display = "none";
   document.getElementById("StudnetForsuper").style.display = "block";
   document.getElementById("ReportAllStudent").style.display = "none";
-  document.getElementById("Record").style.display = "none";
+
   testFlag = 2;
 }
 
@@ -209,17 +210,10 @@ function StudentReport() {
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "block";
 
-  document.getElementById("Record").style.display = "none";
+
   testFlag = 1;
 }
 
-function RecordGruade() {
-  document.getElementById("Setting").style.display = "none";
-  document.getElementById("passwords").style.display = "none";
-  document.getElementById("StudnetForsuper").style.display = "none";
-  document.getElementById("ReportAllStudent").style.display = "none";
-  document.getElementById("Record").style.display = "block";
-}
 
 function addToStorage(id) {
   window.localStorage.setItem("stid", id);
