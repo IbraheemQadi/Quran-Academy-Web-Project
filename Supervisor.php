@@ -1020,7 +1020,7 @@ if(isset($_SESSION['isSupervis'])){
             </div>
             <span style="color: white" >ID : <?php echo $_SESSION['ID']?> </span>
             <span style="color: white" >type : Supervisor</span>
-            <div class="user">
+            <div class="user border-2 border-white">
             <img 
               onclick="initProfile(<?php echo $_SESSION['ID']?>)"     
               data-te-toggle="modal"
