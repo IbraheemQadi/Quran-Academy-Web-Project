@@ -184,7 +184,6 @@ function Settings() {
   document.getElementById("Setting").style.display = "block";
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "none";
-
 }
 
 function Change_pass() {
@@ -192,7 +191,6 @@ function Change_pass() {
   document.getElementById("passwords").style.display = "block";
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "none";
-
 }
 
 function Studnetforvis() {
@@ -210,10 +208,8 @@ function StudentReport() {
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "block";
 
-
   testFlag = 1;
 }
-
 
 function addToStorage(id) {
   window.localStorage.setItem("stid", id);
@@ -735,12 +731,23 @@ function saveProfileImg(spid) {
 
   xhr.onload = function () {
     if (this.readyState === 4 && this.status === 200) {
-      // toast
-      console.log(this.responseText);
-      console.log("Photo saved successfully!");
+      Toastify({
+        text: "✅ تم تغيير الصورة بنجاح",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to right, #00b09b, #96c93d)",
+          padding: "20px 50px",
+        },
+      }).showToast();
     } else {
-      // toast
-      console.log("Error saving photo.");
+      Toastify({
+        text: "❌ حدث خطأ",
+        duration: 3000,
+        style: {
+          background: "linear-gradient(to bottom, #e60000, #ff3300)",
+          padding: "20px 50px",
+        },
+      }).showToast();
     }
   };
 
