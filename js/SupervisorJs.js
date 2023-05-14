@@ -687,3 +687,68 @@ function initProfile(id) {
     document.getElementById("supervisorEmail").innerText = supervior.Email;
   });
 }
+
+// Profile image upload
+
+function loadProfileImg(spid) {
+  let url = `utils/getSupervisorImage.php?spid=${spid}`;
+  let xhr = new XMLHttpRequest();
+  xhr.open("GET", url, true);
+
+  xhr.onload = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      let previewImages = document.querySelectorAll(".previewImage");
+      let imagePath = this.responseText;
+      if (imagePath) {
+        previewImages.forEach((img) => (img.src = imagePath));
+        // previewImage.src = imagePath; // Update the preview image source
+      } else {
+        previewImages.forEach((img) => (img.src = "img/profile/Default3.png"));
+        // previewImage.src = ; // default image
+      }
+      console.log(this.responseText);
+    } else {
+      console.log("Error retrieving image path.");
+    }
+  };
+
+  xhr.send();
+}
+
+function saveProfileImg(spid) {
+  let fileInput = event.target;
+
+  let previewImages = document.querySelectorAll(".previewImage");
+
+  let file = fileInput.files[0];
+  let reader = new FileReader();
+
+  reader.onload = function (e) {
+    previewImages.forEach((img) => (img.src = e.target.result));
+    // previewImage.src = e.target.result; // Display the preview image
+  };
+
+  reader.readAsDataURL(file); // Read the file as a data URL
+
+  // Create a FormData object to send the file via AJAX
+  let formData = new FormData();
+  formData.append("photo", file);
+
+  // Send an AJAX request to the PHP script
+  let url = `utils/imgUpload.php?spid=${spid}`;
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", url, true);
+
+  xhr.onload = function () {
+    if (this.readyState === 4 && this.status === 200) {
+      // toast
+      console.log(this.responseText);
+      console.log("Photo saved successfully!");
+    } else {
+      // toast
+      console.log("Error saving photo.");
+    }
+  };
+
+  xhr.send(formData);
+}

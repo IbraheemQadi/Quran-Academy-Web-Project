@@ -80,34 +80,24 @@ if(isset($_SESSION['isSupervis'])){
             xhttp.send();
         }
 
-
-
-
+        
 
     </script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <link rel="stylesheet" type="text/css"  href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css"
     />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
-
     <script
             type="text/javascript"
             charset="utf8"
             src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"
     ></script>
-
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
     <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" media="all"/>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 
 </head>
-
-
-
 <body>
 <!-- =============== Delete student Modal ================ -->
 <div
@@ -882,21 +872,23 @@ if(isset($_SESSION['isSupervis'])){
               class="block rounded-lg bg-white shadow-lg dark:bg-neutral-700 dark:shadow-black/30"
             >
               <div
-                class="h-40 rounded-t-lg overflow-hidden bg-[url('img/quran123.jpg')] bg-cover bg-center bg-no-repeat"
+                class="h-40 rounded-t-lg overflow-hidden bg-[url('img/quds.jpg')] bg-cover bg-center bg-no-repeat"
               ></div>
               <div
                 class="mx-auto -mt-24 w-44 overflow-hidden rounded-full border-2 border-white bg-white dark:border-neutral-800 dark:bg-neutral-800"
               >
                 <img
-                  src="https://tecdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp"
+                  class="previewImage w-44 h-44 object-cover"
                 />
               </div>
+              <label for="photoInput" class="absolute top-[205px] right-[180px] inline-flex justify-center items-center h-10 w-10 bg-gray-100 rounded-full text-center cursor-pointer">
+                    <ion-icon class="text-primary" size="large" name="camera-outline"></ion-icon>
+              </label>
               <div class="p-6">
                 <h4
                   id="supervisorName"
                   class="text-center text-3xl font-semibold"
                 >
-                   
                 </h4>
                 <div
                   id="supervisorID"
@@ -935,6 +927,14 @@ if(isset($_SESSION['isSupervis'])){
                     </div>
                   </div>
                 </div>
+                <input 
+                    class="hidden relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                    type="file" 
+                    name="photo" 
+                    accept="image/*"
+                    id="photoInput"
+                    onchange="saveProfileImg(<?php echo $_SESSION['ID']?>)"
+                    >
               </div>
             </div>
           </div>
@@ -1026,15 +1026,14 @@ if(isset($_SESSION['isSupervis'])){
             <span style="color: white" >ID : <?php echo $_SESSION['ID']?> </span>
             <span style="color: white" >type : Supervisor</span>
             <div class="user">
-            <i 
+            <img 
               onclick="initProfile(<?php echo $_SESSION['ID']?>)"     
               data-te-toggle="modal"
               data-te-target="#profileModal"
               data-te-ripple-init
               data-te-ripple-color="light" 
-              class='bx bx-user-circle' 
-              style='color:#d7d7d7 ; font-size: 40px'>
-            </i>
+              class="previewImage"
+               >
             </div>
         </div>
         <!-- ======================= Cards ================== -->
@@ -1398,7 +1397,9 @@ $db->close();
                 </script>
 <script src="js/SupervisorJs.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
-
+<script>
+  loadProfileImg(<?php echo $_SESSION['ID']?>);
+</script>
 <!-- ====== ionicons ======= -->
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
