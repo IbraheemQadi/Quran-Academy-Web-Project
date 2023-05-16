@@ -137,7 +137,7 @@ function handleNewCenter(form) {
       row.innerHTML = rowText;
       tableBody.appendChild(row);
 
-      showToastFunction("✅ تم اضافة التقرير بنجاح", 1);
+      showToastFunction("✅ تم اضافة المركز بنجاح", 1);
       // reset the modal form
       form.elements.address.value = "";
       closeClick();

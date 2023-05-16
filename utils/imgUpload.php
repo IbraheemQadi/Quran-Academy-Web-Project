@@ -18,6 +18,25 @@ if ( $_FILES[ 'photo' ][ 'error' ] === UPLOAD_ERR_OK ) {
         $db->close();
 
         echo 'true';
+    } else if ( isset( $_GET[ 'stid' ] ) ) {
+
+        $stid = $_GET[ 'stid' ];
+        $tempFilePath = $_FILES[ 'photo' ][ 'tmp_name' ];
+        $destinationPath = '../img/profile/'. $_FILES[ 'photo' ][ 'name' ];
+
+        // Move the uploaded file to the desired destination
+        move_uploaded_file( $tempFilePath, $destinationPath );
+
+        // save the img in the database
+        $imgpath = 'img/profile/'.$_FILES[ 'photo' ][ 'name' ];
+        $query = "UPDATE `students` SET `imgPath`='$imgpath' WHERE ST_ID=$stid";
+        $db = new mysqli( 'localhost', 'root', '', 'academy' );
+        $db->query( $query );
+        $db->commit();
+        $db->close();
+
+        echo 'true';
+
     }
 } else {
     echo 'Error uploading file.';
