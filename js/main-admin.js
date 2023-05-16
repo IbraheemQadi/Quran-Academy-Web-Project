@@ -31,6 +31,8 @@ function Sudent() {
   flagClick = 1;
 }
 
+Sudent();
+
 function superv() {
   document.getElementById("details_student").style.display = "none";
   document.getElementById("details_Superv").style.display = "block";
@@ -67,8 +69,6 @@ function mrqzz() {
   flagClick = 3;
 }
 
-mrqzz();
-
 function closeClick() {
   let closeButtons = document.querySelectorAll(".close");
   closeButtons.forEach((btn) => btn.click());
@@ -98,7 +98,11 @@ function showToastFunction(msg, state) {
   }
 }
 
-// new center modal
+function addToStorage(id) {
+  window.localStorage.setItem("centerIndex", id);
+}
+
+// --------------------- new center modal -------
 function handleNewCenter(form) {
   event.preventDefault();
 
@@ -128,7 +132,7 @@ function handleNewCenter(form) {
            <td>${workingDays}</td>
            <td>${address}</td>
            <td ><a onclick='addToStorage(${centerIndex})' type='button' data-te-toggle='modal' data-te-target='#deleteCenterModal' data-te-ripple-init ><ion-icon name='trash' size='large' ></ion-icon></a>
-           <a onclick='addToStorage(${centerIndex}); setReportModalData(${centerIndex});' type='button' data-te-toggle='modal' data-te-target='#updateCenterModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>`;
+           <a onclick='addToStorage(${centerIndex}); setCenterModalData(${centerIndex});' type='button' data-te-toggle='modal' data-te-target='#updateCenterModal' data-te-ripple-init ><ion-icon name='create' size='large' ></ion-icon></a></td>`;
       row.setAttribute("id", centerIndex);
       row.innerHTML = rowText;
       tableBody.appendChild(row);
