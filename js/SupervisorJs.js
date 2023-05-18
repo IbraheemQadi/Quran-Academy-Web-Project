@@ -184,6 +184,7 @@ function Settings() {
   document.getElementById("Setting").style.display = "block";
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "none";
+  document.getElementById("reportChart").style.display = "none";
 }
 
 function Change_pass() {
@@ -191,6 +192,7 @@ function Change_pass() {
   document.getElementById("passwords").style.display = "block";
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "none";
+  document.getElementById("reportChart").style.display = "none";
 }
 
 function Studnetforvis() {
@@ -198,6 +200,7 @@ function Studnetforvis() {
   document.getElementById("passwords").style.display = "none";
   document.getElementById("StudnetForsuper").style.display = "block";
   document.getElementById("ReportAllStudent").style.display = "none";
+  document.getElementById("reportChart").style.display = "none";
 
   testFlag = 2;
 }
@@ -207,6 +210,8 @@ function StudentReport() {
   document.getElementById("passwords").style.display = "none";
   document.getElementById("StudnetForsuper").style.display = "none";
   document.getElementById("ReportAllStudent").style.display = "block";
+  document.getElementById("reportChart").style.display = "block";
+  
 
   testFlag = 1;
 }

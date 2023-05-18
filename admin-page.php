@@ -79,7 +79,8 @@ if(isset($_SESSION['isAdmin'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Admin</title>
+    <link rel="icon" type="image/x-icon" href="img/quranLogo2.png">
+    <title>Admin Home Page</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet" href="css/styleTest.css">
     <script type="text/javascript">
@@ -385,13 +386,9 @@ if(isset($_SESSION['isAdmin'])){
     <div class="navigation">
         <ul>
             <li>
-                <a>
-                    <span class="icon">
-<img src="img/quranWhite.png">
-                    </span>
-                    <span style="font-size: xxx-large" class="title"> ﷺ</span>
-                          
-
+                <a class="mt-2"> 
+                    <span class="icon"><img src="img/quranLogo2.png"></span>
+                    <span style="font-size: xx-large" class="title">أكادمية القرآن</span>
                 </a>
             </li>
 
@@ -403,17 +400,6 @@ if(isset($_SESSION['isAdmin'])){
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
                     <span class="title">الطلاب</span>
-                </a>
-            </li>
-
-
-
-            <li>
-                <a href="index.php">
-                        <span class="icon">
-                            <ion-icon name="chatbubble-outline"></ion-icon>
-                        </span>
-                    <span class="title">الرسائل</span>
                 </a>
             </li>
 
@@ -434,21 +420,30 @@ if(isset($_SESSION['isAdmin'])){
                 </a>
             </li>
 
-            <li>
+            <!-- <li>
                 <a onclick="Settings()">
                         <span class="icon">
                             <ion-icon name="settings-outline"></ion-icon>
                         </span>
                     <span class="title">Settings</span>
                 </a>
-            </li>
+            </li> -->
 
             <li>
                 <a onclick="Change_pass()">
                         <span class="icon">
                             <ion-icon name="lock-closed-outline"></ion-icon>
                         </span>
-                    <span class="title">Password</span>
+                    <span class="title">كلمة المرور</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="index.php">
+                        <span class="icon">
+                            <ion-icon name="chatbubble-outline"></ion-icon>
+                        </span>
+                    <span class="title">الرسائل</span>
                 </a>
             </li>
 
@@ -472,7 +467,7 @@ if(isset($_SESSION['isAdmin'])){
 
             <div class="search">
                 <label>
-                    <input type="text" placeholder="Search here" id="Search_Filter" style="color: black">
+                    <input autocomplete="off" type="text" placeholder="Search here" id="Search_Filter" style="color: #2a2185">
                     <i class='bx bx-search' style='color:#222121'  ></i>
                 </label>
             </div>
@@ -946,12 +941,6 @@ ON supervisor.CENTER_NUMBER = center.NUMBER_CENTER";
                 </div>
 
             </div>
-
-
-
-
-
-
 
         </div>
 

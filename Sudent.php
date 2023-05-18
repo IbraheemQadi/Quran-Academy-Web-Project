@@ -39,7 +39,8 @@ if(isset($_SESSION['isStudent'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Page</title>
+    <link rel="icon" type="image/x-icon" href="img/quranLogo2.png">
+    <title>Student Home Page</title>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 
     <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/themes/base/jquery-ui.css" media="all"/>
@@ -189,14 +190,12 @@ if(isset($_SESSION['isStudent'])){
 <div class="container">
   <div class="navigation">
     <ul>
-      <li>
-        <a>
-            <span class="icon">
-                      <img src="img/quranWhite.png">
-                    </span>
-          <span style="font-size: xxx-large" class="title"> ﷺ</span>
-        </a>
-      </li>
+          <li>
+                <a class="mt-2"> 
+                    <span class="icon"><img src="img/quranLogo2.png"></span>
+                    <span style="font-size: xx-large" class="title">أكادمية القرآن</span>
+                </a>
+         </li>
       <li class="hovered">
         <a id="a_student" onclick="RportGradsSudent()">
                         <span class="icon">
@@ -259,7 +258,7 @@ if(isset($_SESSION['isStudent'])){
       <div class="search">
           <form action="" method="POST">
         <label>
-          <input type="text" placeholder="Search here" value="" id="Search_Filter"    >
+          <input autocomplete="off" type="text" placeholder="Search here" class="text-[#2a2185]" id="Search_Filter"    >
           <i class='bx bx-search' style='color:#222121'  ></i>
         </label>
           </form>

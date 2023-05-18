@@ -31,7 +31,8 @@ if(isset($_SESSION['isSupervis'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Supervisor</title>
+    <title>Supervisor Home Page</title>
+    <link rel="icon" type="image/x-icon" href="img/quranLogo2.png">
     <!-- toastify.js -->
     <link
       rel="stylesheet"
@@ -163,14 +164,12 @@ if(isset($_SESSION['isSupervis'])){
                   type="text"
                   name="id"
                   class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   placeholder="ID"
                   autocomplete="off"
                   required
                 />
                 <label
-                  for="exampleInputEmail1"
                   class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   >رقم التسجيل</label
                 >
@@ -269,12 +268,11 @@ if(isset($_SESSION['isSupervis'])){
                   type="text"
                   name="name"
                   class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   autocomplete="off"
                 />
                 <label
-                  for="exampleInputEmail1"
+                  
                   class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   >الاسم</label
                 >
@@ -303,12 +301,11 @@ if(isset($_SESSION['isSupervis'])){
                   type="text"
                   name="address"
                   class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   autocomplete="off"
                 />
                 <label
-                  for="exampleInputEmail1"
+                  
                   class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   >العنوان</label
                 >
@@ -319,12 +316,11 @@ if(isset($_SESSION['isSupervis'])){
                   type="text"
                   name="phoneNumber"
                   class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   autocomplete="off"
                 />
                 <label
-                  for="exampleInputEmail1"
+                  
                   class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   >الجوال</label
                 >
@@ -336,12 +332,11 @@ if(isset($_SESSION['isSupervis'])){
                   name="email"
                   onshow="getStudentData()"
                   class="peer block min-h-[auto] w-full rounded border-0 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none dark:text-neutral-200 dark:placeholder:text-neutral-200 [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0"
-                  id="exampleInputEmail1"
                   aria-describedby="emailHelp"
                   autocomplete="off"
                 />
                 <label
-                  for="exampleInputEmail1"
+                  
                   class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                   >البريد الالكتروني</label
                 >
@@ -513,7 +508,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >العلامة</label
                   >
@@ -529,7 +524,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >الموضع</label
                   >
@@ -564,7 +559,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >العلامة</label
                   >
@@ -580,7 +575,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >الموضع</label
                   >
@@ -729,7 +724,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >العلامة</label
                   >
@@ -745,7 +740,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >الموضع</label
                   >
@@ -779,7 +774,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >العلامة</label
                   >
@@ -795,7 +790,7 @@ if(isset($_SESSION['isSupervis'])){
                     autocomplete="off"
                   />
                   <label
-                    for="exampleInputEmail1"
+                    
                     class="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] text-neutral-500 transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-focus:text-primary peer-data-[te-input-state-active]:-translate-y-[0.9rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none dark:text-neutral-200 dark:peer-focus:text-primary"
                     >الموضع</label
                   >
@@ -947,14 +942,12 @@ if(isset($_SESSION['isSupervis'])){
 <div class="container">
     <div class="navigation active" >
         <ul>
-            <li>
-                <a>
-                    <span class="icon">
-                        <img src="img/quranWhite.png">
-                    </span>
-                    <span style="font-size: xxx-large" class="title"> ﷺ</span>
+        <li>
+                <a class="mt-2"> 
+                    <span class="icon"><img src="img/quranLogo2.png"></span>
+                    <span style="font-size: xx-large" class="title">أكادمية القرآن</span>
                 </a>
-            </li>
+         </li>
             <li class="hovered">
                 <a id="a_student" onclick="Studnetforvis()">
                         <span class="icon">
@@ -1014,12 +1007,12 @@ if(isset($_SESSION['isSupervis'])){
             </div>
             <div class="search">
                 <label>
-                    <input type="text" style="color: black" placeholder="Search here" id="Search_Filter" >
+                    <input autocomplete="off" type="text" style="color: #2a2185" placeholder="Search here" id="Search_Filter" >
                     <i class='bx bx-search' style='color:#222121'  ></i>
                 </label>
             </div>
-            <span style="color: white" >ID : <?php echo $_SESSION['ID']?> </span>
-            <span style="color: white" >type : Supervisor</span>
+            <span style="color: white" >رقم المشرف :  <?php echo $_SESSION['ID']?> </span>
+            <span style="color: white" > الاسم : ابراهيم قاضي </span>
             <div class="user border-2 border-white">
             <img 
               onclick="initProfile(<?php echo $_SESSION['ID']?>)"     
@@ -1086,7 +1079,7 @@ if(isset($_SESSION['isSupervis'])){
                 </div>
             </div>
         </div>
-        <!-- ================ Student ================= -->
+        <!-- ================ Student ================= --  -->
         <div class="details" id="StudnetForsuper">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
@@ -1095,13 +1088,13 @@ if(isset($_SESSION['isSupervis'])){
                 <table dir="rtl" id="Sutednt_info">
                     <thead>
                     <tr>
-                        <td>رقم الطالب</td>
                         <td>الإسم </td>
+                        <td>رقم الطالب</td>
                         <td>تاريخ الميلاد</td>
                         <td>العنوان</td>
                         <td>رقم الهاتف</td>
                         <td>البريد الالكتروني</td>
-                        <td> </td>
+                        <td></td>
                     </tr>
                     </thead>
                     <tbody>
@@ -1119,9 +1112,14 @@ if(isset($_SESSION['isSupervis'])){
                 while($row = $res->fetch_assoc()){
                 echo "
 
-                <tr id=$row[ST_ID]>
+                 <tr id=$row[ST_ID]>
+                    <td class='flex items-center'>
+                      <div class='user border-2 border-[#2a2185] ml-4'>
+                        <img  src='$row[imgPath]'/>
+                      </div>
+                      $row[NAME_STUDENT]
+                    </td>
                     <td>$row[ST_ID]</td>
-                    <td>$row[NAME_STUDENT]</td>
                     <td ><span class='status delivered'>$row[BIRTHDATE]</span></td>
                     <td>$row[ADDRESS]</td>
                     <td>$row[PHONE_NUMBER]</td>
@@ -1137,6 +1135,18 @@ if(isset($_SESSION['isSupervis'])){
             </div>
         </div>
         <!-- ================ Reports ================= -->
+        <div class="details" id="reportChart" style="display: none">
+            <div class="recentOrders">
+              <div class="cardHeader" dir="rtl">
+                  <h2  style="font-size: xxx-large">احصائيات</h2>
+              </div>
+              <div class="flex justify-center items-center">
+                <div class="w-3/5">
+                    <canvas id="chart1"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
         <div class="details" id="ReportAllStudent" style="display: none">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
@@ -1201,8 +1211,6 @@ $db->close();
                 </button>
             </div>
         </div>
-
-
         <!-- ================ Setting ================= -->
         <div class="details" id="Setting" style="display: none">
             <div class="recentOrders">
@@ -1371,6 +1379,37 @@ $db->close();
                         });
                     });
                 </script>
+<!-- add chart js  -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+      const ctx = document.getElementById("chart1");
+      
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["جمال سعد الدين", "عباس دويكات", "احمد علي"],
+          datasets: [
+            {
+              label: "عدد التقارير",
+              data: [3, 1, 1],
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+        plugins: {
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    font: {
+                        size: 25
+                    }
+                }
+            }
+        }
+    }
+      });
+</script>
 <script src="js/SupervisorJs.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/tw-elements.umd.min.js"></script>
 <script>

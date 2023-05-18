@@ -622,7 +622,7 @@ transition-delay: 0s ;
 <div class="background"></div>
 <div class="container">
 
-    <h1 style="top: 90px" >
+    <!-- <h1 style="top: 90px" >
 
 
         <span >وَعِيدِ</span>
@@ -631,7 +631,7 @@ transition-delay: 0s ;
         <span >بِالْقُرْآنِ</span>
         <span >فَذَكِّرْ</span>
 
-    </h1>
+    </h1> -->
 
     <div class="logreg-box">
         <div class="form-box">
