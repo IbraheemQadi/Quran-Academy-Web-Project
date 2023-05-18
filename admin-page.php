@@ -566,22 +566,25 @@ if(isset($_SESSION['isAdmin'])){
 
         <!-- ================ ST ================= -->
 
-
+        <div class="details" id="studentChart" style="display: none">
+            <div class="recentOrders">
+              <div class="cardHeader" dir="rtl">
+                  <h2  style="font-size: xxx-large">احصائيات</h2>
+              </div>
+              <div class="flex justify-center items-center">
+                <div class="w-3/5">
+                    <canvas id="chart1"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <!-- ================ Student ================= -->
         <div class="details" id="details_student" style="display: none">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
                     <h2  style="font-size: xxx-large">جدول الطلبة</h2>
-
-
-
-
-
-
-
                 </div>
-
                 <table dir="rtl" id="TableReport">
                     <thead>
                     <tr>
@@ -591,19 +594,9 @@ if(isset($_SESSION['isAdmin'])){
                         <td>رقم الهاتف</td>
                         <td>المركز</td>
                         <td>المشرف</td>
-
-
-
-
-
                     </tr>
                     </thead>
-
                     <tbody>
-
-
-
-
                     <?php
 
                     $db= new mysqli('localhost','root','','academy');
@@ -709,6 +702,20 @@ if(isset($_SESSION['isAdmin'])){
             </script>
 
             </div>
+
+
+            <div class="details" id="supervisorChart" style="display: none">
+            <div class="recentOrders">
+              <div class="cardHeader" dir="rtl">
+                  <h2  style="font-size: xxx-large">احصائيات</h2>
+              </div>
+              <div class="flex justify-center items-center">
+                <div class="w-3/5">
+                    <canvas id="chart2"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
 
 
 
@@ -991,6 +998,70 @@ ON supervisor.CENTER_NUMBER = center.NUMBER_CENTER";
 
     </div>
 </div>
+<!-- add chart js  -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+      const ctx = document.getElementById("chart1");
+      
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["ابو بكر - بلاطة", "المسجد القديم - بلاطة"],
+          datasets: [
+            {
+              label: "عدد الطلاب في كل مركز",
+              data: [3, 0],
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+        plugins: {
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    font: {
+                        size: 25
+                    }
+                }
+            }
+        }
+    }
+      });
+
+      // -----------------------------------
+      const ctx2 = document.getElementById("chart2");
+      
+      new Chart(ctx2, {
+        type: "bar",
+        data: {
+          labels: ["ابو بكر - بلاطة", "المسجد القديم - بلاطة"],
+          datasets: [
+            {
+              label: "عدد المشرفين في كل مركز",
+              data: [2, 2],
+              borderWidth: 2,
+            },
+          ],
+        },
+        options: {
+        plugins: {
+            legend: {
+                labels: {
+                    // This more specific font property overrides the global property
+                    font: {
+                        size: 25
+                    }
+                }
+            }
+        }
+    }
+      });
+
+
+
+
+</script>
 
 <!-- =========== Scripts =========  -->
 <script src="js/main-admin.js"></script>

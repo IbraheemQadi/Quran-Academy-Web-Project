@@ -23,6 +23,8 @@ var flagClick = 1;
 
 function Sudent() {
   document.getElementById("details_student").style.display = "block";
+  document.getElementById("studentChart").style.display = "block";
+  document.getElementById("supervisorChart").style.display = "none";
   document.getElementById("details_Superv").style.display = "none";
   document.getElementById("Setting").style.display = "none";
   document.getElementById("passwords").style.display = "none";
@@ -35,6 +37,8 @@ Sudent();
 
 function superv() {
   document.getElementById("details_student").style.display = "none";
+  document.getElementById("studentChart").style.display = "none";
+  document.getElementById("supervisorChart").style.display = "block";
   document.getElementById("details_Superv").style.display = "block";
   document.getElementById("Setting").style.display = "none";
   document.getElementById("mrqz").style.display = "none";
@@ -45,6 +49,8 @@ function superv() {
 
 function Settings() {
   document.getElementById("details_student").style.display = "none";
+  document.getElementById("studentChart").style.display = "none";
+  document.getElementById("supervisorChart").style.display = "none";
   document.getElementById("details_Superv").style.display = "none";
   document.getElementById("passwords").style.display = "none";
   document.getElementById("Setting").style.display = "block";
@@ -53,14 +59,17 @@ function Settings() {
 
 function Change_pass() {
   document.getElementById("details_student").style.display = "none";
+  document.getElementById("supervisorChart").style.display = "none";
+  document.getElementById("studentChart").style.display = "none";
   document.getElementById("details_Superv").style.display = "none";
   document.getElementById("Setting").style.display = "none";
   document.getElementById("passwords").style.display = "block";
-
   document.getElementById("mrqz").style.display = "none";
 }
 function mrqzz() {
   document.getElementById("details_student").style.display = "none";
+  document.getElementById("studentChart").style.display = "none";
+  document.getElementById("supervisorChart").style.display = "none";
   document.getElementById("details_Superv").style.display = "none";
   document.getElementById("Setting").style.display = "none";
   document.getElementById("passwords").style.display = "none";
