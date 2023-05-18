@@ -1135,18 +1135,7 @@ if(isset($_SESSION['isSupervis'])){
             </div>
         </div>
         <!-- ================ Reports ================= -->
-        <div class="details" id="reportChart" style="display: none">
-            <div class="recentOrders">
-              <div class="cardHeader" dir="rtl">
-                  <h2  style="font-size: xxx-large">احصائيات</h2>
-              </div>
-              <div class="flex justify-center items-center">
-                <div class="w-3/5">
-                    <canvas id="chart1"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
+
         <div class="details" id="ReportAllStudent" style="display: none">
             <div class="recentOrders">
                 <div class="cardHeader" dir="rtl">
@@ -1211,6 +1200,18 @@ $db->close();
                 </button>
             </div>
         </div>
+        <div class="details" id="reportChart" style="display: none">
+            <div class="recentOrders">
+              <div class="cardHeader" dir="rtl">
+                  <h2  style="font-size: xxx-large">احصائيات</h2>
+              </div>
+              <div class="flex justify-center items-center">
+                <div class="w-3/5">
+                    <canvas id="chart1"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
         <!-- ================ Setting ================= -->
         <div class="details" id="Setting" style="display: none">
             <div class="recentOrders">

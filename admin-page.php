@@ -566,18 +566,6 @@ if(isset($_SESSION['isAdmin'])){
 
         <!-- ================ ST ================= -->
 
-        <div class="details" id="studentChart" style="display: none">
-            <div class="recentOrders">
-              <div class="cardHeader" dir="rtl">
-                  <h2  style="font-size: xxx-large">احصائيات</h2>
-              </div>
-              <div class="flex justify-center items-center">
-                <div class="w-3/5">
-                    <canvas id="chart1"></canvas>
-                </div>
-              </div>
-            </div>
-          </div>
 
         <!-- ================ Student ================= -->
         <div class="details" id="details_student" style="display: none">
@@ -703,19 +691,22 @@ if(isset($_SESSION['isAdmin'])){
 
             </div>
 
-
-            <div class="details" id="supervisorChart" style="display: none">
+            
+        <div class="details" id="studentChart" style="display: none">
             <div class="recentOrders">
               <div class="cardHeader" dir="rtl">
                   <h2  style="font-size: xxx-large">احصائيات</h2>
               </div>
               <div class="flex justify-center items-center">
                 <div class="w-3/5">
-                    <canvas id="chart2"></canvas>
+                    <canvas id="chart1"></canvas>
                 </div>
               </div>
             </div>
           </div>
+
+
+
 
 
 
@@ -820,6 +811,19 @@ ON supervisor.CENTER_NUMBER = center.NUMBER_CENTER";
 
 
         </div>
+
+        <div class="details" id="supervisorChart" style="display: none">
+            <div class="recentOrders">
+              <div class="cardHeader" dir="rtl">
+                  <h2  style="font-size: xxx-large">احصائيات</h2>
+              </div>
+              <div class="flex justify-center items-center">
+                <div class="w-3/5">
+                    <canvas id="chart2"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
 
         <!-- ================ mrqz ================= -->
         <div class="details" id="mrqz" style="display: none">
